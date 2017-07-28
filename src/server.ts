@@ -7,6 +7,7 @@ import * as express from 'express';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import {ApiRouter} from './server-api/';
+import * as bodyParser from 'body-parser';
 
 
 const PORT = 4000;
@@ -14,6 +15,9 @@ const PORT = 4000;
 enableProdMode();
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const template = readFileSync(join(__dirname, '..', 'dist', 'index.html')).toString();
 

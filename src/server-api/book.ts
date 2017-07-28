@@ -1,11 +1,13 @@
 import * as express from 'express';
 import {readFileSync} from 'fs';
 import {join} from 'path';
+import {createGUID} from './common/';
+
 
 const filePath = join(__dirname, './data/books.db.json');
 
 class Book {
-  id: string; // consider using guid
+  id: string = createGUID(); // consider using guid
   bookName: string;
   authorName: string;
   category: string;
