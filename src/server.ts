@@ -6,6 +6,8 @@ import { AppServerModuleNgFactory } from '../dist/ngfactory/src/app/app.server.m
 import * as express from 'express';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import {ApiRouter} from './server-api/';
+
 
 const PORT = 4000;
 
@@ -13,7 +15,7 @@ enableProdMode();
 
 const app = express();
 
-let template = readFileSync(join(__dirname, '..', 'dist', 'index.html')).toString();
+const template = readFileSync(join(__dirname, '..', 'dist', 'index.html')).toString();
 
 app.engine('html', (_, options, callback) => {
   const opts = { document: template, url: options.req.url };
@@ -24,6 +26,8 @@ app.engine('html', (_, options, callback) => {
 
 app.set('view engine', 'html');
 app.set('views', 'src');
+
+app.use('/api', ApiRouter);
 
 app.get('*.*', express.static(join(__dirname, '..', 'dist')));
 
