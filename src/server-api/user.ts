@@ -5,8 +5,10 @@ import {createGUID} from './common/';
 
 const filePath = join(__dirname, './data/users.db.json');
 
-class User {
+export class User {
   id: string = createGUID();
+  login: string;
+  password: string;
   firstName: string;
   lastName: string;
   gender: string;
