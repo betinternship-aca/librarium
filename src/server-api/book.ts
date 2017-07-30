@@ -7,7 +7,7 @@ import {createGUID} from './common/';
 const filePath = join(__dirname, './data/books.db.json');
 
 export class Book {
-  id: string = createGUID();
+  bookId: string = createGUID();
   bookName: string;
   authorName: string; // : Author
   categoryIds: string;
@@ -24,7 +24,7 @@ export class Book {
   }
 
   static getBook(id: string): Book {
-    return this.getAllBooks().find(b => b.id === id);
+    return this.getAllBooks().find(b => b.bookId === id);
   }
 
   static createBook(data) {
@@ -37,7 +37,7 @@ export class Book {
 
   static updateBook(data) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.id === data.id);
+    const bookIndex = books.findIndex(b => b.bookId === data.id);
     books.splice(bookIndex, 1, data);
     this.saveAllBooks(books);
     return data;
@@ -45,7 +45,7 @@ export class Book {
 
   static deleteBook(id) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.id === id);
+    const bookIndex = books.findIndex(b => b.bookId === id);
     books.splice(bookIndex, 1);
     this.saveAllBooks(books);
   }
