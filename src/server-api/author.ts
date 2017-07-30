@@ -25,7 +25,7 @@ export class Author {
 
   static getAllBooks(authorId) {
     const allBooks = Book.getAllBooks();
-    return allBooks.filter(b => b.authorId === authorId);
+    return allBooks.filter(b => b.id === authorId);
   }
 
   static createAuthor(data) {
