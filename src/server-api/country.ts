@@ -2,7 +2,7 @@
  * Created by anmin on 30.07.2017.
  */
 import * as express from 'express';
-import {readFileSync, writeFileSync} from 'fs';
+import {readFileSync} from 'fs';
 import {join} from 'path';
 
 const filePath = join(__dirname, './data/countries.db.json');
@@ -20,7 +20,7 @@ export class Country {
 }
 export const CountryRouter = express.Router();
 
-CountryRouter.get('/c', (req, res) => {
+CountryRouter.get('/country-list', (req, res) => {
   res.json(Country.getAllCountries());
 });
 
