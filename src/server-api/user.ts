@@ -7,7 +7,7 @@ import {Order} from './order';
 const filePath = join(__dirname, './data/users.db.json');
 
 export class User {
-  id: string = createGUID();
+  userId: string = createGUID();
   login: string;
   password: string;
   firstName: string;
@@ -26,7 +26,7 @@ export class User {
   }
 
   static getUser(id: string): User {
-    return this.getAllUsers().find(u => u.id === id);
+    return this.getAllUsers().find(u => u.userId === id);
   }
 
   static createUser(data) {
@@ -39,7 +39,7 @@ export class User {
 
   static updateUser(data) {
     const users = this.getAllUsers();
-    const userIndex = users.findIndex(u => u.id === data.id);
+    const userIndex = users.findIndex(u => u.userId === data.id);
     users.splice(userIndex, 1, data);
     this.saveAllUsers(users);
     return data;
@@ -47,7 +47,7 @@ export class User {
 
   static deleteUser(id) {
     const users = this.getAllUsers();
-    const userIndex = users.findIndex(u => u.id === id);
+    const userIndex = users.findIndex(u => u.userId === id);
     users.splice(userIndex, 1);
     this.saveAllUsers(users);
   }
