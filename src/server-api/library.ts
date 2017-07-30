@@ -2,16 +2,18 @@ import * as express from 'express';
 import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID, Address} from './common/';
+import {Country} from './country';
 
 const filePath = join(__dirname, './data/libraries.db.json');
 
 export class Library {
-  id: string = createGUID();
+  libraryId: string = createGUID();
   name: string;
   address: Address;
   branch: Library | null;
   email?: string;
   phoneNumber?: string;
+  country: Country;
 
   constructor(data) {
     // copies every property of data to this
@@ -23,7 +25,7 @@ export class Library {
   }
 
   static getLibrary(id: string): Library {
-    return this.getAllLibraries().find(l => l.id === id);
+    return this.getAllLibraries().find(l => l.libraryId === id);
   }
 
   static createLibrary(data) {
@@ -36,7 +38,7 @@ export class Library {
 
   static updateLibrary(data) {
     const libs = this.getAllLibraries();
-    const libIndex = libs.findIndex(l => l.id === data.id);
+    const libIndex = libs.findIndex(l => l.libraryId === data.id);
     libs.splice(libIndex, 1, data);
     this.saveAllLibraries(libs);
     return data;
@@ -44,7 +46,7 @@ export class Library {
 
   static deleteLibrary(id) {
     const libs = this.getAllLibraries();
-    const libIndex = libs.findIndex(l => l.id === id);
+    const libIndex = libs.findIndex(l => l.libraryId=== id);
     libs.splice(libIndex, 1);
     this.saveAllLibraries(libs);
   }
@@ -60,7 +62,7 @@ LibraryRouter.get('/library-list', (req, res) => {
   res.json(Library.getAllLibraries());
 });
 
-LibraryRouter.get('/:id', (req, res) => {
+LibraryRouter.get('/:countryId', (req, res) => {
   res.json(Library.getLibrary(req.params.id));
 });
 
@@ -70,14 +72,14 @@ LibraryRouter.post('/', (req, res) => {
 });
 
 // update library
-LibraryRouter.post('/:id', (req, res) => {
+LibraryRouter.post('/:countryId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(Library.updateLibrary(data));
 });
 
 // delete library
-LibraryRouter.delete('/:id', (req, res) => {
+LibraryRouter.delete('/:countryId', (req, res) => {
   const id = req.params.id;
   res.json(Library.deleteLibrary(id));
 });

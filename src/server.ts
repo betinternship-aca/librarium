@@ -10,7 +10,7 @@ import {ApiRouter} from './server-api/';
 import * as bodyParser from 'body-parser';
 
 
-const PORT = 4000;
+const PORT = 4300;
 
 enableProdMode();
 

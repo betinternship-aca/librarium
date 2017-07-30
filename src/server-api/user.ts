@@ -62,7 +62,7 @@ UserRouter.get('/user-list', (req, res) => {
   res.json(User.getAllUsers());
 });
 
-UserRouter.get('/:id', (req, res) => {
+UserRouter.get('/:countryId', (req, res) => {
   res.json(User.getUser(req.params.id));
 });
 
@@ -72,14 +72,14 @@ UserRouter.post('/', (req, res) => {
 });
 
 // update user
-UserRouter.post('/:id', (req, res) => {
+UserRouter.post('/:countryId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(User.updateUser(data));
 });
 
 // delete user
-UserRouter.delete('/:id', (req, res) => {
+UserRouter.delete('/:countryId', (req, res) => {
   const id = req.params.id;
   res.json(User.deleteUser(id));
 });
