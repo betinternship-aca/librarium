@@ -2,17 +2,19 @@ import * as express from 'express';
 import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID} from './common/';
+import {Order} from './order';
 
 
 const filePath = join(__dirname, './data/books.db.json');
 
 export class Book {
-  id: string = createGUID();
+  bookId: string = createGUID();
   bookName: string;
-  authorName: string; // : Author
+  authorIds: string[];
   categoryIds: string;
   editionYear: Date;
   language?: string;
+  price?: number;
   // countOfDownloads: number;
 
   constructor(data) {
@@ -24,7 +26,7 @@ export class Book {
   }
 
   static getBook(id: string): Book {
-    return this.getAllBooks().find(b => b.id === id);
+    return this.getAllBooks().find(b => b.bookId === id);
   }
 
   static createBook(data) {
@@ -37,7 +39,7 @@ export class Book {
 
   static updateBook(data) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.id === data.id);
+    const bookIndex = books.findIndex(b => b.bookId === data.id);
     books.splice(bookIndex, 1, data);
     this.saveAllBooks(books);
     return data;
@@ -45,7 +47,7 @@ export class Book {
 
   static deleteBook(id) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.id === id);
+    const bookIndex = books.findIndex(b => b.bookId === id);
     books.splice(bookIndex, 1);
     this.saveAllBooks(books);
   }
@@ -81,4 +83,8 @@ BookRouter.post('/:id', (req, res) => {
 BookRouter.delete('/:id', (req, res) => {
   const id = req.params.id;
   res.json(Book.deleteBook(id));
+});
+
+BookRouter.get('/:id/orders', (req, res) => {
+  res.json(Order.getBookOrders(req.params.id));
 });

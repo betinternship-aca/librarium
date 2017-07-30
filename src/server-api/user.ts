@@ -2,6 +2,7 @@ import * as express from 'express';
 import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID} from './common/';
+import {Order} from './order';
 
 const filePath = join(__dirname, './data/users.db.json');
 
@@ -84,4 +85,6 @@ UserRouter.delete('/:id', (req, res) => {
   res.json(User.deleteUser(id));
 });
 
-
+UserRouter.get('/:id/orders', (req, res) => {
+  res.json(Order.getBookOrders(req.params.id));
+});

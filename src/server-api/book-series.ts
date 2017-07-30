@@ -10,7 +10,7 @@ import {Book} from './book';
 const filePath = join(__dirname, './data/book-series.db.json');
 
 class BookSeries {
-  id: string = createGUID();
+  bookSeriesId: string = createGUID();
   bookIds: string[]; // : Book[]
   bookSeriesName: string;
   authorIds: string[]; // : Author
@@ -27,7 +27,7 @@ class BookSeries {
   }
 
   static getBookSeries(id: string): BookSeries {
-    return this.getAllBookSeries().find(b => b.id === id);
+    return this.getAllBookSeries().find(b => b.bookSeriesId === id);
   }
 
   static createBookSeries(data) {
@@ -40,7 +40,7 @@ class BookSeries {
 
   static updateBookSeries(data) {
     const books = this.getAllBookSeries();
-    const booksIndex = books.findIndex(b => b.id === data.id);
+    const booksIndex = books.findIndex(b => b.bookSeriesId === data.id);
     books.splice(booksIndex, 1, data);
     this.saveAllBookSeries(books);
     return data;
@@ -48,7 +48,7 @@ class BookSeries {
 
   static deleteBookSeries(id) {
     const books = this.getAllBookSeries();
-    const bookIndex = books.findIndex(b => b.id === id);
+    const bookIndex = books.findIndex(b => b.bookSeriesId === id);
     books.splice(bookIndex, 1);
     this.saveAllBookSeries(books);
   }

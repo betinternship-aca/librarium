@@ -4,12 +4,14 @@
 import * as express from 'express';
 import {join} from 'path';
 import {readFileSync, writeFileSync} from 'fs';
+import {createGUID} from './common/index';
 
 const ordersFilePath = join(__dirname, 'data/orders.db.json');
 // const booksFilePath = join(__dirname, 'data/books.db.json');
 // const usersFilePath = join(__dirname, 'data/users.db.json');
 
 export class Order {
+  orderId: string = createGUID();
   userId: string;
   bookId: string;
   orderDate?: Date;

@@ -6,7 +6,7 @@ import {createGUID, Address} from './common/';
 const filePath = join(__dirname, './data/libraries.db.json');
 
 export class Library {
-  id: string = createGUID();
+  libraryId: string = createGUID();
   name: string;
   address: Address;
   branch: Library | null;
@@ -23,7 +23,7 @@ export class Library {
   }
 
   static getLibrary(id: string): Library {
-    return this.getAllLibraries().find(l => l.id === id);
+    return this.getAllLibraries().find(l => l.libraryId === id);
   }
 
   static createLibrary(data) {
@@ -36,7 +36,7 @@ export class Library {
 
   static updateLibrary(data) {
     const libs = this.getAllLibraries();
-    const libIndex = libs.findIndex(l => l.id === data.id);
+    const libIndex = libs.findIndex(l => l.libraryId === data.id);
     libs.splice(libIndex, 1, data);
     this.saveAllLibraries(libs);
     return data;
@@ -44,7 +44,7 @@ export class Library {
 
   static deleteLibrary(id) {
     const libs = this.getAllLibraries();
-    const libIndex = libs.findIndex(l => l.id === id);
+    const libIndex = libs.findIndex(l => l.libraryId === id);
     libs.splice(libIndex, 1);
     this.saveAllLibraries(libs);
   }
