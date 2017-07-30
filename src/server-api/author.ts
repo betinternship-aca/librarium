@@ -81,5 +81,5 @@ AuthorRouter.post('/:authorId', (req, res) => {
 });
 
 // delete author
-AuthorRouter.delete('/:authorId', (req, res) => res.json(Author.deleteAuthor( )))
+AuthorRouter.delete('/:authorId', (req, res) => res.json(Author.deleteAuthor(req.params.authorId)));
 
