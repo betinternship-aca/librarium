@@ -2,7 +2,7 @@
  * Created by anmin on 30.07.2017.
  */
 import * as express from 'express';
-import {readFileSync, writeFileSync} from 'fs';
+import {readFileSync} from 'fs';
 import {join} from 'path';
 
 const filePath = join(__dirname, './data/countries.db.json');
