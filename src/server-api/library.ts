@@ -62,7 +62,7 @@ LibraryRouter.get('/library-list', (req, res) => {
   res.json(Library.getAllLibraries());
 });
 
-LibraryRouter.get('/:countryId', (req, res) => {
+LibraryRouter.get('/:libraryId', (req, res) => {
   res.json(Library.getLibrary(req.params.id));
 });
 
@@ -72,14 +72,14 @@ LibraryRouter.post('/', (req, res) => {
 });
 
 // update library
-LibraryRouter.post('/:countryId', (req, res) => {
+LibraryRouter.post('/:libraryId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(Library.updateLibrary(data));
 });
 
 // delete library
-LibraryRouter.delete('/:countryId', (req, res) => {
+LibraryRouter.delete('/:libraryId', (req, res) => {
   const id = req.params.id;
   res.json(Library.deleteLibrary(id));
 });

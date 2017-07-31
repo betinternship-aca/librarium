@@ -20,7 +20,7 @@ export class Country {
 }
 export const CountryRouter = express.Router();
 
-CountryRouter.get('/c', (req, res) => {
+CountryRouter.get('/country-list', (req, res) => {
   res.json(Country.getAllCountries());
 });
 

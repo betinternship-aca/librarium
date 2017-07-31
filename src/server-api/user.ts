@@ -63,7 +63,7 @@ UserRouter.get('/user-list', (req, res) => {
   res.json(User.getAllUsers());
 });
 
-UserRouter.get('/:countryId', (req, res) => {
+UserRouter.get('/:userId', (req, res) => {
   res.json(User.getUser(req.params.id));
 });
 
@@ -73,18 +73,18 @@ UserRouter.post('/', (req, res) => {
 });
 
 // update user
-UserRouter.post('/:countryId', (req, res) => {
+UserRouter.post('/:userId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(User.updateUser(data));
 });
 
 // delete user
-UserRouter.delete('/:countryId', (req, res) => {
+UserRouter.delete('/:userId', (req, res) => {
   const id = req.params.id;
   res.json(User.deleteUser(id));
 });
 
-UserRouter.get('/:id/orders', (req, res) => {
+UserRouter.get('/:userId/orders', (req, res) => {
   res.json(Order.getBookOrders(req.params.id));
 });
