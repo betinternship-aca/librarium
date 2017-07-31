@@ -4,6 +4,7 @@ import {CreateAccountComponent} from './create-account/create-account.component'
 import {BooksComponent} from './books/books.component';
 import {OrgRoutingModule} from './org-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
+import {OrgMaterialModule} from './org-material.module';
 
 @NgModule({
   declarations: [
@@ -12,13 +13,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
     BooksComponent,
     LoginPageComponent
   ],
-  imports: [OrgRoutingModule]/*,
-  exports: [
-    LoginComponent,
-    CreateAccountComponent,
-    BooksComponent,
-    LoginPageComponent
-  ]*/
+  imports: [
+    OrgRoutingModule,
+    OrgMaterialModule
+  ]
 })
 export class OrgModule {
 }

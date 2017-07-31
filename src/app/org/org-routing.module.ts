@@ -21,7 +21,7 @@ const orgRoutes: Routes = [
       {
         path: 'books',
         component: BooksComponent,
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
       },
       {
         path: '',
