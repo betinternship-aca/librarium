@@ -14,6 +14,9 @@ const authorFilePath = join(__dirname, 'data/authors.db.json');
 export class Author {
   authorId: string = createGUID();
   name: string;
+  bornDate: Date;
+  deathDate?: Date;
+  countryId?;
 
   constructor(data) {
     Object.assign(this, data);
@@ -59,19 +62,24 @@ export class Author {
     const authors = this.getAllAuthors();
     return authors.find(a => a.authorId === authorId);
   }
-
 }
 
 export const AuthorRouter = express.Router();
 
 // get all authors
-AuthorRouter.get('/author-list', (req, res) => res.json(Author.getAllAuthors()));
+AuthorRouter.get('/author-list', (req, res) => {
+  res.json(Author.getAllAuthors());
+});
 
 // get author
-AuthorRouter.get('/authorId', (req, res) => res.json(Author.getAuthor(req.params.authorId)));
+AuthorRouter.get('/authorId', (req, res) => {
+  res.json(Author.getAuthor(req.params.authorId));
+});
 
 // create author
-AuthorRouter.post('/', (req, res) => res.json(Author.createAuthor(req.body)));
+AuthorRouter.post('/', (req, res) => {
+  res.json(Author.createAuthor(req.body));
+});
 
 // update author
 AuthorRouter.post('/:authorId', (req, res) => {
@@ -81,5 +89,7 @@ AuthorRouter.post('/:authorId', (req, res) => {
 });
 
 // delete author
-AuthorRouter.delete('/:authorId', (req, res) => res.json(Author.deleteAuthor(req.params.authorId)));
+AuthorRouter.delete('/:authorId', (req, res) => {
+  res.json(Author.deleteAuthor(req.params.authorId));
+});
 
