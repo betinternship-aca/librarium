@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '/org',
-    children: []
+    path: '',
+    redirectTo: 'org',
+    pathMatch: 'full'
   }
 ];
 
