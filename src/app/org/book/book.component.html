@@ -1,0 +1,19 @@
+<md-card>
+  <md-card-header>
+    <md-card-title [innerText]="book.bookName"></md-card-title>
+    <md-card-subtitle>
+      <a *ngFor="let author of book.authors" [innerText]="author.name"></a>
+    </md-card-subtitle>
+    <md-card-subtitle>
+      <a *ngFor="let category of book.categories" [innerText]="category.name"></a>
+    </md-card-subtitle>
+  </md-card-header>
+  <img md-card-image [src]="book.image">
+  <md-card-content>
+    <p [innerText]="book.description"></p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button>Reserve book</button>
+    <button md-button>Preview</button>
+  </md-card-actions>
+</md-card>

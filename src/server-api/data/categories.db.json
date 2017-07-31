@@ -1,0 +1,126 @@
+[
+  {
+    "categoryId": "b4e33eca-6e4d-a042-caa6-b52dfa622cb4",
+    "name": "Science fiction"
+  },
+  {
+    "categoryId": "4a3c91c8-4771-07e8-96a3-328a968edb9f",
+    "name": "Satire"
+  },
+  {
+    "categoryId": "d0f980e5-3657-5687-e2e6-dce4aae1f84f",
+    "name": "Drama"
+  },
+  {
+    "categoryId": "879d0c64-9732-9595-eeb2-91249714b47d",
+    "name": "Action and Adventure"
+  },
+  {
+    "categoryId": "4bb72446-1c35-053e-e14d-6b854a523295",
+    "name": "Romance"
+  },
+  {
+    "categoryId": "478a2ea8-2263-c293-8d5a-1e4903c61951",
+    "name": "Mystery"
+  },
+  {
+    "categoryId": "8b8c1115-f1fb-dac3-c324-861705a6bd9b",
+    "name": "Horror"
+  },
+  {
+    "categoryId": "0b0c2d3c-1f2f-c0fd-0aa4-0d32129efd5f",
+    "name": "Self help"
+  },
+  {
+    "categoryId": "e67ccd79-a498-1766-6768-de34037d4eca",
+    "name": "Health"
+  },
+  {
+    "categoryId": "1d99daf4-4fd3-139c-e83f-cd7f51431f87",
+    "name": "Guide"
+  },
+  {
+    "categoryId": "c7cf9407-e64e-6cc3-6878-a06a2c9cdc8b",
+    "name": "Travel"
+  },
+  {
+    "categoryId": "93d78634-891a-83b5-aeba-1a4868e99f85",
+    "name": "Children's"
+  },
+  {
+    "categoryId": "fe4e6976-b4cb-5312-f975-26e18b5d34e9",
+    "name": "Religion, Spirituality & New Age"
+  },
+  {
+    "categoryId": "be1ff9d9-955e-2d91-f308-4c4867e70d2b",
+    "name": "Science"
+  },
+  {
+    "categoryId": "e44b0a75-1073-d7a4-c22e-500e6fe4e597",
+    "name": "History"
+  },
+  {
+    "categoryId": "670d0686-ebd3-41f6-ceed-029e13146d87",
+    "name": "Math"
+  },
+  {
+    "categoryId": "ec443b29-510f-fc6f-9c79-d0fc025fb817",
+    "name": "Anthology"
+  },
+  {
+    "categoryId": "c9dce9e6-8397-47cd-45e8-ee572fa46d54",
+    "name": "Poetry"
+  },
+  {
+    "categoryId": "433dc009-3796-119a-db5b-72030da187ba",
+    "name": "Encyclopedias"
+  },
+  {
+    "categoryId": "da6a5a27-02ee-efba-735c-758f51c82f38",
+    "name": "Dictionaries"
+  },
+  {
+    "categoryId": "524b65b6-cd67-bac4-aa58-d8ad46767e16",
+    "name": "Comics"
+  },
+  {
+    "categoryId": "8bc566da-bebe-2274-a652-ecf4ba11c4c1",
+    "name": "Art"
+  },
+  {
+    "categoryId": "a8e34152-de17-7929-3936-6f4ab276552a",
+    "name": "Cookbooks"
+  },
+  {
+    "categoryId": "5771621c-c926-ccc9-fab8-428d3d51b98b",
+    "name": "Diaries"
+  },
+  {
+    "categoryId": "4fdfed8a-fbcc-60f7-a5b4-627d96a86b7b",
+    "name": "Journals"
+  },
+  {
+    "categoryId": "665a362e-2e5f-41b5-1814-0bd9e9c8f485",
+    "name": "Prayer books"
+  },
+  {
+    "categoryId": "55f78a1f-8419-11aa-a6c4-1fb77ec7cd9d",
+    "name": "Series"
+  },
+  {
+    "categoryId": "a17ba89d-e452-e688-966f-6cc91fff480a",
+    "name": "Trilogy"
+  },
+  {
+    "categoryId": "f81719cd-c28d-7411-c083-e47fcccb882c",
+    "name": "Biographies"
+  },
+  {
+    "categoryId": "f5f65b44-bd1a-e6c7-06ba-3806afff90c2",
+    "name": "Autobiographies"
+  },
+  {
+    "categoryId": "32a1e2f3-5106-8961-7c37-cd332a4b9c02",
+    "name": "Fantasy"
+  }
+]
