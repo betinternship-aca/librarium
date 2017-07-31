@@ -37,10 +37,10 @@ export class Organization {
   }
 
   static updateOrganization(data) {
-    const libs = this.getAllOrganizations();
-    const libIndex = libs.findIndex(l => l.orgId === data.id);
-    libs.splice(libIndex, 1, data);
-    this.saveAllOrganizations(libs);
+    const orgs = this.getAllOrganizations();
+    const orgIndex = orgs.findIndex(l => l.orgId === data.id);
+    orgs.splice(orgIndex, 1, data);
+    this.saveAllOrganizations(orgs);
     return data;
   }
 
@@ -51,8 +51,8 @@ export class Organization {
     this.saveAllOrganizations(orgs);
   }
 
-  static saveAllOrganizations(libraryList) {
-    writeFileSync(filePath, JSON.stringify(libraryList, null, 2));
+  static saveAllOrganizations(organizationList) {
+    writeFileSync(filePath, JSON.stringify(organizationList, null, 2));
   }
 }
 
@@ -62,7 +62,7 @@ OrganizationRouter.get('/organization-list', (req, res) => {
   res.json(Organization.getAllOrganizations());
 });
 
-OrganizationRouter.get('/:countryId', (req, res) => {
+OrganizationRouter.get('/:orgId', (req, res) => {
   res.json(Organization.getOrganization(req.params.id));
 });
 
@@ -72,14 +72,14 @@ OrganizationRouter.post('/', (req, res) => {
 });
 
 // update organization
-OrganizationRouter.post('/:countryId', (req, res) => {
+OrganizationRouter.post('/:orgId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(Organization.updateOrganization(data));
 });
 
 // delete organization
-OrganizationRouter.delete('/:countryId', (req, res) => {
+OrganizationRouter.delete('/:orgId', (req, res) => {
   const id = req.params.id;
   res.json(Organization.deleteOrganization(id));
 });
