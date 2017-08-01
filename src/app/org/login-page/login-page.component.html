@@ -1,2 +1,11 @@
-
+<nav md-tab-nav-bar>
+  <a md-tab-link
+     *ngFor="let routLink of navLinks; let i = index"
+     [routerLink]="routLink.link"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="activateLinkIndex === i"
+     (click)="activateLinkIndex = i">
+    {{routLink.label}}
+  </a>
+</nav>
 <router-outlet></router-outlet>
