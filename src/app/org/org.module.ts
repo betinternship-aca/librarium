@@ -28,7 +28,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CommonModule,
     OrgRoutingModule,
     OrgMaterialModule
-  ]
+  ],
+  entryComponents: [BookEditorComponent]
 })
 export class OrgModule {
 }

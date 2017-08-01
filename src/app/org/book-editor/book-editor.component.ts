@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {IBook} from '../../defines/IBook';
+import {MD_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-book-editor',
@@ -11,9 +12,12 @@ export class BookEditorComponent implements OnInit {
   @Input()
   title: string;
   @Input()
-  book: IBook;
+  book;
 
-  constructor() { }
+  constructor(@Inject(MD_DIALOG_DATA) data: IBook) {
+    this.book = data;
+    console.log(data);
+  }
 
   ngOnInit() {
   }
