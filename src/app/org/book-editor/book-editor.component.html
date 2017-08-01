@@ -4,17 +4,17 @@
   </md-card-header>
   <img md-card-image [src]="book.image">
   <md-card-content>
-  <md-input-container>
-    <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
-  </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
+    </md-input-container>
 
-  <md-input-container>
-    <input mdInput placeholder="Edition year" [(ngModel)]="book.editionYear" type="number">
-  </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Edition year" [(ngModel)]="book.editionYear" type="number">
+    </md-input-container>
 
-  <md-input-container>
-    <textarea mdInput placeholder="Description" [(ngModel)]="book.description" ></textarea>
-  </md-input-container>
+    <md-input-container>
+      <textarea mdInput placeholder="Description" [(ngModel)]="book.description"></textarea>
+    </md-input-container>
 
   </md-card-content>
   <md-card-actions>
@@ -28,4 +28,5 @@ categories: ICategory[];
 description: string;
 image: string;
 language?: string;
-price?: number;-->
+price?: number;
+-->
