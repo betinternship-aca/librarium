@@ -4,12 +4,13 @@
 import * as express from 'express';
 import {readFileSync} from 'fs';
 import {join} from 'path';
+import {ICountry} from '../app/defines/ICountry';
 
 const filePath = join(__dirname, './data/countries.db.json');
 
-export class Country {
-  countryId: string;
-  name: string;
+  export class Country implements ICountry {
+    countryId: string;
+    name: string;
 
   constructor() {
   }

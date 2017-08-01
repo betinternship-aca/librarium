@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BookEditorComponent} from './book-editor/book-editor.component';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {OrgService} from 'app/org/services/org.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CommonModule,
     OrgRoutingModule,
     OrgMaterialModule
-  ]
+  ],
+  providers: [OrgService]
 })
 export class OrgModule {
 }
