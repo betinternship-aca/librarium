@@ -7,11 +7,12 @@ import * as express from 'express';
 import {join} from 'path';
 import {Book} from './book';
 import {readFileSync, writeFileSync} from 'fs';
+import {IAuthor} from '../app/defines/IAuthor';
 
 const authorFilePath = join(__dirname, 'data/authors.db.json');
 
 
-export class Author {
+export class Author implements IAuthor {
   authorId: string = createGUID();
   name: string;
   bornDate: Date;

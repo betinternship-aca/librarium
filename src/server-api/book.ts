@@ -3,26 +3,37 @@ import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID} from './common/';
 import {Order} from './order';
+import {IBook} from '../app/defines/IBook';
+import {Author} from './author';
+import {IAuthor} from '../app/defines/IAuthor';
+import {ICategory} from '../app/defines/ICategory';
+import {Category} from './category';
 
 
 const filePath = join(__dirname, './data/books.db.json');
 
-export class Book {
+export class Book implements IBook {
   bookId: string = createGUID();
+  image: string; // url yet
   bookName: string;
   authorIds: string[];
-  categoryIds: string;
+  authors: IAuthor[];
+  categoryIds: string[];
+  categories: ICategory[];
   editionYear: Date;
   language?: string;
   price?: number;
+  description: string;
   // countOfDownloads: number;
 
   constructor(data) {
     Object.assign(this, data);
+    this.authors = this.authorIds.map(authorId => Author.getAuthor(authorId));
+    this.categories = this.categoryIds.map(categoryId => Category.getCategory(categoryId));
   }
 
   static getAllBooks(): Book[] {
-    return JSON.parse(readFileSync(filePath).toString());
+    return JSON.parse(readFileSync(filePath).toString()).map(data => new Book(data));
   }
 
   static getBook(id: string): Book {
