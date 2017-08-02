@@ -10,15 +10,6 @@ export interface IConfirmDialogOptions {
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss']
 })
-export class ConfirmDialogComponent implements OnInit {
-
-  constructor(public dialog: MdDialog, @Inject(MD_DIALOG_DATA) public data: IConfirmDialogOptions) { }
-  yesClick() {}
-  noClick() {
-    this.dialog.closeAll();
-  }
-
-  ngOnInit() {
-  }
-
+export class ConfirmDialogComponent {
+  constructor(@Inject(MD_DIALOG_DATA) public data: IConfirmDialogOptions) { }
 }
