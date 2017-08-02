@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IBook} from '../../defines/IBook';
 import {MdDialog} from '@angular/material';
 import {BookEditorComponent} from '../book-editor/book-editor.component';
+import {ConfirmDialogComponent} from '../../app-common/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class BookComponent implements OnInit {
   }
   editBook() {
     const dialogRef = this.dialog.open(BookEditorComponent, {
-      data: {}
+      data: {book: this.book}
     });
     /*    const dialogRef = this.dialog.open(BookEditorComponent);
      dialogRef.afterClosed().subscribe(result => {
@@ -28,7 +29,7 @@ export class BookComponent implements OnInit {
      });*/
   }
   deleteBook() {
-    const dialogRef = this.dialog.open(BookEditorComponent, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {}
     });
     /*    const dialogRef = this.dialog.open(BookEditorComponent);

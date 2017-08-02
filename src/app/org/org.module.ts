@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {BookService} from './services/book.service';
+import {AppCommonModule} from '../app-common/app-common.module';
 
 @NgModule({
   declarations: [
@@ -30,9 +31,12 @@ import {BookService} from './services/book.service';
     HttpClientModule,
     CommonModule,
     OrgRoutingModule,
-    OrgMaterialModule
+    OrgMaterialModule,
+    AppCommonModule
   ],
-  entryComponents: [BookEditorComponent],
+  entryComponents: [
+    BookEditorComponent
+  ],
   providers: [BookService],
 
 })

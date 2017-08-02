@@ -22,8 +22,8 @@
 
   </md-card-content>
   <md-card-actions>
-    <button md-button>Save</button>
-    <button md-button>Cancel</button>
+    <button md-button (click)="saveClick()">Save</button>
+    <button md-button [md-dialog-close]="true">Cancel</button>
   </md-card-actions>
 </md-card>
 <!--
@@ -32,5 +32,6 @@ categories: ICategory[];
 description: string;
 image: string;
 language?: string;
-price?: number;-->
+price?: number;
+-->
 
