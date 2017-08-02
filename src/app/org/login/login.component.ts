@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ILoginData } from '../../defines/ILoginData';
 
 
 @Component({
@@ -7,17 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  loginData = {} as ILoginData;
 
-  @Input()
-  login: string;
-  @Input()
-  password: string;
+  constructor() {}
 
-  constructor() {
-
+  login() {
+    console.log(this.loginData);
   }
 
   ngOnInit() {
   }
-
 }

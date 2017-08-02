@@ -3,22 +3,21 @@ $textColor: #0002ff;
 
 :host {
   background-color: $bgColor;
-  display: flex;
-  justify-content: space-between;
+  display: block;
   height: 100%;
+  width: 100%;
   left: 0;
+  padding-top: 70px;
   position: absolute;
   top: 0;
-  padding-top: 70px;
 
   md-card {
-    padding: 48px 40px 36px;
-    margin: 0 auto 40px;
     box-sizing: border-box;
     display: block;
+    margin: auto;
+    padding: 48px 40px 36px;
     position: relative;
-    line-height: normal;
-    width: 400px;
+    width: 405px;
 
     > span {
       &.librarium {
@@ -29,8 +28,8 @@ $textColor: #0002ff;
       }
       &:not(.librarium) {
         display: block;
-        text-align: left;
         font-size: 30px;
+        text-align: left;
       }
     }
   }

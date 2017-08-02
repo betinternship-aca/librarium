@@ -3,17 +3,21 @@ import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID} from './common/';
 import {Country} from './country';
-import {IOrganization} from '../app/defines/IOrganization';
+import {ILoginData} from '../app/defines/ILoginData';
 
 const filePath = join(__dirname, './data/organizations.db.json');
 
-export class Organization implements IOrganization {
-  orgId: string = createGUID();
+export class Organization {
+  static loggedInOrg: Organization;
+
   name: string;
+  login: string;
+  password: string;
+  orgId: string = createGUID();
   address: string;
   parentOrgId: string | any;
   email?: string;
-  phoneNumber?: string;
+  telephone?: string;
   countryId: string;
   country: Country;
   city: string;
@@ -57,11 +61,15 @@ export class Organization implements IOrganization {
   static saveAllOrg(organizationList) {
     writeFileSync(filePath, JSON.stringify(organizationList, null, 2));
   }
+
+  static login(loginData: ILoginData) {
+    return this.getAllOrg().find(org => org.login === loginData.login && org.password === loginData.password);
+  }
 }
 
 export const OrganizationRouter = express.Router();
 
-OrganizationRouter.get('/organization-list', (req, res) => {
+OrganizationRouter.get('/org-list', (req, res) => {
   res.json(Organization.getAllOrg());
 });
 
@@ -87,4 +95,14 @@ OrganizationRouter.delete('/:orgId', (req, res) => {
   res.json(Organization.deleteOrg(id));
 });
 
+OrganizationRouter.post('/login', (req, res) => {
+  const org = Organization.login(req.body);
+  if (!org) {
+    Organization.loggedInOrg = null;
+    return res.status(404).end();
+  }
+
+  Organization.loggedInOrg = org;
+  res.end();
+});
 
