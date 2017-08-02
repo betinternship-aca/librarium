@@ -10,6 +10,7 @@ const filePath = join(__dirname, './data/organizations.db.json');
 export class Organization implements IOrganization {
   orgId: string = createGUID();
   name: string;
+  login: string;
   address: string;
   parentOrgId: string | any;
   email?: string;
@@ -17,6 +18,7 @@ export class Organization implements IOrganization {
   countryId: string;
   country: Country;
   city: string;
+  password: string;
 
   constructor(data) {
     // copies every property of data to this

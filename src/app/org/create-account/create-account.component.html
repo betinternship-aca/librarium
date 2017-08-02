@@ -1,36 +1,36 @@
 <md-card-content class="content">
   <form #form>
     <md-input-container>
-      <input mdInput placeholder="name" [(ngModel)]="data.name" ng-required="true"/>
+      <input mdInput placeholder="Name" [(ngModel)]="data.name" name="name" ng-required="true"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="login"  ng-required="true"/>
+      <input mdInput placeholder="Login" ng-required="true"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput type="password" placeholder="password" ng-required="true"/>
+      <input mdInput type="Password" placeholder="password"   ng-required="true"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="address" [(ngModel)]="data.address" />
+      <input mdInput placeholder="Address" [(ngModel)]="data.address" name="address"  ng-required="true"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="email" [(ngModel)]="data.email" />
+      <input mdInput placeholder="Email" [(ngModel)]="data.email" name="email"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="country" [(ngModel)]="data.phoneNumber" />
+      <input mdInput placeholder="Phonenumber" [(ngModel)]="data.phoneNumber" name="phoneNumber"  ng-required="true"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="countryId" [(ngModel)]="data.countryId"/>
+      <input mdInput placeholder="CountryId" [(ngModel)]="data.countryId" name="countryId" ng-required="true"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="country" [(ngModel)]="data.country" />
+      <input mdInput placeholder="Country" [(ngModel)]="data.country" name="country"/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="city" [(ngModel)]="data.city"/>
+      <input mdInput placeholder="City" [(ngModel)]="data.city" name="city" ng-required="true"/>
     </md-input-container>
   </form>
 </md-card-content>
 <md-card-actions>
-  <button md-button (click)="createOrg()" [disabled]="!form.valid">Create Library</button>
+  <button md-button (click)="createOrg()">Create Library</button>
 </md-card-actions>
 
 

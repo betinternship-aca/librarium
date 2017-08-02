@@ -16,7 +16,6 @@ import {OrgModule} from './org/org.module';
     AppMaterialModule,
     OrgModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
