@@ -1,3 +1,8 @@
-<p>
-  login works!
-</p>
+<md-card>
+  <md-input-container>
+    <input mdInput placeholder="nickname"/>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput type="password" placeholder="password" [(ngModel)]="password" ng-required="true"/>
+  </md-input-container>
+</md-card>

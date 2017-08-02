@@ -12,7 +12,7 @@ export const ApiRouter = express.Router();
 ApiRouter.use('/user', UserRouter);
 ApiRouter.use('/book', BookRouter);
 ApiRouter.use('/book-series', BookSeriesRouter);
-ApiRouter.use('/library', OrganizationRouter);
+ApiRouter.use('/org', OrganizationRouter);
 ApiRouter.use('/order', OrderRouter);
 ApiRouter.use('/country', CountryRouter);
 ApiRouter.use('/category', CategoryRouter);
