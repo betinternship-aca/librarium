@@ -13,7 +13,7 @@
     <p [innerText]="book.description"></p>
   </md-card-content>
   <md-card-actions>
-    <button md-button>Edit book</button>
-    <button md-button>Preview</button>
+    <button md-button (click)="editBook()">Edit</button>
+    <button md-button (click)="deleteBook()">Delete</button>
   </md-card-actions>
 </md-card>

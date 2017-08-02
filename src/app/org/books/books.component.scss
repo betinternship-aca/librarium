@@ -1,11 +1,10 @@
 md-grid-list {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-content: space-around;
+  justify-content: space-around;
+  align-content: stretch;
 }
 button {
   background-color: rgb(16,108,200);
+  display: block;
 }
