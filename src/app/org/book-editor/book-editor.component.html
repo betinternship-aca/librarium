@@ -2,7 +2,11 @@
   <md-card-header>
     <md-card-title>New Book</md-card-title>
   </md-card-header>
-  <img md-card-image [src]="book.image">
+
+  <md-card-content class="image">
+    <app-image-upload></app-image-upload>
+  </md-card-content>
+
   <md-card-content>
   <md-input-container>
     <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
@@ -29,3 +33,4 @@ description: string;
 image: string;
 language?: string;
 price?: number;-->
+
