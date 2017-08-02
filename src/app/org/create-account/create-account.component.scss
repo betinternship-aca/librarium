@@ -1,8 +1,7 @@
-.content {
-  display:flex;
-  flex-direction: column;
-}
-md-input-container {
-  width: 20%;
-  height: 60px;
+:host {
+  box-sizing: border-box;
+  .md-input-container {
+    display: block;
+    width: 100%;
+  }
 }

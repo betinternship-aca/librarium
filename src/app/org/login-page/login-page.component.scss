@@ -1,5 +1,5 @@
-$bgColor: rgba(43, 110, 255, 0.65);
-$textColor: #0002ff;
+$bgColor: rgba(0, 14, 255, 0.11);
+$textColor: #4285F3;
 
 :host {
   background-color: $bgColor;
@@ -7,29 +7,38 @@ $textColor: #0002ff;
   height: 100%;
   width: 100%;
   left: 0;
-  padding-top: 70px;
-  position: absolute;
+  position: fixed;
   top: 0;
+  overflow: scroll;
 
-  md-card {
-    box-sizing: border-box;
+  span.body {
+    background-color: transparent;
     display: block;
-    margin: auto;
-    padding: 48px 40px 36px;
+    left: 0;
     position: relative;
-    width: 405px;
+    top: 0;
 
-    > span {
-      &.librarium {
-        color: $textColor;
+    md-card {
+      box-sizing: border-box;
+      display: block;
+      margin: 70px auto 20px;
+      padding: 48px 40px 30px;
+      position: relative;
+      width: 400px;
+
+      > span {
         display: block;
-        font-size: 20px;
         text-align: left;
-      }
-      &:not(.librarium) {
-        display: block;
-        font-size: 30px;
-        text-align: left;
+
+        &.librarium {
+          font-weight: bold;
+          color: $textColor;
+          font-size: 20px;
+        }
+        &:not(.librarium) {
+          font-size: 30px;
+          margin: 20px 0 10px 0;
+        }
       }
     }
   }

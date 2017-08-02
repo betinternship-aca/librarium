@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {BookService} from './services/book.service';
 import {AppCommonModule} from '../app-common/app-common.module';
+import {OrgService} from './services/org.service';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,7 @@ import {AppCommonModule} from '../app-common/app-common.module';
   entryComponents: [
     BookEditorComponent
   ],
-  providers: [BookService],
-
+  providers: [BookService, OrgService]
 })
 export class OrgModule {
 }

@@ -1,19 +1,15 @@
-<md-card>
-  <span class="librarium">LIBRARIUM</span>
-  <span>Library Account</span>
-  <nav md-tab-nav-bar>
-    <a md-tab-link
-       [routerLink]=""
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
-      Log In
-    </a>
-    <a md-tab-link
-       routerLink="create"
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
-      Create
-    </a>
-  </nav>
-  <router-outlet></router-outlet>
-</md-card>
+<span class="body">
+  <md-card>
+    <span class="librarium">Librarium</span>
+    <span>Library Account</span>
+    <nav md-tab-nav-bar>
+      <a md-tab-link *ngFor="let link of links"
+         [routerLink]="link.link"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive"
+         [innerText]="link.label">
+      </a>
+    </nav>
+    <router-outlet></router-outlet>
+  </md-card>
+</span>
