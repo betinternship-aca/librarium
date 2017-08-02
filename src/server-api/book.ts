@@ -74,7 +74,7 @@ BookRouter.get('/book-list', (req, res) => {
   res.json(Book.getAllBooks());
 });
 
-BookRouter.post('/:countryId', (req, res) => {
+BookRouter.post('/:bookId', (req, res) => {
   res.json(Book.getBook(req.params.id));
 });
 
@@ -84,18 +84,18 @@ BookRouter.post('/', (req, res) => {
 });
 
 // update book
-BookRouter.post('/:countryId', (req, res) => {
+BookRouter.post('/:bookId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(Book.updateBook(data));
 });
 
 // delete book
-BookRouter.delete('/:countryId', (req, res) => {
+BookRouter.delete('/:bookId', (req, res) => {
   const id = req.params.id;
   res.json(Book.deleteBook(id));
 });
 
-BookRouter.get('/:id/orders', (req, res) => {
+BookRouter.get('/:bookId/orders', (req, res) => {
   res.json(Order.getBookOrders(req.params.id));
 });

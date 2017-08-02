@@ -1,1 +1,8 @@
 <button md-button (click)="addBook()">Add book</button>
+
+<md-grid-list *ngFor="let book of books" >
+  <md-grid-tile>
+    <app-book [book]="book" (delete)="deleteBook($event)"></app-book>
+  </md-grid-tile>
+</md-grid-list>
+

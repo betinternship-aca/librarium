@@ -1,37 +1,36 @@
-<md-card-content class="content">
-  <form #form>
-    <md-input-container>
-      <input mdInput placeholder="Name" [(ngModel)]="data.name" name="name" ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="Login" ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput type="Password" placeholder="password"   ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="Address" [(ngModel)]="data.address" name="address"  ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="Email" [(ngModel)]="data.email" name="email"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="Phonenumber" [(ngModel)]="data.phoneNumber" name="phoneNumber"  ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="CountryId" [(ngModel)]="data.countryId" name="countryId" ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="Country" [(ngModel)]="data.country" name="country"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="City" [(ngModel)]="data.city" name="city" ng-required="true"/>
-    </md-input-container>
-  </form>
+<md-card-content>
+  <md-input-container>
+    <input mdInput placeholder="name">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="nickname">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="password" placeholder="password">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="email" placeholder="email">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="country">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="address">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="tel" placeholder="telephone">
+  </md-input-container>
 </md-card-content>
 <md-card-actions>
-  <button md-button (click)="createOrg()">Create Library</button>
+  <button md-button>Create Library</button>
 </md-card-actions>
+
 
 
 

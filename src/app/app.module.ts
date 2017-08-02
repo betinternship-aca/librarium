@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppMaterialModule} from './app-material.module';
 import {AppComponent} from './app.component';
 import {OrgModule} from './org/org.module';
+import {AppCommonModule} from './app-common/app-common.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {OrgModule} from './org/org.module';
     BrowserModule, // .withServerTransition({appId: 'librarium'}),
     AppRoutingModule,
     AppMaterialModule,
-    OrgModule
+    OrgModule,
+    AppCommonModule
   ],
   bootstrap: [AppComponent]
 })

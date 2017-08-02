@@ -1,8 +1,13 @@
-<md-card>
-  <md-input-container>
-    <input mdInput placeholder="nickname"/>
-  </md-input-container>
-  <md-input-container>
-    <input mdInput type="password" placeholder="password" [(ngModel)]="password" ng-required="true"/>
-  </md-input-container>
-</md-card>
+<md-card-content>
+  <form #loginForm="ngForm">
+    <md-input-container>
+      <input mdInput placeholder="nickname" [(ngModel)]="loginData.login" name="login" required/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput type="password" placeholder="password" [(ngModel)]="loginData.password" name="password" required/>
+    </md-input-container>
+  </form>
+</md-card-content>
+<md-card-actions>
+  <button md-button [disabled]="!loginForm.form.valid" (click)="login()">Log In Library</button>
+</md-card-actions>

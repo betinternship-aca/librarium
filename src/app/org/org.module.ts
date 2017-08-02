@@ -11,7 +11,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {BookEditorComponent} from './book-editor/book-editor.component';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {OrgService} from './services/org.service';
+import {ImageUploadComponent} from './image-upload/image-upload.component';
+import {BookService} from './services/book.service';
+import {AppCommonModule} from '../app-common/app-common.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {OrgService} from './services/org.service';
     BooksComponent,
     LoginPageComponent,
     BookComponent,
-    BookEditorComponent
+    BookEditorComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -28,10 +31,14 @@ import {OrgService} from './services/org.service';
     HttpClientModule,
     CommonModule,
     OrgRoutingModule,
-    OrgMaterialModule
+    OrgMaterialModule,
+    AppCommonModule
   ],
-  entryComponents: [BookEditorComponent],
-  providers: [OrgService]
+  entryComponents: [
+    BookEditorComponent
+  ],
+  providers: [BookService],
+
 })
 export class OrgModule {
 }
