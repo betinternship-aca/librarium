@@ -22,12 +22,6 @@ export class BookEditorComponent implements OnInit {
     console.log(data);
   }
 
-  saveClick() {
-
-  }
-
-
-
   ngOnInit() {
   }
 

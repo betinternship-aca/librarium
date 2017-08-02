@@ -18,7 +18,6 @@ import {AppCommonModule} from './app-common/app-common.module';
     OrgModule,
     AppCommonModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
