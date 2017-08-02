@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IBook} from '../../defines/IBook';
 import {MdDialogRef, MD_DIALOG_DATA, MdDialog} from '@angular/material';
 import {BookEditorComponent} from '../book-editor/book-editor.component';
-import {ConfirmDialogComponent} from '../../app-common/confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogComponent, IConfirmDialogOptions} from '../../app-common/confirm-dialog/confirm-dialog.component';
+import {clone} from '../../defines/common';
+import {BookService} from '../services/book.service';
 
 
 @Component({
@@ -11,27 +13,32 @@ import {ConfirmDialogComponent} from '../../app-common/confirm-dialog/confirm-di
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
-  books: IBook[];
-  dialogRef: MdDialogRef<BookEditorComponent>;
+  @Output()
+  delete = new EventEmitter<IBook>();
+
   @Input()
   book: IBook;
 
-  constructor(public dialog: MdDialog) {
+  constructor(private dialog: MdDialog, private bookService: BookService) {
 
   }
   editBook() {
     const dialogRef = this.dialog.open(BookEditorComponent, {
-      data: {book: this.book}
+      data: clone(this.book)
     });
-    this.dialogRef.componentInstance.book = this.book;
-    /*    const dialogRef = this.dialog.open(BookEditorComponent);
-     dialogRef.afterClosed().subscribe(result => {
-     // this.selectedOption = result;
-     });*/
-  }
+    // this.dialogRef.componentInstance.book = this.book;
+   }
   deleteBook() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: {}
+      data: {
+        msg: 'Are you sure?'
+      } as IConfirmDialogOptions
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      }
+      this.bookService.deleteBook().subscribe(() => this.delete.emit(this.book));
     });
   }
 

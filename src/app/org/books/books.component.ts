@@ -29,8 +29,9 @@ export class BooksComponent implements OnInit {
     this.bookService.getAllBooks()
       .subscribe(data => this.books = data as IBook[]);
   }
-  deleteBook() {
-    this.bookService.deleteBook();
+  deleteBook(book) {
+    const index = this.books.indexOf(book);
+    this.books.splice(index, 1);
   }
 
   ngOnInit() {
