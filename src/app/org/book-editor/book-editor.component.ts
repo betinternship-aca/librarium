@@ -9,6 +9,7 @@ import {MD_DIALOG_DATA, MdDialog} from '@angular/material';
 })
 export class BookEditorComponent implements OnInit {
 
+
   @Input()
   title: string;
   @Input()
@@ -17,6 +18,7 @@ export class BookEditorComponent implements OnInit {
 
   constructor(@Inject(MD_DIALOG_DATA) data: IBook, public dialog: MdDialog) {
     this.book = data;
+
     console.log(data);
   }
 

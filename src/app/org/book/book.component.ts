@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IBook} from '../../defines/IBook';
-import {MdDialog} from '@angular/material';
+import {MdDialogRef, MD_DIALOG_DATA, MdDialog} from '@angular/material';
 import {BookEditorComponent} from '../book-editor/book-editor.component';
 import {ConfirmDialogComponent} from '../../app-common/confirm-dialog/confirm-dialog.component';
 
@@ -12,7 +12,7 @@ import {ConfirmDialogComponent} from '../../app-common/confirm-dialog/confirm-di
 })
 export class BookComponent implements OnInit {
   books: IBook[];
-
+  dialogRef: MdDialogRef<BookEditorComponent>;
   @Input()
   book: IBook;
 
@@ -23,6 +23,7 @@ export class BookComponent implements OnInit {
     const dialogRef = this.dialog.open(BookEditorComponent, {
       data: {book: this.book}
     });
+    this.dialogRef.componentInstance.book = this.book;
     /*    const dialogRef = this.dialog.open(BookEditorComponent);
      dialogRef.afterClosed().subscribe(result => {
      // this.selectedOption = result;
@@ -32,10 +33,6 @@ export class BookComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {}
     });
-    /*    const dialogRef = this.dialog.open(BookEditorComponent);
-     dialogRef.afterClosed().subscribe(result => {
-     // this.selectedOption = result;
-     });*/
   }
 
   ngOnInit() {

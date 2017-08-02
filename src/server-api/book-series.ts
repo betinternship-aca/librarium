@@ -64,7 +64,7 @@ BookSeriesRouter.get('/book-series-list', (req, res) => {
   res.json(BookSeries.getAllBookSeries());
 });
 
-BookSeriesRouter.post('/:countryId', (req, res) => {
+BookSeriesRouter.post('/:bookSeriesId', (req, res) => {
   res.json(BookSeries.getBookSeries(req.params.id));
 });
 
@@ -74,14 +74,14 @@ BookSeriesRouter.post('/', (req, res) => {
 });
 
 // update book-series
-BookSeriesRouter.post('/:countryId', (req, res) => {
+BookSeriesRouter.post('/:bookSeriesId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(BookSeries.updateBookSeries(data));
 });
 
 // delete book-series
-BookSeriesRouter.delete('/:countryId', (req, res) => {
+BookSeriesRouter.delete('/:bookSeriesId', (req, res) => {
   const id = req.params.id;
   res.json(BookSeries.deleteBookSeries(id));
 });
