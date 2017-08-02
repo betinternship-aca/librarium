@@ -1,18 +1,37 @@
-<md-card>
-  <md-input-container>
-    <input mdInput placeholder="Name">
-  </md-input-container>
-  <md-input-container class="example-full-width">
-    <input mdInput placeholder="Address">
-  </md-input-container>
-  <md-input-container class="example-full-width">
-    <input mdInput placeholder="Country">
-  </md-input-container>
-  <md-input-container class="example-full-width">
-    <input mdInput placeholder="email">
-  </md-input-container>
-</md-card>
-
+<md-card-content class="content">
+  <form #form>
+    <md-input-container>
+      <input mdInput placeholder="name" [(ngModel)]="data.name" ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="login"  ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput type="password" placeholder="password" ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="address" [(ngModel)]="data.address" ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="email" [(ngModel)]="data.email" ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="country" [(ngModel)]="data.phoneNumber" ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="countryId" [(ngModel)]="data.countryId" ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="country" [(ngModel)]="data.country" ng-required="true"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="city" [(ngModel)]="data.city" ng-required="true">
+    </md-input-container>
+  </form>
+</md-card-content>
+<md-card-actions>
+  <button md-button (click)="createOrg()" [disabled]="!form.valid">Create Library</button>
+</md-card-actions>
 
 
 
