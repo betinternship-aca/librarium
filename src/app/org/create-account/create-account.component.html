@@ -1,37 +1,36 @@
-<md-card-content class="content">
-  <form #form>
-    <md-input-container>
-      <input mdInput placeholder="name" [(ngModel)]="data.name" ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="login"  ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput type="password" placeholder="password" ng-required="true"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="address" [(ngModel)]="data.address" />
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="email" [(ngModel)]="data.email" />
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="country" [(ngModel)]="data.phoneNumber" />
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="countryId" [(ngModel)]="data.countryId"/>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="country" [(ngModel)]="data.country" />
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="city" [(ngModel)]="data.city"/>
-    </md-input-container>
-  </form>
+<md-card-content>
+  <md-input-container>
+    <input mdInput placeholder="name">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="nickname">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="password" placeholder="password">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="email" placeholder="email">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="country">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="address">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="tel" placeholder="telephone">
+  </md-input-container>
 </md-card-content>
 <md-card-actions>
-  <button md-button (click)="createOrg()" [disabled]="!form.valid">Create Library</button>
+  <button md-button>Create Library</button>
 </md-card-actions>
+
 
 
 
