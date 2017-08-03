@@ -19,7 +19,7 @@ export class Organization {
   email?: string;
   telephone?: string;
   countryId: string;
-  country: Country;
+  country: Country | null;
   city: string;
 
   constructor(data) {
