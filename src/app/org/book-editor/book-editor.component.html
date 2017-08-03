@@ -1,31 +1,29 @@
-<md-card>
-  <md-card-header>
-    <md-card-title>New Book</md-card-title>
-  </md-card-header>
+<span md-dialog-title>New Book</span>
 
-  <md-card-content class="image">
+  <md-dialog-content class="image">
     <app-image-upload></app-image-upload>
-  </md-card-content>
+  </md-dialog-content>
 
-  <md-card-content>
-  <md-input-container>
-    <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
-  </md-input-container>
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
+    </md-input-container>
 
-  <md-input-container>
-    <input mdInput placeholder="Edition year" [(ngModel)]="book.editionYear" type="number">
-  </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Edition year" [(ngModel)]="book.editionYear" type="number">
+    </md-input-container>
 
-  <md-input-container>
-    <textarea mdInput placeholder="Description" [(ngModel)]="book.description" ></textarea>
-  </md-input-container>
+    <md-input-container>
+      <textarea mdInput placeholder="Description" [(ngModel)]="book.description" ></textarea>
+    </md-input-container>
+  </md-dialog-content>
 
-  </md-card-content>
-  <md-card-actions>
-    <button md-button [md-dialog-close]="book">Save</button>
+  <md-dialog-actions>
+    <button md-button (click)="saveBook(book)">Save</button>
     <button md-button [md-dialog-close]="null">Cancel</button>
-  </md-card-actions>
-</md-card>
+  </md-dialog-actions>
+
+<md-progress-bar mode="indeterminate" [class.progress-started]="inProgress"></md-progress-bar>
 <!--
 authors: IAuthor[];
 categories: ICategory[];

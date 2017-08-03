@@ -14,4 +14,10 @@ export class BookService {
   deleteBook() {
     return this.http.delete('api/book/:bookId');
   }
+  createBook(data) {
+    return this.http.post('/api/book/', data);
+  }
+  updateBook(data) {
+    return this.http.post('/api/book/:bookId', data);
+  }
 }

@@ -20,10 +20,6 @@ export class BooksComponent implements OnInit {
     const dialogRef = this.dialog.open(BookEditorComponent, {
       data: {}
     });
-/*    const dialogRef = this.dialog.open(BookEditorComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      // this.selectedOption = result;
-    });*/
   }
   getAllBooks() {
     this.bookService.getAllBooks()
@@ -32,6 +28,9 @@ export class BooksComponent implements OnInit {
   deleteBook(book) {
     const index = this.books.indexOf(book);
     this.books.splice(index, 1);
+  }
+  saveBook(book) {
+    this.books.splice(0, 0, book);
   }
 
   ngOnInit() {

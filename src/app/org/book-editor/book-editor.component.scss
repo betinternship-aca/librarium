@@ -1,6 +1,3 @@
-md-card {
-  width: 250px;
-}
 md-input-container {
   width: 100%;
 }
@@ -18,4 +15,11 @@ app-image-upload {
   position: absolute;
   right: 0;
   top: 0;
+}
+md-progress-bar {
+  opacity: 0;
+
+  &.progress-started {
+    opacity: 1;
+  }
 }
