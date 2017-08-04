@@ -76,24 +76,20 @@ export class Book implements IBook {
 export const BookRouter = express.Router();
 
 BookRouter.get('/book-list', (req, res) => {
-  console.log('list');
   res.json(Book.getAllBooks());
 });
 
 BookRouter.get('/:bookId', (req, res) => {
-  console.log('book by id');
   res.json(Book.getBook(req.params.bookId));
 });
 
 // create book
 BookRouter.post('/', (req, res) => {
-  console.log('create');
   res.json(Book.createBook(req.body));
 });
 
 // update book
 BookRouter.post('/:bookId', (req, res) => {
-  console.log('update');
   const data = req.body;
   data.id = req.params.bookId;
   res.json(Book.updateBook(data));
@@ -101,7 +97,6 @@ BookRouter.post('/:bookId', (req, res) => {
 
 // delete book
 BookRouter.delete('/:bookId', (req, res) => {
-  console.log('delete');
   const id = req.params.bookId;
   res.json(Book.deleteBook(id));
 });
