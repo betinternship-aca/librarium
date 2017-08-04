@@ -9,15 +9,15 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   getAllBooks() {
-    return this.http.get('/api/book/book-list');
+    return this.http.get(`/api/book/book-list`);
   }
-  deleteBook() {
-    return this.http.delete('api/book/:bookId');
+  deleteBook(bookId) {
+    return this.http.delete(`api/book/${bookId}`);
   }
   createBook(data) {
-    return this.http.post('/api/book/', data);
+    return this.http.post(`/api/book/`, data);
   }
   updateBook(data) {
-    return this.http.post('/api/book/:bookId', data);
+    return this.http.post(`/api/book/${data.bookId}`, data);
   }
 }

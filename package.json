@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prestart": "ng builds && ngc",
+    "prestart": "ng build && ngc",
     "start": "ts-node src/server.ts",
     "start-server": "ts-node src/server.ts"
   },

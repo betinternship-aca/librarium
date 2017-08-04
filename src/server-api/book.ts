@@ -22,7 +22,6 @@ export class Book implements IBook {
   categories: ICategory[];
   editionYear: Date;
   language?: string;
-  price?: number;
   description: string;
   // countOfDownloads: number;
 
@@ -51,7 +50,7 @@ export class Book implements IBook {
   static updateBook(data) {
     const books = this.getAllBooks();
     const bookIndex = books.findIndex(b => b.bookId === data.id);
-    books.splice(bookIndex, 1, data);
+    books.splice(bookIndex, 1, this.clearBookData(data));
     this.saveAllBooks(books);
     return data;
   }
@@ -66,36 +65,47 @@ export class Book implements IBook {
   static saveAllBooks(bookList) {
     writeFileSync(filePath, JSON.stringify(bookList, null, 2));
   }
+
+  static clearBookData(data: IBook) {
+    delete data.categories;
+    delete data.authors;
+    return data;
+  }
 }
 
 export const BookRouter = express.Router();
 
 BookRouter.get('/book-list', (req, res) => {
+  console.log('list');
   res.json(Book.getAllBooks());
 });
 
-BookRouter.post('/:bookId', (req, res) => {
-  res.json(Book.getBook(req.params.id));
+BookRouter.get('/:bookId', (req, res) => {
+  console.log('book by id');
+  res.json(Book.getBook(req.params.bookId));
 });
 
 // create book
 BookRouter.post('/', (req, res) => {
+  console.log('create');
   res.json(Book.createBook(req.body));
 });
 
 // update book
 BookRouter.post('/:bookId', (req, res) => {
+  console.log('update');
   const data = req.body;
-  data.id = req.params.id;
+  data.id = req.params.bookId;
   res.json(Book.updateBook(data));
 });
 
 // delete book
 BookRouter.delete('/:bookId', (req, res) => {
-  const id = req.params.id;
+  console.log('delete');
+  const id = req.params.bookId;
   res.json(Book.deleteBook(id));
 });
 
 BookRouter.get('/:bookId/orders', (req, res) => {
-  res.json(Order.getBookOrders(req.params.id));
+  res.json(Order.getBookOrders(req.params.bookId));
 });

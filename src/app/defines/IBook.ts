@@ -12,6 +12,5 @@ export interface IBook {
   editionYear: Date;
   image: string;
   language?: string;
-  price?: number;
   // countOfDownloads: number;
 }

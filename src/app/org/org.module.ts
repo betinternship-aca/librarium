@@ -15,6 +15,7 @@ import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {BookService} from './services/book.service';
 import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
+import {CategoryService} from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {OrgService} from './services/org.service';
   entryComponents: [
     BookEditorComponent
   ],
-  providers: [BookService, OrgService]
+  providers: [BookService, OrgService, CategoryService]
 })
 export class OrgModule {
 }
