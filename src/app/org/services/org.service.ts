@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ILoginData} from "../../defines/ILoginData";
+import {ILoginData} from '../../defines/ILoginData';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class OrgService {
@@ -14,5 +15,9 @@ export class OrgService {
 
   login(data: ILoginData) {
     return this.http.post('/api/org/login', data);
+  }
+
+  isLoogedIn() {
+    return this.http.get('/api/org/is-logged-in') as Observable<boolean>;
   }
 }

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import {OrgService} from '../services/org.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class BooksGuard implements CanActivate {
+  constructor(private orgService: OrgService) {}
+
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return true;
+    return this.orgService.isLoogedIn();
   }
 }
