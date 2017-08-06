@@ -16,6 +16,7 @@ import {BookService} from './services/book.service';
 import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
 import {CategoryService} from './services/category.service';
+import {BooksGuard} from './guards/books.guard';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,12 @@ import {CategoryService} from './services/category.service';
   entryComponents: [
     BookEditorComponent
   ],
-  providers: [BookService, OrgService, CategoryService]
+  providers: [
+    BookService,
+    OrgService,
+    CategoryService,
+    BooksGuard
+  ]
 })
 export class OrgModule {
 }

@@ -20,10 +20,12 @@ export class Book implements IBook {
   authors: IAuthor[];
   categoryIds: string[];
   categories: ICategory[];
+  orgId: string;
   editionYear: Date;
   language?: string;
   description: string;
-  // countOfDownloads: number;
+  count: number;
+  price: number;
 
   constructor(data) {
     Object.assign(this, data);

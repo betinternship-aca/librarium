@@ -63,7 +63,8 @@ export class Organization {
   }
 
   static login(loginData: ILoginData) {
-    return this.getAllOrg().find(org => org.login === loginData.login && org.password === loginData.password);
+    return this.getAllOrg()
+      .find(org => org.login === loginData.login && org.password === loginData.password);
   }
 }
 
@@ -72,6 +73,23 @@ export const OrganizationRouter = express.Router();
 OrganizationRouter.get('/org-list', (req, res) => {
   res.json(Organization.getAllOrg());
 });
+
+OrganizationRouter.post('/login', (req, res) => {
+  const org = Organization.login(req.body);
+  if (!org) {
+    Organization.loggedInOrg = null;
+    return res.status(404).end();
+  }
+
+  Organization.loggedInOrg = org;
+  res.end();
+});
+OrganizationRouter.get('/is-logged-in', (req, res) => {
+  res.json(!!Organization.loggedInOrg);
+});
+
+
+
 
 OrganizationRouter.get('/:orgId', (req, res) => {
   res.json(Organization.getOrg(req.params.id));
@@ -95,14 +113,4 @@ OrganizationRouter.delete('/:orgId', (req, res) => {
   res.json(Organization.deleteOrg(id));
 });
 
-OrganizationRouter.post('/login', (req, res) => {
-  const org = Organization.login(req.body);
-  if (!org) {
-    Organization.loggedInOrg = null;
-    return res.status(404).end();
-  }
-
-  Organization.loggedInOrg = org;
-  res.end();
-});
 

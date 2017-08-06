@@ -4,13 +4,14 @@ import {CreateAccountComponent} from './create-account/create-account.component'
 import {BooksComponent} from './books/books.component';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginPageComponent} from './login-page/login-page.component';
+import {BooksGuard} from './guards/books.guard';
 
 const orgRoutes: Routes = [
   {
     path: 'org',
     children: [
       {
-        path: 'auth',
+        path: 'account',
         component: LoginPageComponent,
         children: [
           {path: 'login', component: LoginComponent},
@@ -20,12 +21,12 @@ const orgRoutes: Routes = [
       },
       {
         path: 'books',
-        component: BooksComponent
-        // canActivate: [AuthGuard]
+        component: BooksComponent,
+        canActivate: [BooksGuard]
       },
       {
         path: '',
-        redirectTo: 'auth',
+        redirectTo: 'account',
         pathMatch: 'full'
       }
     ]
