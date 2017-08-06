@@ -1,3 +1,4 @@
+///<reference path="services/country.service.ts"/>
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login/login.component';
@@ -9,15 +10,19 @@ import {OrgMaterialModule} from './org-material.module';
 import {BookComponent} from './book/book.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BookEditorComponent} from './book-editor/book-editor.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {BookService} from './services/book.service';
 import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
+import {CountryService} from './services/country.service';
+
+
+
 
 @NgModule({
-  declarations: [
+    declarations: [
     LoginComponent,
     CreateAccountComponent,
     BooksComponent,
@@ -33,12 +38,13 @@ import {OrgService} from './services/org.service';
     CommonModule,
     OrgRoutingModule,
     OrgMaterialModule,
-    AppCommonModule
+    AppCommonModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     BookEditorComponent
   ],
-  providers: [BookService, OrgService]
+  providers: [BookService, OrgService, CountryService]
 })
 export class OrgModule {
 }

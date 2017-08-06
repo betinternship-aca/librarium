@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
-import { MdButtonModule, MdCardModule, MdDialogModule, MdInputModule, MdTabsModule } from '@angular/material';
+import {
+  MdButtonModule, MdCardModule, MdDialogModule, MdInputModule, MdSelectModule,
+  MdTabsModule
+} from '@angular/material';
+import {MdAutocompleteModule} from '@angular/material';
+
 
 @NgModule({
   imports: [
@@ -8,7 +13,9 @@ import { MdButtonModule, MdCardModule, MdDialogModule, MdInputModule, MdTabsModu
     MdInputModule,
     MdTabsModule,
     MdInputModule,
-    MdDialogModule
+    MdDialogModule,
+    MdAutocompleteModule,
+    MdSelectModule
   ],
   exports: [
     MdCardModule,
@@ -16,7 +23,9 @@ import { MdButtonModule, MdCardModule, MdDialogModule, MdInputModule, MdTabsModu
     MdInputModule,
     MdTabsModule,
     MdInputModule,
-    MdDialogModule
+    MdDialogModule,
+    MdAutocompleteModule,
+    MdSelectModule
   ]
 })
 export class OrgMaterialModule {

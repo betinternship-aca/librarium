@@ -1,5 +1,5 @@
 [
-   {
+  {
     "orgId": "285e1c62-0faf-43df-ed8e-dd783efd100b",
     "country": "",
     "address": "a",
@@ -8,5 +8,15 @@
     "login": "a",
     "password": "a",
     "email": "a"
+  },
+  {
+    "orgId": "66778a56-8034-bdc6-fb55-c92895ffed64",
+    "name": "b",
+    "login": "b",
+    "email": "b",
+    "password": "b",
+    "country": "",
+    "address": "b",
+    "telephone": "b"
   }
 ]
