@@ -1,15 +1,15 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { BooksGuard } from './books.guard';
+import { AccountGuard } from './account.guard';
 
-describe('BooksGuard', () => {
+describe('AccountGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BooksGuard]
+      providers: [AccountGuard]
     });
   });
 
-  it('should ...', inject([BooksGuard], (guard: BooksGuard) => {
+  it('should ...', inject([AccountGuard], (guard: AccountGuard) => {
     expect(guard).toBeTruthy();
   }));
 });

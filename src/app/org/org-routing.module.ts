@@ -4,25 +4,39 @@ import {CreateAccountComponent} from './create-account/create-account.component'
 import {BooksComponent} from './books/books.component';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginPageComponent} from './login-page/login-page.component';
-import {BooksGuard} from './guards/books.guard';
+import {AccountGuard} from './guards/account.guard';
+import { BooksResolverService } from './services/books-resolver.service';
+
 
 const orgRoutes: Routes = [
   {
     path: 'org',
+    canActivateChild: [AccountGuard],
     children: [
       {
         path: 'account',
         component: LoginPageComponent,
         children: [
-          {path: 'login', component: LoginComponent},
-          {path: 'create', component: CreateAccountComponent},
-          {path: '', redirectTo: 'login', pathMatch: 'full'}
+          {
+            path: 'login',
+            component: LoginComponent
+          },
+          {
+            path: 'create',
+            component: CreateAccountComponent
+          },
+          {
+            path: '',
+            redirectTo: 'login',
+            pathMatch: 'full'}
         ]
       },
       {
         path: 'books',
         component: BooksComponent,
-        canActivate: [BooksGuard]
+        resolve: {
+          books: BooksResolverService
+        }
       },
       {
         path: '',
@@ -37,7 +51,8 @@ const orgRoutes: Routes = [
   imports: [
     RouterModule.forChild(orgRoutes)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [BooksResolverService]
 })
 export class OrgRoutingModule {
 }

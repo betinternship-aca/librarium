@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IBook} from '../../defines/IBook';
 import {MdDialog} from '@angular/material';
 import {BookEditorComponent} from '../book-editor/book-editor.component';
-import {BookService} from '../services/book.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -12,7 +12,7 @@ import {BookService} from '../services/book.service';
 export class BooksComponent implements OnInit {
   books: IBook[];
 
-  constructor(private bookService: BookService, public dialog: MdDialog) {
+  constructor(private activatedRoute: ActivatedRoute, public dialog: MdDialog) {
     this.getAllBooks();
   }
 
@@ -22,8 +22,8 @@ export class BooksComponent implements OnInit {
     });
   }
   getAllBooks() {
-    this.bookService.getAllBooks()
-      .subscribe(data => this.books = data as IBook[]);
+    this.activatedRoute.data
+      .subscribe((data: {books: IBook[]}) => this.books = data.books);
   }
   deleteBook(book) {
     const index = this.books.indexOf(book);
