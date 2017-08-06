@@ -17,6 +17,7 @@ import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
 import {CategoryService} from './services/category.service';
 import { AccountGuard } from './guards/account.guard';
+import {CountryService} from './services/country.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AccountGuard } from './guards/account.guard';
     BookService,
     OrgService,
     CategoryService,
+    CountryService,
     AccountGuard
   ]
 })
