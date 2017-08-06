@@ -5,7 +5,8 @@ import {BookSeriesRouter} from './book-series';
 import {OrganizationRouter} from './organization';
 import {OrderRouter} from './order';
 import {CountryRouter} from './country';
-import {Category, CategoryRouter} from './category';
+import {CategoryRouter} from './category';
+import {AuthorRouter} from './author';
 
 export const ApiRouter = express.Router();
 
@@ -16,3 +17,4 @@ ApiRouter.use('/org', OrganizationRouter);
 ApiRouter.use('/order', OrderRouter);
 ApiRouter.use('/country', CountryRouter);
 ApiRouter.use('/category', CategoryRouter);
+ApiRouter.use('/author', AuthorRouter);

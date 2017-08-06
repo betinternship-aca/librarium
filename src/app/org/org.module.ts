@@ -1,4 +1,3 @@
-///<reference path="services/country.service.ts"/>
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login/login.component';
@@ -10,19 +9,17 @@ import {OrgMaterialModule} from './org-material.module';
 import {BookComponent} from './book/book.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BookEditorComponent} from './book-editor/book-editor.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {BookService} from './services/book.service';
 import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
-import {CountryService} from './services/country.service';
-
-
-
+import {CategoryService} from './services/category.service';
+import { AccountGuard } from './guards/account.guard';
 
 @NgModule({
-    declarations: [
+  declarations: [
     LoginComponent,
     CreateAccountComponent,
     BooksComponent,
@@ -38,13 +35,17 @@ import {CountryService} from './services/country.service';
     CommonModule,
     OrgRoutingModule,
     OrgMaterialModule,
-    AppCommonModule,
-    ReactiveFormsModule
+    AppCommonModule
   ],
   entryComponents: [
     BookEditorComponent
   ],
-  providers: [BookService, OrgService, CountryService]
+  providers: [
+    BookService,
+    OrgService,
+    CategoryService,
+    AccountGuard
+  ]
 })
 export class OrgModule {
 }

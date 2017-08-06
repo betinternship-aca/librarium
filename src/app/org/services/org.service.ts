@@ -1,12 +1,23 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {ILoginData} from '../../defines/ILoginData';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class OrgService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   createOrg(data) {
     return this.http.post('/api/org', data);
+  }
+
+  login(data: ILoginData) {
+    return this.http.post('/api/org/login', data);
+  }
+
+  isLoogedIn() {
+    return this.http.get('/api/org/is-logged-in') as Observable<boolean>;
   }
 }

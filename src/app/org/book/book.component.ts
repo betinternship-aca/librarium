@@ -26,7 +26,12 @@ export class BookComponent implements OnInit {
     const dialogRef = this.dialog.open(BookEditorComponent, {
       data: clone(this.book)
     });
-    // this.dialogRef.componentInstance.book = this.book;
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      }
+      Object.assign(this.book, result);
+    });
   }
 
   deleteBook() {
@@ -39,7 +44,7 @@ export class BookComponent implements OnInit {
       if (!result) {
         return;
       }
-      this.bookService.deleteBook().subscribe(() => this.delete.emit(this.book));
+      this.bookService.deleteBook(this.book.bookId).subscribe(() => this.delete.emit(this.book));
     });
   }
 
