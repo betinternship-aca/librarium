@@ -82,6 +82,17 @@ OrganizationRouter.post('/', (req, res) => {
   res.json(Organization.createOrg(req.body));
 });
 
+OrganizationRouter.post('/login', (req, res) => {
+  const org = Organization.login(req.body);
+  if (!org) {
+    Organization.loggedInOrg = null;
+    return res.status(404).end();
+  }
+
+  Organization.loggedInOrg = org;
+  res.end();
+});
+
 // update organization
 OrganizationRouter.post('/:orgId', (req, res) => {
   const data = req.body;
@@ -93,16 +104,5 @@ OrganizationRouter.post('/:orgId', (req, res) => {
 OrganizationRouter.delete('/:orgId', (req, res) => {
   const id = req.params.id;
   res.json(Organization.deleteOrg(id));
-});
-
-OrganizationRouter.post('/login', (req, res) => {
-  const org = Organization.login(req.body);
-  if (!org) {
-    Organization.loggedInOrg = null;
-    return res.status(404).end();
-  }
-
-  Organization.loggedInOrg = org;
-  res.end();
 });
 
