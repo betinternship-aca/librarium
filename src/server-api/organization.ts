@@ -98,6 +98,17 @@ OrganizationRouter.post('/', (req, res) => {
   res.json(Organization.createOrg(req.body));
 });
 
+OrganizationRouter.post('/login', (req, res) => {
+  const org = Organization.login(req.body);
+  if (!org) {
+    Organization.loggedInOrg = null;
+    return res.status(404).end();
+  }
+
+  Organization.loggedInOrg = org;
+  res.end();
+});
+
 // update organization
 OrganizationRouter.post('/:orgId', (req, res) => {
   const data = req.body;
