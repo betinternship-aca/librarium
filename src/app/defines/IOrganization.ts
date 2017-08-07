@@ -4,10 +4,10 @@
 import {ICountry} from './ICountry';
 
 export interface IOrganization {
+  orgId: string;
   name: string;
   login: string;
   password: string;
-  orgId: string;
   address: string;
   email?: string;
   telephone?: string;

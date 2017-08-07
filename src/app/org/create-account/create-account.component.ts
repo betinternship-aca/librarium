@@ -17,14 +17,11 @@ import {ICountry} from '../../defines/ICountry';
 })
 export class CreateAccountComponent implements OnInit {
   data = {} as IOrganization;
-  @Input()
   countries: ICountry[];
-  @Input()
-  organization;
+
   constructor(private orgService: OrgService, private router: Router, private countryService: CountryService) {
-    this.organization = this.data;
-    this.organization.country = this.countryService.getAllCountries()
-      .subscribe(countries => this.countries = countries as ICountry[]);
+    this.countryService.getAllCountries()
+      .subscribe(countries => this.countries = countries);
   }
 
   createOrg() {
