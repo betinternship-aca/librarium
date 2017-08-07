@@ -3,7 +3,7 @@ import {
   MdAutocompleteModule, MdButtonModule,
   MdCardModule, MdDialogModule,
   MdInputModule, MdProgressBarModule,
-  MdSelectModule, MdTabsModule
+  MdSelectModule, MdTabsModule, MdToolbarModule
 } from '@angular/material';
 
 @NgModule({
@@ -15,7 +15,8 @@ import {
     MdDialogModule,
     MdAutocompleteModule,
     MdSelectModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdToolbarModule
 ],
   exports: [
     MdCardModule,
@@ -25,7 +26,8 @@ import {
     MdDialogModule,
     MdAutocompleteModule,
     MdSelectModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdToolbarModule
 
   ]
 })

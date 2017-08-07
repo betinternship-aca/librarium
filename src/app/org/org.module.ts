@@ -17,6 +17,7 @@ import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
 import {CategoryService} from './services/category.service';
 import { AccountGuard } from './guards/account.guard';
+import { PageNavComponent } from './page-nav/page-nav.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AccountGuard } from './guards/account.guard';
     LoginPageComponent,
     BookComponent,
     BookEditorComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    PageNavComponent
   ],
   imports: [
     BrowserAnimationsModule,

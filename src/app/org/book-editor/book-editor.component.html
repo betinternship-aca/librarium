@@ -9,15 +9,13 @@
       <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
     </md-input-container>
 
-    <form>
-      <md-select multiple placeholder="Category"
-                 [(ngModel)]="book.categoryIds"
-                 name="category">
-        <md-option *ngFor="let category of categories" [value]="category.categoryId">
-          {{category.name}}
-        </md-option>
-      </md-select>
-    </form>
+    <md-select multiple placeholder="Category"
+               [(ngModel)]="book.categoryIds"
+               name="category">
+      <md-option *ngFor="let category of categories" [value]="category.categoryId">
+        {{category.name}}
+      </md-option>
+    </md-select>
 
     <md-input-container>
       <input mdInput placeholder="Edition year" [(ngModel)]="book.editionYear" type="number">
@@ -36,7 +34,6 @@
 <md-progress-bar mode="indeterminate" [class.progress-started]="inProgress"></md-progress-bar>
 <!--
 authors: IAuthor[];
-categories: ICategory[];
 description: string;
 image: string;
 language?: string;
