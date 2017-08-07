@@ -6,6 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {AccountGuard} from './guards/account.guard';
 import { BooksResolverService } from './services/books-resolver.service';
+import {PageNavComponent} from './page-nav/page-nav.component';
 
 
 const orgRoutes: Routes = [
@@ -32,11 +33,22 @@ const orgRoutes: Routes = [
         ]
       },
       {
-        path: 'books',
-        component: BooksComponent,
-        resolve: {
-          books: BooksResolverService
-        }
+        path: 'home',
+        component: PageNavComponent,
+        children: [
+          {
+            path: 'books',
+            component: BooksComponent,
+            resolve: {
+              books: BooksResolverService
+            }
+          },
+          {
+            path: '',
+            redirectTo: 'books',
+            pathMatch: 'full'
+          }
+        ]
       },
       {
         path: '',

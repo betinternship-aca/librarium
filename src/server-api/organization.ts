@@ -91,6 +91,10 @@ OrganizationRouter.post('/login', (req, res) => {
   Organization.loggedInOrg = org;
   res.end();
 });
+OrganizationRouter.get('/logout', (req, res) => {
+  Organization.loggedInOrg = null;
+  res.end();
+});
 
 OrganizationRouter.get('/is-logged-in', (req, res) => {
   res.json(!!Organization.loggedInOrg);

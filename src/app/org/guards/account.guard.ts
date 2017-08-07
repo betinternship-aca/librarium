@@ -10,11 +10,11 @@ export class AccountGuard implements CanActivateChild {
     const isAccountPage = childRout.url[0].path === 'account' ||
       childRout.parent.url[0].path === 'account';
 
-    const shouldBeLoaded = this.orgService.isLoogedIn().map(loggedIn => {
+    const shouldBeLoaded = this.orgService.isLoggedIn().map(loggedIn => {
       return  isAccountPage ? !loggedIn : loggedIn;
     });
 
-    const navigation = isAccountPage ? ['org', 'books'] : ['org'];
+    const navigation = isAccountPage ? ['org', 'home'] : ['org'];
     shouldBeLoaded.subscribe(loggedIn => !loggedIn && this.router.navigate(navigation));
 
     return shouldBeLoaded;

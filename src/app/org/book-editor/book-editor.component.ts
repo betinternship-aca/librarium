@@ -22,7 +22,6 @@ export class BookEditorComponent implements OnInit {
   @Input()
   multiple;
 
-  selectedValue: string;
   categories: ICategory[];
 
 
@@ -33,6 +32,7 @@ export class BookEditorComponent implements OnInit {
     private categoryService: CategoryService
   ) {
     this.book = data;
+
     this.book.categories = this.categoryService.getAllCategories()
       .subscribe(categories => this.categories = categories as ICategory[]);
   }

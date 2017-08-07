@@ -17,6 +17,7 @@ import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
 import {CategoryService} from './services/category.service';
 import { AccountGuard } from './guards/account.guard';
+import { PageNavComponent } from './page-nav/page-nav.component';
 import {CountryService} from './services/country.service';
 import { BookPreviewComponent } from './book-preview/book-preview.component';
 
@@ -31,6 +32,8 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     BookEditorComponent,
     ImageUploadComponent,
     BookPreviewComponent
+    ImageUploadComponent,
+    PageNavComponent
   ],
   imports: [
     BrowserAnimationsModule,
