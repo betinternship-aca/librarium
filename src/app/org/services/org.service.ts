@@ -16,8 +16,11 @@ export class OrgService {
   login(data: ILoginData) {
     return this.http.post('/api/org/login', data);
   }
+  logout() {
+    return this.http.get('/api/org/logout');
+  }
 
-  isLoogedIn() {
+  isLoggedIn() {
     return this.http.get('/api/org/is-logged-in') as Observable<boolean>;
   }
 }
