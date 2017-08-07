@@ -18,6 +18,8 @@ import {OrgService} from './services/org.service';
 import {CategoryService} from './services/category.service';
 import { AccountGuard } from './guards/account.guard';
 import {CountryService} from './services/country.service';
+import { BookPreviewComponent } from './book-preview/book-preview.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {CountryService} from './services/country.service';
     LoginPageComponent,
     BookComponent,
     BookEditorComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    BookPreviewComponent
   ],
   imports: [
     BrowserAnimationsModule,

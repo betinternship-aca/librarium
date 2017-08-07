@@ -15,6 +15,7 @@ export class User {
   gender: string;
   email: string;
   phoneNumber?: string;
+  reservedBooks: string;
 
   constructor(data) {
     // copies every property of data to this
