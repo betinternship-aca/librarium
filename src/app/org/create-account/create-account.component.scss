@@ -1,8 +1,11 @@
 :host {
   box-sizing: border-box;
-    .md-input-container {
+    md-input-container {
     display: block;
     }
+  md-select {
+    width: 100%;
+  }
 }
 button {
   background-color: rgb(16,108,200);
