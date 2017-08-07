@@ -16,6 +16,7 @@ export class LoginComponent {
   }
 
   login() {
-    this.orgService.login(this.loginData).subscribe(() => this.router.navigate(['org', 'books']));
+    this.orgService.login(this.loginData)
+      .subscribe(() => this.router.navigate(['org', 'home']));
   }
 }
