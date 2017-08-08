@@ -31,7 +31,7 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     BookComponent,
     BookEditorComponent,
     ImageUploadComponent,
-    BookPreviewComponent
+    BookPreviewComponent,
     ImageUploadComponent,
     PageNavComponent
   ],
