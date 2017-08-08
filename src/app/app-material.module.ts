@@ -6,7 +6,8 @@ import {
 } from '@angular/material';
 
 @NgModule({
-  imports: [MdCardModule,
+  imports: [
+    MdCardModule,
     MdButtonModule,
     MdTabsModule,
     MdInputModule,
@@ -15,7 +16,8 @@ import {
     MdSelectModule,
     MdProgressBarModule,
     MdToolbarModule],
-  exports: [MdCardModule,
+  exports: [
+    MdCardModule,
     MdButtonModule,
     MdTabsModule,
     MdInputModule,

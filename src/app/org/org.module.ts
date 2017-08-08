@@ -32,7 +32,8 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     BookEditorComponent,
     BookPreviewComponent,
     ImageUploadComponent,
-    PageNavComponent
+    PageNavComponent,
+    BookPreviewComponent
   ],
   imports: [
     BrowserAnimationsModule,
