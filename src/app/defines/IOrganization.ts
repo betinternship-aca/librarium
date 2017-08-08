@@ -16,4 +16,6 @@ export interface IOrganization {
   city: string;
   parentOrgId: string | null;
   parentOrg?: IOrganization | null;
+  description: string;
+
 }

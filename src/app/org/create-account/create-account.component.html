@@ -22,7 +22,11 @@
     </md-select>
 
     <md-input-container>
-      <input mdInput placeholder="Address" [(ngModel)]="data.address" name=" address" required />
+      <input mdInput placeholder="Address" [(ngModel)]="data.address" name="address"  class="address" required />
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Description" [(ngModel)]="data.description" name="description"/>
     </md-input-container>
 
     <md-input-container>

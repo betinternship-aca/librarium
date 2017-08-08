@@ -21,6 +21,7 @@ export class Organization {
   countryId: string;
   country: Country | null;
   city: string;
+  description: string;
 
   constructor(data) {
     // copies every property of data to this
