@@ -1,3 +1,6 @@
+md-dialog-content {
+  width: 300px;
+}
 md-input-container, md-select {
   width: 100%;
   margin-top: 5px;
@@ -5,10 +8,12 @@ md-input-container, md-select {
 .image {
   border: 2px solid lightblue;
   margin: 0;
-  padding: 32px 0;
   position: relative;
+  height: 100px;
+  width: 250px;
 }
 app-image-upload {
+  height: 100px;
   bottom: 0;
   left: 0;
   margin: auto;
@@ -16,6 +21,7 @@ app-image-upload {
   position: absolute;
   right: 0;
   top: 0;
+  width: 100%;
 }
 md-progress-bar {
   opacity: 0;
@@ -28,4 +34,8 @@ md-progress-bar {
 md-select {
   margin: 15px 0;
 }
+.new-author {
+  width: 100%;
+  padding: 4px;
 
+}

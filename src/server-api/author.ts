@@ -17,7 +17,6 @@ export class Author implements IAuthor {
   name: string;
   bornDate: Date;
   deathDate?: Date;
-  countryId?;
 
   constructor(data) {
     Object.assign(this, data);

@@ -1,0 +1,23 @@
+<span md-dialog-title>New author</span>
+
+<md-dialog-content>
+  <md-input-container>
+    <input mdInput placeholder="Full name" [(ngModel)]="author.name">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="Birth date" [(ngModel)]="author.bornDate" type="date">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="Death date" [(ngModel)]="author.deathDate" type="date">
+  </md-input-container>
+
+</md-dialog-content>
+
+<md-dialog-actions>
+  <button md-raised-button (click)="saveAuthor(author)">Save</button>
+  <button md-button [md-dialog-close]="null">Cancel</button>
+</md-dialog-actions>
+
+

@@ -9,9 +9,14 @@
       <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
     </md-input-container>
 
-    <md-input-container>
-      <input mdInput placeholder="Author" [(ngModel)]="book.authors">
-    </md-input-container>
+   <md-select multiple placeholder="Author"
+              [(ngModel)]="book.authorIds"
+              name="author">
+     <button md-button class="new-author" (click)="newAuthor()">Add new author</button>
+     <md-option *ngFor="let author of authors" [value]="author.authorId">
+       {{author.name}}
+     </md-option>
+   </md-select>
 
     <md-select multiple placeholder="Category"
                [(ngModel)]="book.categoryIds"
