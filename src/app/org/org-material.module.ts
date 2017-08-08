@@ -5,31 +5,20 @@ import {
   MdInputModule, MdProgressBarModule,
   MdSelectModule, MdTabsModule, MdToolbarModule
 } from '@angular/material';
+const materialModules = [MdCardModule,
+  MdButtonModule,
+  MdTabsModule,
+  MdInputModule,
+  MdDialogModule,
+  MdAutocompleteModule,
+  MdSelectModule,
+  MdProgressBarModule,
+  MdToolbarModule
+];
 
 @NgModule({
-  imports: [
-    MdCardModule,
-    MdButtonModule,
-    MdTabsModule,
-    MdInputModule,
-    MdDialogModule,
-    MdAutocompleteModule,
-    MdSelectModule,
-    MdProgressBarModule,
-    MdToolbarModule
-],
-  exports: [
-    MdCardModule,
-    MdButtonModule,
-    MdTabsModule,
-    MdInputModule,
-    MdDialogModule,
-    MdAutocompleteModule,
-    MdSelectModule,
-    MdProgressBarModule,
-    MdToolbarModule
-
-  ]
+  imports: materialModules,
+  exports: materialModules
 })
 export class OrgMaterialModule {
 }
