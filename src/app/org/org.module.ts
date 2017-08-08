@@ -19,8 +19,6 @@ import {CategoryService} from './services/category.service';
 import { AccountGuard } from './guards/account.guard';
 import { PageNavComponent } from './page-nav/page-nav.component';
 import {CountryService} from './services/country.service';
-import { BookPreviewComponent } from './book-preview/book-preview.component';
-
 
 @NgModule({
   declarations: [
@@ -31,7 +29,6 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     BookComponent,
     BookEditorComponent,
     ImageUploadComponent,
-    BookPreviewComponent
     ImageUploadComponent,
     PageNavComponent
   ],

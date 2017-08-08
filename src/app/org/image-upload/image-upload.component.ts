@@ -14,9 +14,6 @@ const CONTROL_VALUE_ACCESSOR = {
 })
 export class ImageUploadComponent implements ControlValueAccessor {
   private _value: string;
-  private _touched = false;
-  touch = new EventEmitter();
-  change = new EventEmitter<string>();
 
   @Input()
   get value() {
@@ -28,19 +25,15 @@ export class ImageUploadComponent implements ControlValueAccessor {
     this.change.emit(value);
   }
 
+  @Input()
+  disabled = false;
+
+  change = new EventEmitter<string>();
+
+  private _touched = false;
+  touch = new EventEmitter();
+
   constructor() { }
-
-  writeValue(value: string) {
-    this.value = value;
-  }
-
-  registerOnChange(fn): void {
-    this.change.subscribe(fn);
-  }
-
-  registerOnTouched(fn: any): void {
-    this.touch.subscribe(fn);
-  }
 
   onChange(ev) {
     const myFile = ev.currentTarget;
@@ -49,9 +42,24 @@ export class ImageUploadComponent implements ControlValueAccessor {
 
     fr.addEventListener('load', () => {
       this.value = fr.result;
-      // this.hasValue = !!this.value;
     });
     fr.readAsDataURL(file);
+  }
+
+  writeValue(value: string) {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.change.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any): void {
+    this.touch.subscribe(fn);
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
   onBlur() {
@@ -62,5 +70,4 @@ export class ImageUploadComponent implements ControlValueAccessor {
     this._touched = true;
     this.touch.emit();
   }
-
 }
