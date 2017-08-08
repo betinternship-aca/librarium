@@ -17,5 +17,15 @@
     "gender": "d",
     "address": "d",
     "telephone": "d"
+  },
+  {
+    "userId": "a681d7ca-1559-a7f9-2782-66bf95d706ed",
+    "name": "n",
+    "login": "n",
+    "password": "n",
+    "email": "n",
+    "gender": "n",
+    "address": "n",
+    "telephone": "n"
   }
 ]
