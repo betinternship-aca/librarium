@@ -30,7 +30,6 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     LoginPageComponent,
     BookComponent,
     BookEditorComponent,
-    ImageUploadComponent,
     BookPreviewComponent,
     ImageUploadComponent,
     PageNavComponent
