@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ILoginData} from '../../defines/ILoginData';
 import {OrgService} from '../services/org.service';
 import {Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
 
 
 @Component({
@@ -11,12 +12,14 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent {
   loginData = {} as ILoginData;
+  errorMsg: string | null = null;
 
   constructor(private  orgService: OrgService, private router: Router) {
   }
 
   login() {
     this.orgService.login(this.loginData)
-      .subscribe(() => this.router.navigate(['org', 'home']));
+      .subscribe(() => this.router.navigate(['org', 'home']),
+        () => this.errorMsg = 'Incorrect login or password');
   }
 }
