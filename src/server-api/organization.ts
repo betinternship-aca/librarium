@@ -4,24 +4,31 @@ import {join} from 'path';
 import {createGUID} from './common/';
 import {Country} from './country';
 import {ILoginData} from '../app/defines/ILoginData';
+import {IOrganization} from '../app/defines/IOrganization';
 
 const filePath = join(__dirname, './data/organizations.db.json');
 
-export class Organization {
+const clearOrgData = (data: IOrganization) => {
+  delete data.country;
+  delete data.parentOrg;
+};
+
+export class Organization implements IOrganization {
   static loggedInOrg: Organization;
 
+  orgId: string = createGUID();
   name: string;
   login: string;
   password: string;
-  orgId: string = createGUID();
   address: string;
-  parentOrgId: string | any;
   email?: string;
   telephone?: string;
   countryId: string;
   country: Country | null;
   city: string;
   description: string;
+  parentOrgId: string | null;
+  parentOrg: Organization | null;
 
   constructor(data) {
     // copies every property of data to this
@@ -103,17 +110,6 @@ OrganizationRouter.post('/', (req, res) => {
   res.json(Organization.createOrg(req.body));
 });
 
-OrganizationRouter.post('/login', (req, res) => {
-  const org = Organization.login(req.body);
-  if (!org) {
-    Organization.loggedInOrg = null;
-    return res.status(404).end();
-  }
-
-  Organization.loggedInOrg = org;
-  res.end();
-});
-
 // update organization
 OrganizationRouter.post('/:orgId', (req, res) => {
   const data = req.body;
@@ -127,4 +123,6 @@ OrganizationRouter.delete('/:orgId', (req, res) => {
   res.json(Organization.deleteOrg(id));
 });
 
-
+OrganizationRouter.get('/current/books', (req, res) => {
+  return this.getAllBooks().find(book => book.orgId === this.orgId);
+ });

@@ -6,13 +6,15 @@ import {AppMaterialModule} from './app-material.module';
 import {AppComponent} from './app.component';
 import {OrgModule} from './org/org.module';
 import {AppCommonModule} from './app-common/app-common.module';
+import {HomePageComponent} from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent
   ],
   imports: [
-    BrowserModule, // .withServerTransition({appId: 'librarium'}),
+    BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
     OrgModule,
