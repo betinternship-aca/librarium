@@ -26,6 +26,7 @@ export class Organization implements IOrganization {
   countryId: string;
   country: Country | null;
   city: string;
+  description: string;
   parentOrgId: string | null;
   parentOrg: Organization | null;
 

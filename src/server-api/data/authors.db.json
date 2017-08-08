@@ -5,5 +5,12 @@
     "bornDate": "1994",
     "deathDate": "2017",
     "countryId": "07f70914-3aa8-a9b4-8a1c-aa6204585cc5"
+  },
+  {
+    "authorId": "61d30ad6-1cee-135a-21b5-64a69a22f47a",
+    "name": "Suzanne Collins",
+    "bornDate": "August 11, 1962",
+    "deathDate": "-",
+    "countryId": "29dd71d2-d06d-2c7e-5f05-0794c404fcbb"
   }
 ]

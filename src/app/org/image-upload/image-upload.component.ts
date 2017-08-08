@@ -1,18 +1,46 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {MdDialog} from '@angular/material';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Provider} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
+const CONTROL_VALUE_ACCESSOR = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => ImageUploadComponent),
+  multi: true // TODO
+};
 @Component({
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
-  styleUrls: ['./image-upload.component.scss']
+  styleUrls: ['./image-upload.component.scss'],
+  providers: [CONTROL_VALUE_ACCESSOR]
 })
-export class ImageUploadComponent implements OnInit {
+export class ImageUploadComponent implements ControlValueAccessor {
+  private _value: string;
+  private _touched = false;
+  touch = new EventEmitter();
+  change = new EventEmitter<string>();
+
   @Input()
-  value: string;
-/*  @HostBinding('class.has-value')
-  hasValue = false;*/
+  get value() {
+    return this._value;
+  }
+  set value(value) {
+    this._value = value;
+
+    this.change.emit(value);
+  }
 
   constructor() { }
+
+  writeValue(value: string) {
+    this.value = value;
+  }
+
+  registerOnChange(fn): void {
+    this.change.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any): void {
+    this.touch.subscribe(fn);
+  }
 
   onChange(ev) {
     const myFile = ev.currentTarget;
@@ -26,7 +54,13 @@ export class ImageUploadComponent implements OnInit {
     fr.readAsDataURL(file);
   }
 
-  ngOnInit() {
+  onBlur() {
+    if (this._touched) {
+      return;
+    }
+
+    this._touched = true;
+    this.touch.emit();
   }
 
 }

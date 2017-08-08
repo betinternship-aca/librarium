@@ -33,7 +33,7 @@ export class BookEditorComponent implements OnInit {
   ) {
     this.book = data;
 
-    this.book.categories = this.categoryService.getAllCategories()
+    this.categoryService.getAllCategories()
       .subscribe(categories => this.categories = categories as ICategory[]);
   }
 
@@ -42,6 +42,8 @@ export class BookEditorComponent implements OnInit {
     this.inProgress = true;
     obs.subscribe(book => this.dialogRef.close(book));
   }
+
+
 
 
   ngOnInit() {

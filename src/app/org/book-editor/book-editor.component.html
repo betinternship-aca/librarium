@@ -1,12 +1,16 @@
 <span md-dialog-title>New Book</span>
 
   <md-dialog-content class="image">
-    <app-image-upload></app-image-upload>
+    <app-image-upload [(ngModel)]="book.image"></app-image-upload>
   </md-dialog-content>
 
   <md-dialog-content>
     <md-input-container>
       <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Author" [(ngModel)]="book.authors">
     </md-input-container>
 
     <md-select multiple placeholder="Category"
@@ -32,11 +36,4 @@
   </md-dialog-actions>
 
 <md-progress-bar mode="indeterminate" [class.progress-started]="inProgress"></md-progress-bar>
-<!--
-authors: IAuthor[];
-description: string;
-image: string;
-language?: string;
-price?: number;
--->
 
