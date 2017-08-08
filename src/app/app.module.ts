@@ -6,27 +6,37 @@ import {AppMaterialModule} from './app-material.module';
 import {AppComponent} from './app.component';
 import {OrgModule} from './org/org.module';
 import {AppCommonModule} from './app-common/app-common.module';
+import {UserLoginComponent} from './components/user-login/user-login.component';
+import {UserLoginPageComponent} from './components/user-login-page/user-login-page.component';
+import {UserCreateAccountComponent} from './components/user-create-account/user-create-account.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
 import {BooksComponent} from './components/books/books.component';
 import {BookComponent} from './components/book/book.component';
 import {BookService} from './services/book.service';
+import {FormsModule} from '@angular/forms';
+import {UserService} from './services/user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     BooksComponent,
-    HomePageComponent
+    HomePageComponent,
+    UserCreateAccountComponent,
+    UserLoginComponent,
+    UserLoginPageComponent
   ],
   imports: [
     AppCommonModule,
     AppMaterialModule,
     AppRoutingModule,
     BrowserModule,
-    OrgModule,
+    FormsModule,
+    OrgModule
   ],
   providers: [
-    BookService
+    BookService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,2 +1,31 @@
 [
+  {
+    "userId": "4f931d2c-1206-5067-2883-84b40697a6d5",
+    "name": "c",
+    "login": "c",
+    "password": "c",
+    "email": "c",
+    "address": "c",
+    "telephone": "c"
+  },
+  {
+    "userId": "975748bf-d214-2573-59f8-005e2c75e03d",
+    "name": "d",
+    "login": "d",
+    "password": "d",
+    "email": "d",
+    "gender": "d",
+    "address": "d",
+    "telephone": "d"
+  },
+  {
+    "userId": "a681d7ca-1559-a7f9-2782-66bf95d706ed",
+    "name": "n",
+    "login": "n",
+    "password": "n",
+    "email": "n",
+    "gender": "n",
+    "address": "n",
+    "telephone": "n"
+  }
 ]
