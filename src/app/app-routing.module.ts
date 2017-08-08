@@ -1,6 +1,8 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {HomePageComponent} from './components/home-page/home-page.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import {UserLoginPageComponent} from './components/user-login-page/user-login-page.component';
+import {UserLoginComponent} from './components/user-login/user-login.component';
+import {UserCreateAccountComponent} from './components/user-create-account/user-create-account.component';
 
 const routes: Routes = [
   {
@@ -9,8 +11,23 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomePageComponent
+    path: 'account',
+    component: UserLoginPageComponent,
+    children: [
+      {
+        path: 'login',
+        component: UserLoginComponent
+      },
+      {
+        path: 'create',
+        component: UserCreateAccountComponent
+      },
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 
@@ -18,5 +35,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

@@ -3,18 +3,23 @@ import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID} from './common/';
 import {Order} from './order';
+import {ILoginData} from '../app/defines/ILoginData';
+import {IUser} from '../app/defines/IUser';
+
 
 const filePath = join(__dirname, './data/users.db.json');
 
-export class User {
+
+export class User implements IUser {
+  static loggedInUser: User;
   userId: string = createGUID();
+  name: string;
   login: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  address: string;
   gender: string;
   email: string;
-  phoneNumber?: string;
+  telephone?: string;
   reservedBooks: string;
 
   constructor(data) {
@@ -56,6 +61,10 @@ export class User {
   static saveAllUsers(userList) {
     writeFileSync(filePath, JSON.stringify(userList, null, 2));
   }
+  static login(loginData: ILoginData) {
+    return this.getAllUsers()
+      .find(user => user.login === loginData.login && user.password === loginData.password);
+  }
 }
 
 export const UserRouter = express.Router();
@@ -71,6 +80,20 @@ UserRouter.get('/:userId', (req, res) => {
 // create user
 UserRouter.post('/', (req, res) => {
   res.json(User.createUser(req.body));
+});
+UserRouter.post('/login', (req, res) => {
+  const org = User.login(req.body);
+  if (!org) {
+    User.loggedInUser = null;
+    return res.status(404).end();
+  }
+
+  User.loggedInUser = org;
+  res.end();
+});
+UserRouter.get('/logout', (req, res) => {
+  User.loggedInUser = null;
+  res.end();
 });
 
 // update user

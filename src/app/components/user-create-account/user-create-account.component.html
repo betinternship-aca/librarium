@@ -1,0 +1,44 @@
+<md-card-content>
+  <form #loginForm="ngForm">
+
+    <md-input-container>
+      <input mdInput placeholder="User Name" [(ngModel)]="data.name" name="name" required>
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Login" [(ngModel)]="data.login" name="login" required />
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput type="password" placeholder="Password" [(ngModel)]="data.password" name="password" required />
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput type="email" placeholder="Email" [(ngModel)]="data.email" name="email" required />
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Gender" [(ngModel)]="data.gender" name="gender" required />
+    </md-input-container>
+
+
+    <md-input-container>
+      <input mdInput placeholder="Address" [(ngModel)]="data.address" name=" address" required />
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput type="tel" placeholder="Telephone" [(ngModel)]="data.telephone" name="telephone" required />
+    </md-input-container>
+  </form>
+</md-card-content>
+<md-card-actions>
+  <button md-button [disabled]="!loginForm.form.valid" (click)="createUser()">Create User</button>
+</md-card-actions>
+
+
+
+
+
+
+
+
