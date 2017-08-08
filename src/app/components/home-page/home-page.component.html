@@ -1,6 +1,20 @@
-<md-toolbar>
-  <md-input-container mode="search">
-    <input mdInput placeholder="Book Search"/>
-  </md-input-container>
-  <md-select></md-select>
-</md-toolbar>
+<span class="head">
+  <md-toolbar>
+    <label><span>Librarium</span></label>
+    <form>
+      <button md-button (click)="routingToLogin()">Sign In</button>
+      <button md-button (click)="routingToCreate()">Sign Up</button>
+  </form>
+  </md-toolbar>
+  <md-toolbar>
+    <form>
+      <md-input-container>
+        <md-icon mdSuffix><i class="material-icons">search</i></md-icon>
+          <input mdInput type="search" placeholder="Book Search" />
+        <md-icon mdSuffix></md-icon>
+      </md-input-container>
+      <md-select></md-select>
+    </form>
+  </md-toolbar>
+</span>
+<app-books></app-books>
