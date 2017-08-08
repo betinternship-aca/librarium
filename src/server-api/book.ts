@@ -29,7 +29,7 @@ export class Book implements IBook {
 
   constructor(data) {
     Object.assign(this, data);
-    this.authors = this.authorIds.map(authorId => Author.getAuthor(authorId));
+    // this.authors = this.authorIds.map(authorId => Author.getAuthor(authorId));
     this.categories = this.categoryIds.map(categoryId => Category.getCategory(categoryId));
   }
 

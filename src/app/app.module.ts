@@ -10,26 +10,34 @@ import {UserLoginComponent} from './components/user-login/user-login.component';
 import {UserLoginPageComponent} from './components/user-login-page/user-login-page.component';
 import {UserCreateAccountComponent} from './components/user-create-account/user-create-account.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
+import {BooksComponent} from './components/books/books.component';
+import {BookComponent} from './components/book/book.component';
+import {BookService} from './services/book.service';
 import {FormsModule} from '@angular/forms';
 import {UserService} from './services/user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserLoginComponent,
-    UserLoginPageComponent,
+    BookComponent,
+    BooksComponent,
+    HomePageComponent,
     UserCreateAccountComponent,
-    HomePageComponent
+    UserLoginComponent,
+    UserLoginPageComponent
   ],
   imports: [
-    BrowserModule, // .withServerTransition({appId: 'librarium'}),
-    AppRoutingModule,
-    AppMaterialModule,
-    OrgModule,
     AppCommonModule,
-    FormsModule
+    AppMaterialModule,
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    OrgModule
   ],
-  providers: [UserService],
+  providers: [
+    BookService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

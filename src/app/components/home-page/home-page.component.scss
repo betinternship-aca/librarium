@@ -1,2 +1,11 @@
-md-input-container {
+
+:host {
+  md-toolbar {
+    display: flex;
+    justify-content: space-around;
+
+    > label, > span {
+      display: block;
+    }
+  }
 }
