@@ -3,15 +3,20 @@
   <md-dialog-content class="image">
     <app-image-upload [(ngModel)]="book.image"></app-image-upload>
   </md-dialog-content>
+<form #editForm="ngForm">
 
   <md-dialog-content>
     <md-input-container>
-      <input mdInput placeholder="Book title" [(ngModel)]="book.bookName">
+      <input mdInput placeholder="Book title"
+             [(ngModel)]="book.bookName"
+             name="title"
+             required>
     </md-input-container>
 
    <md-select multiple placeholder="Author"
               [(ngModel)]="book.authorIds"
-              name="author">
+              name="author"
+              required>
      <button md-button class="new-author" (click)="newAuthor()">Add new author</button>
      <md-option *ngFor="let author of authors" [value]="author.authorId">
        {{author.name}}
@@ -20,25 +25,36 @@
 
     <md-select multiple placeholder="Category"
                [(ngModel)]="book.categoryIds"
-               name="category">
+               name="category"
+               required>
       <md-option *ngFor="let category of categories" [value]="category.categoryId">
         {{category.name}}
       </md-option>
     </md-select>
 
     <md-input-container>
-      <input mdInput placeholder="Edition year" [(ngModel)]="book.editionYear" type="number">
+      <input mdInput placeholder="Edition year"
+             [(ngModel)]="book.editionYear"
+             type="number"
+             name="year"
+             required>
     </md-input-container>
 
     <md-input-container>
-      <textarea mdInput placeholder="Description" [(ngModel)]="book.description"></textarea>
+      <textarea mdInput placeholder="Description"
+                [(ngModel)]="book.description"
+                name="description"
+                required>
+      </textarea>
     </md-input-container>
   </md-dialog-content>
+</form>
 
   <md-dialog-actions>
-    <button md-raised-button (click)="saveBook(book)">Save</button>
+    <button md-raised-button [disabled]="!editForm.form.valid" (click)="saveBook(book)">Save</button>
     <button md-button [md-dialog-close]="null">Cancel</button>
   </md-dialog-actions>
+
 
 <md-progress-bar mode="indeterminate" [class.progress-started]="inProgress"></md-progress-bar>
 

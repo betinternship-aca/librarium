@@ -4,4 +4,9 @@
   <md-card-subtitle>
     <a *ngFor="let author of book.authors" [innerText]="author.name"></a>
   </md-card-subtitle>
+
+  <md-card-actions>
+    <button md-button>Preview</button>
+    <button md-button>Reserve</button>
+  </md-card-actions>
 </md-card>

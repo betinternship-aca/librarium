@@ -1,10 +1,13 @@
 <span class="head">
   <md-toolbar>
-    <label><span>Librarium</span></label>
+    <span>Librarium</span>
+
+    <span class="spacer"></span>
+
     <form>
       <button md-button (click)="routingToLogin()">Sign In</button>
       <button md-button (click)="routingToCreate()">Sign Up</button>
-  </form>
+    </form>
   </md-toolbar>
   <md-toolbar>
     <form>
@@ -17,4 +20,4 @@
     </form>
   </md-toolbar>
 </span>
-<app-books></app-books>
+<app-books></app-books> <!--sould be router-outlet-->

@@ -1,11 +1,7 @@
-
-:host {
-  md-toolbar {
-    display: flex;
-    justify-content: space-around;
-
-    > label, > span {
-      display: block;
-    }
-  }
+.spacer {
+  flex: 1 1 auto;
+}
+app-books {
+  height: 100%;
+  width: 100%;
 }
