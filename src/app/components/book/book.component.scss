@@ -1,12 +1,11 @@
 md-card {
   margin: 16px;
+  height: 350px;
+  width: 250px;
 }
 
 img {
-  width: initial;
-  padding: 0 20px
-}
-
-.mat-card-image {
-  margin: 0;
+  max-width: 200px;
+  max-height: 250px;
+  padding: 0 25px;
 }
