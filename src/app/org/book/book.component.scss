@@ -12,6 +12,9 @@ img {
   margin: 0;
 }
 
-md-card-content p {
+.description {
+  overflow: hidden;
+  height: 16px;
   word-break: break-all;
 }
+

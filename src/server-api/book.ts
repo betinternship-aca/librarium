@@ -8,6 +8,7 @@ import {Author} from './author';
 import {IAuthor} from '../app/defines/IAuthor';
 import {ICategory} from '../app/defines/ICategory';
 import {Category} from './category';
+import {Organization} from './organization';
 
 
 const filePath = join(__dirname, './data/books.db.json');
@@ -16,7 +17,7 @@ export class Book implements IBook {
   bookId: string = createGUID();
   image: string; // url yet
   bookName: string;
-  authorIds: string[];
+  authorIds: string[] = [];
   authors: IAuthor[];
   categoryIds: string[];
   categories: ICategory[];
@@ -29,7 +30,7 @@ export class Book implements IBook {
 
   constructor(data) {
     Object.assign(this, data);
-    // this.authors = this.authorIds.map(authorId => Author.getAuthor(authorId));
+    this.authors = this.authorIds.map(authorId => Author.getAuthor(authorId));
     this.categories = this.categoryIds.map(categoryId => Category.getCategory(categoryId));
   }
 
@@ -42,6 +43,7 @@ export class Book implements IBook {
   }
 
   static createBook(data) {
+    data.orgId = Organization.loggedInOrg.orgId;
     const book = new Book(data);
     const books = this.getAllBooks();
     books.push(book);
@@ -54,7 +56,8 @@ export class Book implements IBook {
     const bookIndex = books.findIndex(b => b.bookId === data.id);
     books.splice(bookIndex, 1, this.clearBookData(data));
     this.saveAllBooks(books);
-    return data;
+    data.orgId = Organization.loggedInOrg.orgId;
+    return new Book(data);
   }
 
   static deleteBook(id) {

@@ -8,7 +8,7 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   getAllBooks() {
-    return this.http.get(`/api/book/book-list`) as Observable<IBook[]>;
+    return this.http.get(`/api/org/books`) as Observable<IBook[]>;
   }
   deleteBook(bookId) {
     return this.http.delete(`api/book/${bookId}`);

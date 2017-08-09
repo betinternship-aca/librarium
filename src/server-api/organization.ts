@@ -5,6 +5,7 @@ import {createGUID} from './common/';
 import {Country} from './country';
 import {ILoginData} from '../app/defines/ILoginData';
 import {IOrganization} from '../app/defines/IOrganization';
+import {Book} from './book';
 
 const filePath = join(__dirname, './data/organizations.db.json');
 
@@ -34,7 +35,9 @@ export class Organization implements IOrganization {
     // copies every property of data to this
     Object.assign(this, data);
   }
-
+  static getAllBooks() {
+    return Book.getAllBooks().filter(book => book.orgId === Organization.loggedInOrg.orgId);
+  }
   static getAllOrg(): Organization[] {
     return JSON.parse(readFileSync(filePath).toString());
   }
@@ -73,15 +76,15 @@ export class Organization implements IOrganization {
   static login(loginData: ILoginData) {
     return this.getAllOrg()
       .find(org => org.login === loginData.login && org.password === loginData.password);
+    }
   }
-}
+
 
 export const OrganizationRouter = express.Router();
 
 OrganizationRouter.get('/org-list', (req, res) => {
   res.json(Organization.getAllOrg());
 });
-
 OrganizationRouter.post('/login', (req, res) => {
   const org = Organization.login(req.body);
   if (!org) {
@@ -96,33 +99,30 @@ OrganizationRouter.get('/logout', (req, res) => {
   Organization.loggedInOrg = null;
   res.end();
 });
-
 OrganizationRouter.get('/is-logged-in', (req, res) => {
   res.json(!!Organization.loggedInOrg);
 });
+OrganizationRouter.get('/books', (req, res) => {
+  res.json(Organization.getAllBooks());
+});
+
 
 OrganizationRouter.get('/:orgId', (req, res) => {
   res.json(Organization.getOrg(req.params.id));
 });
-
 // create organization
 OrganizationRouter.post('/', (req, res) => {
   res.json(Organization.createOrg(req.body));
 });
-
 // update organization
 OrganizationRouter.post('/:orgId', (req, res) => {
   const data = req.body;
   data.id = req.params.id;
   res.json(Organization.updateOrg(data));
 });
-
 // delete organization
 OrganizationRouter.delete('/:orgId', (req, res) => {
   const id = req.params.id;
   res.json(Organization.deleteOrg(id));
 });
 
-OrganizationRouter.get('/current/books', (req, res) => {
-  return this.getAllBooks().find(book => book.orgId === this.orgId);
- });

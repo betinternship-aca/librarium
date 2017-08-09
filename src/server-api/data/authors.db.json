@@ -12,5 +12,11 @@
     "bornDate": "August 11, 1962",
     "deathDate": "-",
     "countryId": "29dd71d2-d06d-2c7e-5f05-0794c404fcbb"
+  },
+  {
+    "authorId": "90a4ce12-fde7-7c84-1ab4-b5a5f63f8318",
+    "name": "Hakob Poghosyan",
+    "bornDate": "1995-06-12",
+    "countryId": "Armenia"
   }
 ]

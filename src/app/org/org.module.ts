@@ -20,6 +20,8 @@ import {AccountGuard} from './guards/account.guard';
 import {PageNavComponent} from './page-nav/page-nav.component';
 import {CountryService} from './services/country.service';
 import { BookPreviewComponent } from './book-preview/book-preview.component';
+import { AuthorCreateComponent } from './author-create/author-create.component';
+import {AuthorService} from './services/author.service';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     BookPreviewComponent,
     ImageUploadComponent,
     PageNavComponent,
-    BookPreviewComponent
+    BookPreviewComponent,
+    AuthorCreateComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -45,14 +48,16 @@ import { BookPreviewComponent } from './book-preview/book-preview.component';
     AppCommonModule
   ],
   entryComponents: [
-    BookEditorComponent
+    BookEditorComponent,
+    AuthorCreateComponent
   ],
   providers: [
     BookService,
     OrgService,
     CategoryService,
     CountryService,
-    AccountGuard
+    AccountGuard,
+    AuthorService
   ]
 })
 export class OrgModule {
