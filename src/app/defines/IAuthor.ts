@@ -6,5 +6,4 @@ export interface IAuthor {
   name: string;
   bornDate: Date;
   deathDate?: Date;
-  countryId?;
 }

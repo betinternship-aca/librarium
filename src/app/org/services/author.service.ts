@@ -9,5 +9,11 @@ export class AuthorService {
   getAllAuthors() {
     return this.http.get('/api/author/author-list');
   }
+  createAuthor(data) {
+    return this.http.post(`/api/author/`, data);
+  }
+  updateAuthor(data) {
+    return this.http.post(`/api/authorr/${data.author.authorId}`, data);
+  }
 
 }

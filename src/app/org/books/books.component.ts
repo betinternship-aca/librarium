@@ -20,6 +20,7 @@ export class BooksComponent implements OnInit {
     const dialogRef = this.dialog.open(BookEditorComponent, {
       data: {}
     });
+    dialogRef.afterClosed().subscribe(book => book && this.books.unshift(book));
   }
   getAllBooks() {
     this.activatedRoute.data
