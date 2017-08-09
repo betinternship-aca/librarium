@@ -8,6 +8,7 @@ import {Author} from './author';
 import {IAuthor} from '../app/defines/IAuthor';
 import {ICategory} from '../app/defines/ICategory';
 import {Category} from './category';
+import {Organization} from './organization';
 
 
 const filePath = join(__dirname, './data/books.db.json');
@@ -43,6 +44,7 @@ export class Book implements IBook {
 
   static createBook(data) {
     const book = new Book(data);
+    data.orgId = Organization.loggedInOrg.orgId;
     const books = this.getAllBooks();
     books.push(book);
     this.saveAllBooks(books);
