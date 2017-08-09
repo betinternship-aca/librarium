@@ -1,10 +1,15 @@
 md-card {
-  margin: 16px;
+  margin: 10px;
+  display: inline-block;
+  width: 200px;
+  height: 350px;
+  text-align: center;
 }
 
 img {
+  display: inline-block;
   width: initial;
-  padding: 0 20px
+  margin: 10px auto;
 }
 
 .mat-card-image {

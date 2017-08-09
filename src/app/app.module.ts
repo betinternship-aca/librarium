@@ -10,6 +10,7 @@ import {HomePageComponent} from './components/home-page/home-page.component';
 import {BooksComponent} from './components/books/books.component';
 import {BookComponent} from './components/book/book.component';
 import {BookService} from './services/book.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {BookService} from './services/book.service';
     AppRoutingModule,
     BrowserModule,
     OrgModule,
+    FormsModule
   ],
   providers: [
     BookService

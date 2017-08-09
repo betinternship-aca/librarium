@@ -1,20 +1,9 @@
-<span class="head">
-  <md-toolbar>
-    <label><span>Librarium</span></label>
-    <form>
-      <button md-button (click)="routingToLogin()">Sign In</button>
-      <button md-button (click)="routingToCreate()">Sign Up</button>
-  </form>
-  </md-toolbar>
-  <md-toolbar>
-    <form>
-      <md-input-container>
-        <md-icon mdSuffix><i class="material-icons">search</i></md-icon>
-          <input mdInput type="search" placeholder="Book Search" />
-        <md-icon mdSuffix></md-icon>
-      </md-input-container>
-      <md-select></md-select>
-    </form>
-  </md-toolbar>
-</span>
+<md-toolbar>
+  <label><span>Librarium</span></label>
+  <span class="spacer"></span>
+  <span>
+    <button md-button (click)="routingToLogin()">Sign In</button>
+    <button md-button (click)="routingToCreate()">Sign Up</button>
+  </span>
+</md-toolbar>
 <app-books></app-books>

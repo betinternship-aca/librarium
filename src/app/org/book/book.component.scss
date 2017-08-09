@@ -2,10 +2,16 @@ md-card {
   margin: 16px;
   width: 230px;
 }
+
 img {
   max-width: 200px;
   padding: 0 20px
 }
+
 .mat-card-image {
   margin: 0;
+}
+
+md-card-content p {
+  word-break: break-all;
 }

@@ -14,4 +14,8 @@ export class BookService {
     return this.http.get(`/api/book/book-list`) as Observable<IBook[]>;
   }
 
+  search(content: string) {
+    return this.http.post(`/api/book/book-search`, {content})  as Observable<IBook[]>;
+  }
+
 }
