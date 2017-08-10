@@ -8,9 +8,9 @@
     <md-input-container>
       <input mdInput type="password" placeholder="password" [(ngModel)]="loginData.password" name="password" required />
     </md-input-container>
+    <md-card-actions>
+      <button md-button [disabled]="!loginForm.form.valid" (click)="login()">Log In Library</button>
+    </md-card-actions>
   </form>
   <md-error *ngIf="errorMsg" [innerText]="errorMsg"></md-error>
 </md-card-content>
-<md-card-actions>
-  <button md-button [disabled]="!loginForm.form.valid" (click)="login()">Log In Library</button>
-</md-card-actions>

@@ -1,3 +1,15 @@
+<md-toolbar>
+  <form>
+    <md-input-container>
+      <md-icon mdPrefix><i class="material-icons">search</i></md-icon>
+      <input mdInput type="search"
+             name="search"
+             placeholder="Book Search"
+             [(ngModel)]="searchContent"
+             (input)="getAllBooks(searchContent)" />
+    </md-input-container>
+  </form>
+</md-toolbar>
 <md-grid-list *ngFor="let book of books">
   <md-grid-tile>
     <app-book [book]="book"></app-book>
