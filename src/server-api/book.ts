@@ -78,13 +78,16 @@ export class Book implements IBook {
   }
 
   static search(content: string) {
-    content = content.toString().toLowerCase();
+    const words = content.toString().toLowerCase().trim().split(/\s+/)
+    ;
     const books = Book.getAllBooks();
     return books.filter(book => {
-      return book.bookName.toLowerCase().includes(content)
-        || book.description.toLowerCase().includes(content)
-        || book.categories.some(c => c.name.toLowerCase().includes(content));
-      // || book.authors.some(a => a.name.toLowerCase().includes(content));
+      return words.some(w => {
+        return book.bookName.toLowerCase().includes(w)
+          || book.description.toLowerCase().includes(w)
+          || book.authors.some(a => a.name.toLowerCase().includes(w))
+          || book.categories.some(c => c.name.toLowerCase().includes(w));
+      });
     });
   }
 }
@@ -96,7 +99,7 @@ BookRouter.get('/book-list', (req, res) => {
 });
 
 BookRouter.post('/book-search', (req, res) => {
-  res.json(Book.search(req.body.content)); console.log(req.body);
+  res.json(Book.search(req.body.content));
 });
 
 BookRouter.get('/:bookId', (req, res) => {

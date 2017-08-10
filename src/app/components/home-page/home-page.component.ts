@@ -1,5 +1,9 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {MdDialog} from '@angular/material';
+import {UserLoginComponent} from '../user-login/user-login.component';
+import {UserCreateAccountComponent} from '../user-create-account/user-create-account.component';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,14 +12,14 @@ import {Router} from '@angular/router';
 })
 export class HomePageComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dialog: MdDialog, private userService: UserService) {
   }
 
   routingToLogin() {
-    this.router.navigate(['account', 'login']);
+    const dialog = this.dialog.open(UserLoginComponent, {data: {}});
   }
 
   routingToCreate() {
-    this.router.navigate(['account', 'create']);
+    const dialog = this.dialog.open(UserCreateAccountComponent);
   }
 }
