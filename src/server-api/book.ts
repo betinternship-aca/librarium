@@ -26,7 +26,7 @@ export class Book implements IBook {
   editionYear: Date;
   language?: string;
   description: string;
-  count: number;
+  reserved = false;
   price: number;
 
   constructor(data) {
