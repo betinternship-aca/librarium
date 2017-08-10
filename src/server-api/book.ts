@@ -9,6 +9,7 @@ import {IAuthor} from '../app/defines/IAuthor';
 import {ICategory} from '../app/defines/ICategory';
 import {Category} from './category';
 import {Organization} from './organization';
+import {User} from './user';
 
 
 const filePath = join(__dirname, './data/books.db.json');
@@ -25,7 +26,7 @@ export class Book implements IBook {
   editionYear: Date;
   language?: string;
   description: string;
-  count: number;
+  reserved = false;
   price: number;
 
   constructor(data) {
@@ -77,6 +78,24 @@ export class Book implements IBook {
     return data;
   }
 
+  static reserveBook(bookId: string) {
+    const current = this.getBook(bookId);
+    if(!User.loggedInUser) {
+      throw new Error('there is no logged in user');
+    }
+    if(current.reserved ) {
+      throw new Error('this book is already reserved');
+    }
+    current.reserved = true;
+    Book.updateBook(current);
+    Order.createOrder({
+      bookId,
+      userId: User.loggedInUser.userId,
+      orderDate: new Date(),
+      orgId: current.orgId
+    });
+  }
+
   static search(content: string) {
     const words = content.toString().toLowerCase().trim().split(/\s+/)
     ;
@@ -102,6 +121,10 @@ BookRouter.post('/book-search', (req, res) => {
   res.json(Book.search(req.body.content));
 });
 
+BookRouter.get('/reserve/:bookId', (req, res) => {
+  res.json(Book.reserveBook(req.params.bookId));
+});
+
 BookRouter.get('/:bookId', (req, res) => {
   res.json(Book.getBook(req.params.bookId));
 });
@@ -114,7 +137,7 @@ BookRouter.post('/', (req, res) => {
 // update book
 BookRouter.post('/:bookId', (req, res) => {
   const data = req.body;
-  data.id = req.params.bookId;
+  data.bookId = req.params.bookId;
   res.json(Book.updateBook(data));
 });
 

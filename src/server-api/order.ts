@@ -7,38 +7,25 @@ import {readFileSync, writeFileSync} from 'fs';
 import {createGUID} from './common';
 
 const ordersFilePath = join(__dirname, 'data/orders.db.json');
-// const booksFilePath = join(__dirname, 'data/books.db.json');
-// const usersFilePath = join(__dirname, 'data/users.db.json');
 
 export class Order {
   orderId: string = createGUID();
   userId: string;
   bookId: string;
+  orgId: string;
   orderDate: Date;
-  orderDays: number;
+  returnDate: Date = null;
 
   constructor(data) {
     Object.assign(this, data);
-
-    const nowDate: Date = new Date();
-    const date: Date = this.orderDate;
-    const days: number = this.orderDays;
-
-    this.orderDate = date && nowDate.valueOf() < date.valueOf() ? date : nowDate;
-    this.orderDays = days && days > 0 ? days : 30;
-  }
-
-
-  static getOrder(orderId) {
-    return Order.getAllOrders().find(o => o.orderId === orderId && o.orderId === orderId);
-  }
-
-  static getOrderIndex(orderId) {
-    return Order.getAllOrders().findIndex(o => o.orderId === orderId);
   }
 
   static getAllOrders(): Order[] {
     return JSON.parse(readFileSync(ordersFilePath).toString());
+  }
+
+  static getOrder(orderId) {
+    return Order.getAllOrders().find(o => o.orderId === orderId);
   }
 
   static getUserOrders(userId): Order[] {
@@ -63,7 +50,7 @@ export class Order {
 
   static deleteOrder(orderId) {
     const orders = this.getAllOrders();
-    const index = this.getOrderIndex(orderId);
+    const index = orders.findIndex((order) => order.orderId === orderId);
     orders.splice(index, 1);
     this.saveAllOrders(orders);
   }
@@ -71,10 +58,10 @@ export class Order {
   static updateOrder(data) {
     const order = new Order(data);
     const orders = this.getAllOrders();
-    const index = this.getOrderIndex(data.orderId);
+    const index = orders.findIndex((order) => order.orderId === data.orderId);
     orders.splice(index, 1, order);
     this.saveAllOrders(orders);
-    return data;
+    return order;
   }
 }
 
@@ -89,7 +76,7 @@ OrderRouter.get('/:orderId', (req, res) => {
 });
 
 // create order
-OrderRouter.post('/', (req, res) => {
+OrderRouter.post('/userId/', (req, res) => {
   res.json(Order.createOrder(req.body));
 });
 

@@ -1,41 +1,24 @@
 [
   {
-    "orgId": "285e1c62-0faf-43df-ed8e-dd783efd100b",
-    "country": "",
-    "address": "a",
-    "telephone": "a",
-    "name": "a",
-    "login": "a",
-    "password": "a",
-    "email": "a"
+    "orgId": "cced0812-e14d-29f5-a8ee-af2716ef13b2",
+    "name": "lib1",
+    "login": "lib1",
+    "password": "lib1",
+    "email": "lib@gmail.com",
+    "countryId": "f3e773cd-b447-6246-9b8a-7f59684ba7c3",
+    "address": "bla, bla, bla",
+    "description": "lib1",
+    "telephone": "123"
   },
   {
-    "orgId": "66778a56-8034-bdc6-fb55-c92895ffed64",
-    "name": "b",
-    "login": "b",
-    "email": "b",
-    "password": "b",
-    "country": "",
-    "address": "b",
-    "telephone": "b"
-  },
-  {
-    "orgId": "09f88a5e-150d-ce1a-4f9f-9deacbc5e9e2",
-    "name": "c",
-    "login": "c",
-    "password": "c",
-    "email": "c",
-    "address": "c",
-    "telephone": "c"
-  },
-  {
-    "orgId": "a90878e6-400a-ad12-8048-33a4f788e3b1",
-    "name": "d",
-    "login": "d",
-    "password": "d",
-    "email": "d",
-    "address": "d",
-    "telephone": "d",
-    "countryId": "77b1526c-ecb6-9bc9-5cf9-d7c9e002cdcc"
+    "orgId": "ea8545fb-306b-f4bf-0a9f-5f53bb6c1029",
+    "name": "lib2",
+    "login": "lib2",
+    "password": "lib2",
+    "email": "lib2@gmail.com",
+    "countryId": "6f6d158c-a4b3-503e-85f8-7f47d8f1c1f5",
+    "address": "address",
+    "description": "lib2",
+    "telephone": "147"
   }
 ]

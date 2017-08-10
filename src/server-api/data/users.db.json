@@ -1,31 +1,12 @@
 [
   {
-    "userId": "4f931d2c-1206-5067-2883-84b40697a6d5",
-    "name": "c",
-    "login": "c",
-    "password": "c",
-    "email": "c",
-    "address": "c",
-    "telephone": "c"
-  },
-  {
-    "userId": "975748bf-d214-2573-59f8-005e2c75e03d",
-    "name": "d",
-    "login": "d",
-    "password": "d",
-    "email": "d",
-    "gender": "d",
-    "address": "d",
-    "telephone": "d"
-  },
-  {
-    "userId": "a681d7ca-1559-a7f9-2782-66bf95d706ed",
-    "name": "n",
-    "login": "n",
-    "password": "n",
-    "email": "n",
-    "gender": "n",
-    "address": "n",
-    "telephone": "n"
+    "userId": "ca9796fc-1fd1-8054-aa3a-dc983d6a6891",
+    "name": "user1",
+    "login": "user1",
+    "password": "user1",
+    "email": "user1",
+    "gender": "female",
+    "address": "address 1",
+    "telephone": "123"
   }
 ]

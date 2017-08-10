@@ -14,6 +14,10 @@ export class BookService {
     return this.http.get(`/api/book/book-list`) as Observable<IBook[]>;
   }
 
+  reserve(bookId) {
+    return this.http.get(`/api/book/reserve/${bookId}`);
+  }
+
   search(content: string) {
     return this.http.post(`/api/book/book-search`, {content})  as Observable<IBook[]>;
   }

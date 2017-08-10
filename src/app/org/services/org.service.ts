@@ -16,6 +16,7 @@ export class OrgService {
   login(data: ILoginData) {
     return this.http.post('/api/org/login', data);
   }
+
   logout() {
     return this.http.get('/api/org/logout');
   }
