@@ -17,4 +17,9 @@ img {
   height: 16px;
   word-break: break-all;
 }
+md-card-subtitle {
+  a:not(:first-of-type) {
+    margin-left: 10px;
+  }
+}
 

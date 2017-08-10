@@ -9,6 +9,7 @@ import {IAuthor} from '../app/defines/IAuthor';
 import {ICategory} from '../app/defines/ICategory';
 import {Category} from './category';
 import {Organization} from './organization';
+import {User} from './user';
 
 
 const filePath = join(__dirname, './data/books.db.json');
@@ -25,7 +26,7 @@ export class Book implements IBook {
   editionYear: Date;
   language?: string;
   description: string;
-  count: number;
+  reserved = false;
   price: number;
 
   constructor(data) {
@@ -77,14 +78,35 @@ export class Book implements IBook {
     return data;
   }
 
+  static reserveBook(bookId: string) {
+    const current = this.getBook(bookId);
+    if(!User.loggedInUser) {
+      throw new Error('there is no logged in user');
+    }
+    if(current.reserved ) {
+      throw new Error('this book is already reserved');
+    }
+    current.reserved = true;
+    Book.updateBook(current);
+    Order.createOrder({
+      bookId,
+      userId: User.loggedInUser.userId,
+      orderDate: new Date(),
+      orgId: current.orgId
+    });
+  }
+
   static search(content: string) {
-    content = content.toString().toLowerCase();
+    const words = content.toString().toLowerCase().trim().split(/\s+/)
+    ;
     const books = Book.getAllBooks();
     return books.filter(book => {
-      return book.bookName.toLowerCase().includes(content)
-        || book.description.toLowerCase().includes(content)
-        || book.categories.some(c => c.name.toLowerCase().includes(content));
-      // || book.authors.some(a => a.name.toLowerCase().includes(content));
+      return words.some(w => {
+        return book.bookName.toLowerCase().includes(w)
+          || book.description.toLowerCase().includes(w)
+          || book.authors.some(a => a.name.toLowerCase().includes(w))
+          || book.categories.some(c => c.name.toLowerCase().includes(w));
+      });
     });
   }
 }
@@ -96,7 +118,11 @@ BookRouter.get('/book-list', (req, res) => {
 });
 
 BookRouter.post('/book-search', (req, res) => {
-  res.json(Book.search(req.body.content)); console.log(req.body);
+  res.json(Book.search(req.body.content));
+});
+
+BookRouter.get('/reserve/:bookId', (req, res) => {
+  res.json(Book.reserveBook(req.params.bookId));
 });
 
 BookRouter.get('/:bookId', (req, res) => {
@@ -111,7 +137,7 @@ BookRouter.post('/', (req, res) => {
 // update book
 BookRouter.post('/:bookId', (req, res) => {
   const data = req.body;
-  data.id = req.params.bookId;
+  data.bookId = req.params.bookId;
   res.json(Book.updateBook(data));
 });
 
