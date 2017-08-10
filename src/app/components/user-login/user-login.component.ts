@@ -11,11 +11,13 @@ import {UserService} from '../../services/user.service';
 })
 export class UserLoginComponent implements OnInit {
   loginData = {} as ILoginData;
+  errorMsg: string | null = null;
 
   constructor(private userService: UserService, private router: Router) { }
   login() {
     this.userService.login(this.loginData)
-      .subscribe(() => this.router.navigate(['home']));
+      .subscribe(() => this.router.navigate(['home']),
+      () => this.errorMsg = 'Incorrect login or password');
   }
 
   ngOnInit() {
