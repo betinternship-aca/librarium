@@ -26,7 +26,7 @@ export class Book implements IBook {
   editionYear: Date;
   language?: string;
   description: string;
-  reserved = false;
+  count: number;
   price: number;
 
   constructor(data) {
@@ -39,8 +39,8 @@ export class Book implements IBook {
     return JSON.parse(readFileSync(filePath).toString()).map(data => new Book(data));
   }
 
-  static getBook(bookId: string): Book {
-    return this.getAllBooks().find(b => b.bookId === bookId);
+  static getBook(id: string): Book {
+    return this.getAllBooks().find(b => b.bookId === id);
   }
 
   static createBook(data) {
@@ -54,9 +54,10 @@ export class Book implements IBook {
 
   static updateBook(data) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.bookId === data.bookId);
+    const bookIndex = books.findIndex(b => b.bookId === data.id);
     books.splice(bookIndex, 1, this.clearBookData(data));
     this.saveAllBooks(books);
+    data.orgId = Organization.loggedInOrg.orgId;
     return new Book(data);
   }
 
@@ -94,12 +95,27 @@ export class Book implements IBook {
       orgId: current.orgId
     });
   }
+
+  static search(content: string) {
+    content = content.toString().toLowerCase();
+    const books = Book.getAllBooks();
+    return books.filter(book => {
+      return book.bookName.toLowerCase().includes(content)
+        || book.description.toLowerCase().includes(content)
+        || book.categories.some(c => c.name.toLowerCase().includes(content));
+      // || book.authors.some(a => a.name.toLowerCase().includes(content));
+    });
+  }
 }
 
 export const BookRouter = express.Router();
 
 BookRouter.get('/book-list', (req, res) => {
   res.json(Book.getAllBooks());
+});
+
+BookRouter.post('/book-search', (req, res) => {
+  res.json(Book.search(req.body.content)); console.log(req.body);
 });
 
 BookRouter.get('/reserve/:bookId', (req, res) => {
@@ -131,4 +147,3 @@ BookRouter.delete('/:bookId', (req, res) => {
 BookRouter.get('/:bookId/orders', (req, res) => {
   res.json(Order.getBookOrders(req.params.bookId));
 });
-
