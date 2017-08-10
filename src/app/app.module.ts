@@ -15,6 +15,7 @@ import {BookComponent} from './components/book/book.component';
 import {BookService} from './services/book.service';
 import {FormsModule} from '@angular/forms';
 import {UserService} from './services/user.service';
+import { BookPreviewComponent } from './components/book-preview/book-preview.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {UserService} from './services/user.service';
     HomePageComponent,
     UserCreateAccountComponent,
     UserLoginComponent,
-    UserLoginPageComponent
+    UserLoginPageComponent,
+    BookPreviewComponent
   ],
   imports: [
     AppCommonModule,
@@ -34,6 +36,7 @@ import {UserService} from './services/user.service';
     FormsModule,
     OrgModule
   ],
+  entryComponents: [BookPreviewComponent],
   providers: [
     BookService,
     UserService

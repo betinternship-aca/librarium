@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {IBook} from '../../defines/IBook';
-import {IAuthor} from '../../defines/IAuthor';
+import {MD_DIALOG_DATA} from '@angular/material';
 import {ICategory} from '../../defines/ICategory';
+import {IAuthor} from '../../defines/IAuthor';
 
 @Component({
   selector: 'app-book-preview',
@@ -10,13 +11,13 @@ import {ICategory} from '../../defines/ICategory';
 })
 export class BookPreviewComponent implements OnInit {
   @Input()
-  book: IBook;
-  @Input()
-  author: IAuthor;
-  @Input()
-  category: ICategory;
+  book;
+  category: ICategory[];
+  author: IAuthor[];
+  constructor(@Inject(MD_DIALOG_DATA) data: IBook) {
+    this.book = data;
+  }
 
-  constructor() { }
 
   ngOnInit() {
   }

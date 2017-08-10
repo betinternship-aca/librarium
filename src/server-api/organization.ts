@@ -69,8 +69,8 @@ export class Organization implements IOrganization {
     this.saveAllOrg(orgs);
   }
 
-  static saveAllOrg(organizationList) {
-    writeFileSync(filePath, JSON.stringify(organizationList, null, 2));
+  static saveAllOrg(orgList) {
+    writeFileSync(filePath, JSON.stringify(orgList, null, 2));
   }
 
   static login(loginData: ILoginData) {

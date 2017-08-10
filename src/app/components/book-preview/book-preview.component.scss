@@ -1,0 +1,36 @@
+:host {
+  background-color: rgba(0, 14, 255, 0.11);
+  display: block;
+  width:500px;
+
+  span.body {
+    background-color: transparent;
+    display: block;
+    left: 0;
+    position: relative;
+    top: 0;
+    md-card {
+      background: #ffffff;
+      box-sizing: border-box;
+      display: block;
+      padding: 18px 30px 10px;
+      position: relative;
+      width: 100%;
+      a {
+        display: block;
+        margin-top: 5px;
+      }
+      span {
+        display: block;
+        margin-top: 5px;
+      }
+      img{
+        width: 100%;
+        margin: 0px auto;
+        height: 400px;
+      }
+
+    }
+  }
+
+}
