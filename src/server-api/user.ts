@@ -61,6 +61,7 @@ export class User implements IUser {
   static saveAllUsers(userList) {
     writeFileSync(filePath, JSON.stringify(userList, null, 2));
   }
+
   static login(loginData: ILoginData) {
     return this.getAllUsers()
       .find(user => user.login === loginData.login && user.password === loginData.password);
@@ -73,6 +74,12 @@ UserRouter.get('/user-list', (req, res) => {
   res.json(User.getAllUsers());
 });
 
+UserRouter.post('/reserve/:bookId', (req, res) => {
+
+});
+
+
+
 UserRouter.get('/:userId', (req, res) => {
   res.json(User.getUser(req.params.id));
 });
@@ -81,6 +88,7 @@ UserRouter.get('/:userId', (req, res) => {
 UserRouter.post('/', (req, res) => {
   res.json(User.createUser(req.body));
 });
+
 UserRouter.post('/login', (req, res) => {
   const org = User.login(req.body);
   if (!org) {
@@ -91,6 +99,7 @@ UserRouter.post('/login', (req, res) => {
   User.loggedInUser = org;
   res.end();
 });
+
 UserRouter.get('/logout', (req, res) => {
   User.loggedInUser = null;
   res.end();

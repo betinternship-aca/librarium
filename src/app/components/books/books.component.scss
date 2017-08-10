@@ -1,6 +1,4 @@
-md-grid-list {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-content: stretch;
+md-grid-tile {
+  display: inline-block;
+  vertical-align: middle;
 }

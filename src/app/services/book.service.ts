@@ -14,4 +14,7 @@ export class BookService {
     return this.http.get(`/api/book/book-list`) as Observable<IBook[]>;
   }
 
+  reserve(bookId) {
+    return this.http.get(`/api/book/reserve/${bookId}`);
+  }
 }

@@ -13,6 +13,6 @@ export interface IBook {
   editionYear: Date;
   image: string;
   language?: string;
-  count: number;
+  reserved: boolean;
   price: number;
 }

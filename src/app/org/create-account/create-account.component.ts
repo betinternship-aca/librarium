@@ -5,11 +5,6 @@ import {Router} from '@angular/router';
 import {CountryService} from '../services/country.service';
 import {ICountry} from '../../defines/ICountry';
 
-
-
-
-
-
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -26,7 +21,7 @@ export class CreateAccountComponent implements OnInit {
 
   createOrg() {
     this.orgService.createOrg(this.data)
-      .subscribe(() => this.router.navigate(['/org/books']));
+      .subscribe(() => this.router.navigate(['/org/home/books']));
   }
 
   ngOnInit() {

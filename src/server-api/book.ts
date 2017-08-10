@@ -9,6 +9,7 @@ import {IAuthor} from '../app/defines/IAuthor';
 import {ICategory} from '../app/defines/ICategory';
 import {Category} from './category';
 import {Organization} from './organization';
+import {User} from './user';
 
 
 const filePath = join(__dirname, './data/books.db.json');
@@ -25,7 +26,7 @@ export class Book implements IBook {
   editionYear: Date;
   language?: string;
   description: string;
-  count: number;
+  reserved = false;
   price: number;
 
   constructor(data) {
@@ -38,8 +39,8 @@ export class Book implements IBook {
     return JSON.parse(readFileSync(filePath).toString()).map(data => new Book(data));
   }
 
-  static getBook(id: string): Book {
-    return this.getAllBooks().find(b => b.bookId === id);
+  static getBook(bookId: string): Book {
+    return this.getAllBooks().find(b => b.bookId === bookId);
   }
 
   static createBook(data) {
@@ -53,10 +54,9 @@ export class Book implements IBook {
 
   static updateBook(data) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.bookId === data.id);
+    const bookIndex = books.findIndex(b => b.bookId === data.bookId);
     books.splice(bookIndex, 1, this.clearBookData(data));
     this.saveAllBooks(books);
-    data.orgId = Organization.loggedInOrg.orgId;
     return new Book(data);
   }
 
@@ -76,12 +76,34 @@ export class Book implements IBook {
     delete data.authors;
     return data;
   }
+
+  static reserveBook(bookId: string) {
+    const current = this.getBook(bookId);
+    if(!User.loggedInUser) {
+      throw new Error('there is no logged in user');
+    }
+    if(current.reserved ) {
+      throw new Error('this book is already reserved');
+    }
+    current.reserved = true;
+    Book.updateBook(current);
+    Order.createOrder({
+      bookId,
+      userId: User.loggedInUser.userId,
+      orderDate: new Date(),
+      orgId: current.orgId
+    });
+  }
 }
 
 export const BookRouter = express.Router();
 
 BookRouter.get('/book-list', (req, res) => {
   res.json(Book.getAllBooks());
+});
+
+BookRouter.get('/reserve/:bookId', (req, res) => {
+  res.json(Book.reserveBook(req.params.bookId));
 });
 
 BookRouter.get('/:bookId', (req, res) => {
@@ -96,7 +118,7 @@ BookRouter.post('/', (req, res) => {
 // update book
 BookRouter.post('/:bookId', (req, res) => {
   const data = req.body;
-  data.id = req.params.bookId;
+  data.bookId = req.params.bookId;
   res.json(Book.updateBook(data));
 });
 
@@ -109,3 +131,4 @@ BookRouter.delete('/:bookId', (req, res) => {
 BookRouter.get('/:bookId/orders', (req, res) => {
   res.json(Order.getBookOrders(req.params.bookId));
 });
+

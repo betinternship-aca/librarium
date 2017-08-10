@@ -13,4 +13,9 @@ img {
   overflow: hidden;
   height: 16px;
 }
+md-card-subtitle {
+  a:not(:first-of-type) {
+    margin-left: 10px;
+  }
+}
 

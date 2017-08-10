@@ -15,6 +15,7 @@ import {BookComponent} from './components/book/book.component';
 import {BookService} from './services/book.service';
 import {FormsModule} from '@angular/forms';
 import {UserService} from './services/user.service';
+import {OrderService} from './services/order.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {UserService} from './services/user.service';
   ],
   providers: [
     BookService,
-    UserService
+    UserService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

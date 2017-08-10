@@ -1,16 +1,8 @@
 [
   {
-    "authorId": "398352ec-5433-cded-faa6-ad846561c55d",
-    "name": "dart waider",
-    "bornDate": "1994",
-    "deathDate": "2017",
-    "countryId": "07f70914-3aa8-a9b4-8a1c-aa6204585cc5"
-  },
-  {
     "authorId": "61d30ad6-1cee-135a-21b5-64a69a22f47a",
     "name": "Suzanne Collins",
     "bornDate": "August 11, 1962",
-    "deathDate": "-",
     "countryId": "29dd71d2-d06d-2c7e-5f05-0794c404fcbb"
   },
   {
@@ -18,5 +10,35 @@
     "name": "Hakob Poghosyan",
     "bornDate": "1995-06-12",
     "countryId": "Armenia"
+  },
+  {
+    "authorId": "76d40e02-2537-7cd6-c8fd-84a52ae56fc8",
+    "name": "Joan",
+    "bornDate": "1956-03-15"
+  },
+  {
+    "authorId": "cf7f7ce4-c113-7708-e0e8-75266fc9908f",
+    "name": "nil gejmen",
+    "bornDate": "1960-11-10"
+  },
+  {
+    "authorId": "25e7b372-c2c8-6e22-003f-b782a5a620fc",
+    "name": "veronika roth",
+    "bornDate": "1988-08-19"
+  },
+  {
+    "authorId": "ff54fadc-8eb5-3f96-cb66-131304c9c1f1",
+    "name": "Lara Jean",
+    "bornDate": "2000-01-01"
+  },
+  {
+    "authorId": "503ba8d2-7776-7bce-0e88-a19859a49c2f",
+    "name": " Сара Дж. Маас",
+    "bornDate": "1000-02-02"
+  },
+  {
+    "authorId": "7ba2b7dc-4446-a99b-dadc-58ef4a0d1cbe",
+    "name": "Lauren Oliver ",
+    "bornDate": "2005-05-05"
   }
 ]
