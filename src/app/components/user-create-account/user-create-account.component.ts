@@ -11,12 +11,17 @@ import {UserService} from '../../services/user.service';
 })
 export class UserCreateAccountComponent implements OnInit {
   data = {} as IUser;
+  genders = [
+    {value: 'female', viewValue: 'Female'},
+    {value: 'male', viewValue: 'Male'}
+  ];
 
   constructor(private userService: UserService, private router: Router) { }
   createUser() {
     this.userService.createUser(this.data)
       .subscribe(() => this.router.navigate(['home']));
   }
+
 
   ngOnInit() {
   }
