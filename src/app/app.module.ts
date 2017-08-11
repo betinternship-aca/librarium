@@ -39,7 +39,7 @@ import { ReservedBooksComponent } from './components/reserved-books/reserved-boo
     FormsModule,
     OrgModule
   ],
-  entryComponents: [BookPreviewComponent],
+  entryComponents: [BookPreviewComponent, UserLoginComponent],
   providers: [
     BookService,
     UserService,

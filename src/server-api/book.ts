@@ -27,7 +27,6 @@ export class Book implements IBook {
   language?: string;
   description: string;
   reserved = false;
-  price: number;
 
   constructor(data) {
     Object.assign(this, data);
@@ -57,7 +56,6 @@ export class Book implements IBook {
     const bookIndex = books.findIndex(b => b.bookId === data.id);
     books.splice(bookIndex, 1, this.clearBookData(data));
     this.saveAllBooks(books);
-    data.orgId = Organization.loggedInOrg.orgId;
     return new Book(data);
   }
 

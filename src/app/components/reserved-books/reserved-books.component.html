@@ -1,1 +1,9 @@
-<img md-card-image [src]="book.image">
+<md-card>
+  <img md-card-image [src]="user.order.book.image">
+  <md-card-title [innerText]="user.order.book.bookName"></md-card-title>
+  <md-card-content>
+    <a *ngFor="let author of user.order.authors">Author: {{author.name}}</a>
+    <a *ngFor="let category of user.order.book.categories">Category: {{category.name}}</a>
+    <span >Edition year: {{user.order.book.editionYear}}</span>
+  </md-card-content>
+</md-card>

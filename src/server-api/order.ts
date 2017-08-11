@@ -71,14 +71,19 @@ OrderRouter.get('/order-list', (req, res) => {
   res.json(Order.getAllOrders());
 });
 
-OrderRouter.get('/:orderId', (req, res) => {
-  res.json(Order.getOrder(req.params.orderId));
-});
-
 // create order
 OrderRouter.post('/userId/', (req, res) => {
   res.json(Order.createOrder(req.body));
 });
+
+OrderRouter.get('/reserved/:userId', (req, res) => {
+  res.json(Order.getUserOrders(this.params.userId));
+});
+
+OrderRouter.get('/:orderId', (req, res) => {
+  res.json(Order.getOrder(req.params.orderId));
+});
+
 
 // update order
 OrderRouter.post('/:orderId', (req, res) => {
