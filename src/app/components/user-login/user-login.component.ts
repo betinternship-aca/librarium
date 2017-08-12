@@ -16,15 +16,13 @@ export class UserLoginComponent implements OnInit {
 
   constructor(private userService: UserService,
               private router: Router,
-              @Inject(MD_DIALOG_DATA) data: ILoginData,
               private dialog: MdDialog,
               private dialogRef: MdDialogRef<ILoginData>) {
   }
 
   login() {
-    const obs =
     this.userService.login(this.loginData)
-      .subscribe(() => this.router.navigate(['home']),
+      .subscribe(() => this.dialogRef.close(),
       () => this.errorMsg = 'Incorrect login or password');
   }
 

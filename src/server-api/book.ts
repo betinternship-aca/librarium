@@ -78,12 +78,6 @@ export class Book implements IBook {
 
   static reserveBook(bookId: string) {
     const current = this.getBook(bookId);
-    if(!User.loggedInUser) {
-      throw new Error('there is no logged in user');
-    }
-    if(current.reserved ) {
-      throw new Error('this book is already reserved');
-    }
     current.reserved = true;
     Book.updateBook(current);
     Order.createOrder({
@@ -95,8 +89,7 @@ export class Book implements IBook {
   }
 
   static search(content: string) {
-    const words = content.toString().toLowerCase().trim().split(/\s+/)
-    ;
+    const words = content.toString().toLowerCase().trim().split(/\s+/);
     const books = Book.getAllBooks();
     return books.filter(book => {
       return words.some(w => {

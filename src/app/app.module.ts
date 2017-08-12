@@ -18,7 +18,7 @@ import {UserService} from './services/user.service';
 import {OrderService} from './services/order.service';
 import { BookPreviewComponent } from './components/book-preview/book-preview.component';
 import { ReservedBooksComponent } from './components/reserved-books/reserved-books.component';
-import { ReservedBookComponent } from './components/reserved-book/reserved-book.component';
+import {ReservedBookComponent} from './components/reserved-book/reserved-book.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { ReservedBookComponent } from './components/reserved-book/reserved-book.
     FormsModule,
     OrgModule
   ],
-  entryComponents: [BookPreviewComponent, UserLoginComponent],
+  entryComponents: [BookPreviewComponent, UserLoginPageComponent],
   providers: [
     BookService,
     UserService,

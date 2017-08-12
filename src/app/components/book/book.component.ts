@@ -3,6 +3,8 @@ import {IBook} from '../../defines/IBook';
 import {MdDialog} from '@angular/material';
 import {BookService} from '../../services/book.service';
 import {BookPreviewComponent} from '../book-preview/book-preview.component';
+import {clone} from '../../defines/common';
+import {UserLoginComponent} from '../user-login/user-login.component';
 
 @Component({
   selector: 'app-book',
@@ -17,7 +19,8 @@ export class BookComponent implements OnInit {
   constructor(private dialog: MdDialog, private bookService: BookService) {}
 
   reserve() {
-    this.bookService.reserve(this.book.bookId).subscribe(() => this.book.reserved = true);
+    this.bookService.reserve(this.book.bookId).subscribe(() => this.book.reserved = true, () =>
+      this.dialog.open(UserLoginComponent));
   }
   createPreview() {
     const dialogRef = this.dialog.open(BookPreviewComponent, {
