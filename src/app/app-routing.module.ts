@@ -36,7 +36,7 @@ const routes: Routes = [
     component: HomePageComponent,
     children: [
       {
-        path: 'order/:userId',
+        path: 'user/reserved',
         component: ReservedBooksComponent
       }
     ]

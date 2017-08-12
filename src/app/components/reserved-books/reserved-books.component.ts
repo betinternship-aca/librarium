@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {OrderService} from '../../services/order.service';
 import {BookService} from 'app/services/book.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {BookPreviewComponent} from '../book-preview/book-preview.component';
+import {IBook} from '../../defines/IBook';
+import {MdDialog} from '@angular/material';
 
 
 @Component({
@@ -15,16 +18,14 @@ export class ReservedBooksComponent implements OnInit {
   @Input()
   user;
   info;
-  constructor(activatedRoute: ActivatedRoute, private orderService: OrderService, private bookService: BookService) {
-    activatedRoute.params
-      .map(params => params.id)
-      .subscribe(id => this.info = orderService.getUserOrders(id));
-  }
+  @Input()
+  books;
+  constructor(private orderService: OrderService, private router: Router) {}
 
   userReserved(userId) {
-    this.orderService.getUserOrders(this.user.userId).subscribe(() => this.order.returnDate === null);
+    this.orderService.getUserOrders(userId)
+      .subscribe(() => this.router.navigate(['/api/user/reserved']));
   }
-
 
   ngOnInit() {
   }

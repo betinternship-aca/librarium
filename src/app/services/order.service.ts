@@ -7,7 +7,7 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   getUserOrders(userId) {
-    return this.http.get(`/api/order/${userId}`);
+    return this.http.get(`/api/reserved/${userId}`);
   }
 
 }

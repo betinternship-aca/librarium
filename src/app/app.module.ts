@@ -18,6 +18,7 @@ import {UserService} from './services/user.service';
 import {OrderService} from './services/order.service';
 import { BookPreviewComponent } from './components/book-preview/book-preview.component';
 import { ReservedBooksComponent } from './components/reserved-books/reserved-books.component';
+import { ReservedBookComponent } from './components/reserved-book/reserved-book.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ReservedBooksComponent } from './components/reserved-books/reserved-boo
     UserLoginComponent,
     UserLoginPageComponent,
     BookPreviewComponent,
-    ReservedBooksComponent
+    ReservedBooksComponent,
+    ReservedBookComponent
   ],
   imports: [
     AppCommonModule,
