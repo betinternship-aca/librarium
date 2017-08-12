@@ -12,23 +12,14 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'account',
-    component: UserLoginPageComponent,
-    children: [
-      {
-        path: 'login',
-        component: UserLoginComponent
-      },
-      {
-        path: 'create',
-        component: UserCreateAccountComponent
-      },
-      {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full'
-      }
-    ]
+    path: 'login',
+    outlet: 'account',
+    component: UserLoginComponent
+  },
+  {
+    path: 'create',
+    outlet: 'account',
+    component: UserCreateAccountComponent
   },
   {
     path: 'home',

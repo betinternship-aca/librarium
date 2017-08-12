@@ -2,8 +2,8 @@
   <label>Librarium</label>
   <span class="spacer"></span>
   <span>
-    <button md-button (click)="routingToLogin()">Sign In</button>
-    <button md-button (click)="routingToCreate()">Sign Up</button>
+    <a md-button [routerLink]="['', { outlets: { account: ['login'] } }]" (click)="openAccountDialog()">Sign In</a>
+    <a md-button [routerLink]="['', { outlets: { account: ['create'] } }]" (click)="openAccountDialog()">Sign Up</a>
   </span>
 </md-toolbar>
 <app-books></app-books> <!--should be router-outlet-->

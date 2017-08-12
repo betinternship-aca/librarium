@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 
 import {IUser} from '../../defines/IUser';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from '@angular/material';
+import {ILoginData} from '../../defines/ILoginData';
 
 @Component({
   selector: 'app-user-create-account',
@@ -12,10 +14,16 @@ import {UserService} from '../../services/user.service';
 export class UserCreateAccountComponent implements OnInit {
   data = {} as IUser;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private router: Router,
+              private userService: UserService,
+              @Inject(MD_DIALOG_DATA) data: IUser,
+              private dialog: MdDialog,
+              private dialogRef: MdDialogRef<ILoginData>) {
+  }
+
   createUser() {
     this.userService.createUser(this.data)
-      .subscribe(() => this.router.navigate(['home']));
+      .subscribe(() => this.dialogRef.close());
   }
 
   ngOnInit() {
