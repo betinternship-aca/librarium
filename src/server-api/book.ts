@@ -54,7 +54,7 @@ export class Book implements IBook {
 
   static updateBook(data) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.bookId === data.id);
+    const bookIndex = books.findIndex(b => b.bookId === data.bookId);
     books.splice(bookIndex, 1, this.clearBookData(data));
     this.saveAllBooks(books);
     return new Book(data);
