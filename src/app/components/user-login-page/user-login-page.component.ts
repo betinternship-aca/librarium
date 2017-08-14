@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {MdDialogRef} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-login-page',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoginPageComponent {
   links = [
-    {link: 'login', label: 'Log In'},
-    {link: 'create', label: 'Create'}
+    {link: ['', {outlets: {account: ['login']}}], label: 'Log In'},
+    {link: ['', {outlets: {account: ['create']}}], label: 'Create'}
   ];
- }
+
+  constructor(router: Router, dialog: MdDialogRef<UserLoginPageComponent>) {
+    dialog.afterClosed().subscribe(() => router.navigate([{outlets: {account: null}}]));
+  }
+}

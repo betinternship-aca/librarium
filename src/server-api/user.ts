@@ -70,6 +70,10 @@ export class User implements IUser {
 
 export const UserRouter = express.Router();
 
+UserRouter.get('/is-logged-in', (req, res) => {
+  res.json(!!User.loggedInUser);
+});
+
 UserRouter.get('/user-list', (req, res) => {
   res.json(User.getAllUsers());
 });
@@ -85,13 +89,13 @@ UserRouter.post('/', (req, res) => {
 });
 
 UserRouter.post('/login', (req, res) => {
-  const org = User.login(req.body);
-  if (!org) {
+  const usr = User.login(req.body);
+  if (!usr) {
     User.loggedInUser = null;
     return res.status(404).end();
   }
 
-  User.loggedInUser = org;
+  User.loggedInUser = usr;
   res.end();
 });
 
