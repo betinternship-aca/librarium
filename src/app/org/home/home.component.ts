@@ -4,8 +4,8 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-nav',
-  templateUrl: './page-nav.component.html',
-  styleUrls: ['./page-nav.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class PageNavComponent implements OnInit {
 

@@ -74,11 +74,6 @@ UserRouter.get('/user-list', (req, res) => {
   res.json(User.getAllUsers());
 });
 
-UserRouter.post('/reserve/:bookId', (req, res) => {
-
-});
-
-
 
 UserRouter.get('/:userId', (req, res) => {
   res.json(User.getUser(req.params.id));
@@ -103,6 +98,10 @@ UserRouter.post('/login', (req, res) => {
 UserRouter.get('/logout', (req, res) => {
   User.loggedInUser = null;
   res.end();
+});
+
+UserRouter.get('/is-logged-in', (req, res) => {
+  res.json(!!this.loggedInUser);
 });
 
 // update user

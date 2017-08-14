@@ -20,6 +20,7 @@ export class BookComponent implements OnInit {
   reserve() {
     this.bookService.reserve(this.book.bookId).subscribe(() => this.book.reserved = true);
   }
+
   createPreview() {
     const dialogRef = this.dialog.open(BookPreviewComponent, {
       data: this.book

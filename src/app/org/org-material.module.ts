@@ -3,17 +3,22 @@ import {
   MdAutocompleteModule, MdButtonModule,
   MdCardModule, MdDialogModule,
   MdInputModule, MdProgressBarModule,
-  MdSelectModule, MdTabsModule, MdToolbarModule
+  MdSelectModule, MdTableModule, MdTabsModule, MdToolbarModule
 } from '@angular/material';
-const materialModules = [MdCardModule,
+import {CdkTableModule} from '@angular/cdk';
+
+const materialModules = [
+  MdCardModule,
   MdButtonModule,
-  MdTabsModule,
   MdInputModule,
   MdDialogModule,
   MdAutocompleteModule,
   MdSelectModule,
   MdProgressBarModule,
-  MdToolbarModule
+  MdTabsModule,
+  MdTableModule,
+  MdToolbarModule,
+  CdkTableModule
 ];
 
 @NgModule({

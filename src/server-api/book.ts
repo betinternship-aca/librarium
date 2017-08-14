@@ -27,7 +27,6 @@ export class Book implements IBook {
   language?: string;
   description: string;
   reserved = false;
-  price: number;
 
   constructor(data) {
     Object.assign(this, data);
@@ -39,8 +38,8 @@ export class Book implements IBook {
     return JSON.parse(readFileSync(filePath).toString()).map(data => new Book(data));
   }
 
-  static getBook(id: string): Book {
-    return this.getAllBooks().find(b => b.bookId === id);
+  static getBook(bookId: string): Book {
+    return this.getAllBooks().find(b => b.bookId === bookId);
   }
 
   static createBook(data) {
@@ -54,16 +53,15 @@ export class Book implements IBook {
 
   static updateBook(data) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.bookId === data.id);
+    const bookIndex = books.findIndex(b => b.bookId === data.bookId);
     books.splice(bookIndex, 1, this.clearBookData(data));
     this.saveAllBooks(books);
-    data.orgId = Organization.loggedInOrg.orgId;
     return new Book(data);
   }
 
-  static deleteBook(id) {
+  static deleteBook(bookId) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.bookId === id);
+    const bookIndex = books.findIndex(b => b.bookId === bookId);
     books.splice(bookIndex, 1);
     this.saveAllBooks(books);
   }
@@ -80,12 +78,7 @@ export class Book implements IBook {
 
   static reserveBook(bookId: string) {
     const current = this.getBook(bookId);
-    if(!User.loggedInUser) {
-      throw new Error('there is no logged in user');
-    }
-    if(current.reserved ) {
-      throw new Error('this book is already reserved');
-    }
+
     current.reserved = true;
     Book.updateBook(current);
     Order.createOrder({
@@ -115,7 +108,8 @@ BookRouter.get('/book-list', (req, res) => {
 });
 
 BookRouter.post('/book-search', (req, res) => {
-  res.json(Book.search(req.body.content)); console.log(req.body);
+  res.json(Book.search(req.body.content));
+  console.log(req.body);
 });
 
 BookRouter.get('/reserve/:bookId', (req, res) => {
@@ -140,8 +134,8 @@ BookRouter.post('/:bookId', (req, res) => {
 
 // delete book
 BookRouter.delete('/:bookId', (req, res) => {
-  const id = req.params.bookId;
-  res.json(Book.deleteBook(id));
+  const bookId = req.params.bookId;
+  res.json(Book.deleteBook(bookId));
 });
 
 BookRouter.get('/:bookId/orders', (req, res) => {

@@ -16,6 +16,8 @@ import {AuthorCreateComponent} from '../author-create/author-create.component';
   styleUrls: ['./book-editor.component.scss']
 })
 export class BookEditorComponent implements OnInit {
+  title: string;
+
   @Input()
   inProgress = false;
 
@@ -38,6 +40,8 @@ export class BookEditorComponent implements OnInit {
     private authorService: AuthorService
   ) {
     this.book = data;
+
+    this.title = data.bookId ? 'Edit book' : 'Add book';
 
     this.authorService.getAllAuthors()
       .subscribe(authors => this.authors = authors as IAuthor[]);

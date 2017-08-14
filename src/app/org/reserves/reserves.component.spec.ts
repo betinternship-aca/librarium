@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageNavComponent } from './page-nav.component';
+import { ReservesComponent } from './reserves.component';
 
-describe('PageNavComponent', () => {
-  let component: PageNavComponent;
-  let fixture: ComponentFixture<PageNavComponent>;
+describe('ReservesComponent', () => {
+  let component: ReservesComponent;
+  let fixture: ComponentFixture<ReservesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageNavComponent ]
+      declarations: [ ReservesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageNavComponent);
+    fixture = TestBed.createComponent(ReservesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

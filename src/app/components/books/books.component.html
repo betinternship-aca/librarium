@@ -10,8 +10,8 @@
     </md-input-container>
   </form>
 </md-toolbar>
-<md-grid-list *ngFor="let book of books">
-  <md-grid-tile>
+<md-grid-list>
+  <md-grid-tile *ngFor="let book of books">
     <app-book [book]="book"></app-book>
   </md-grid-tile>
 </md-grid-list>
