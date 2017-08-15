@@ -17,12 +17,16 @@ export class ReservedBooksComponent implements OnInit {
 
   orders: IOrder[];
 
+
   constructor(private orderService: OrderService, private router: Router) {
     this.orderService.getUserReservations()
       .subscribe(orders => this.orders = orders);
+
   }
 
+
   ngOnInit() {
+
   }
 
 }

@@ -3,7 +3,7 @@
   <app-book-info [book]="order.book"></app-book-info>
   <md-card-content>
     <span>Reserve Date : {{order.orderDate | date:'short'}}</span>
-    <span>Return Date : {{order.returnDate | date:'short'}}</span>
+    <span *ngIf="!isReservation">Return Date : {{order.returnDate | date:'short'}}</span>
   </md-card-content>
 
 
