@@ -17,10 +17,12 @@ import {AppCommonModule} from '../app-common/app-common.module';
 import {OrgService} from './services/org.service';
 import {CategoryService} from './services/category.service';
 import {AccountGuard} from './guards/account.guard';
-import {PageNavComponent} from './page-nav/page-nav.component';
+import {PageNavComponent} from './home/home.component';
 import {CountryService} from './services/country.service';
 import { AuthorCreateComponent } from './author-create/author-create.component';
 import {AuthorService} from './services/author.service';
+import {OrderService} from './services/order.service';
+import {ReservesComponent} from './reserves/reserves.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import {AuthorService} from './services/author.service';
     BookEditorComponent,
     ImageUploadComponent,
     PageNavComponent,
-    AuthorCreateComponent
+    AuthorCreateComponent,
+    ReservesComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -54,7 +57,8 @@ import {AuthorService} from './services/author.service';
     CategoryService,
     CountryService,
     AccountGuard,
-    AuthorService
+    AuthorService,
+    OrderService
   ]
 })
 export class OrgModule {

@@ -14,5 +14,4 @@ export interface IBook {
   image: string;
   language?: string;
   reserved: boolean;
-  price: number;
 }

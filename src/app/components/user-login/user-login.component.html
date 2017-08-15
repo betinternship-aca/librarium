@@ -10,4 +10,5 @@
       <button md-button [disabled]="!loginForm.form.valid" (click)="login()">Log In User</button>
     </md-card-actions>
   </form>
+  <md-error *ngIf="errorMsg" [innerText]="errorMsg"></md-error>
 </md-card-content>

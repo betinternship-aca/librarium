@@ -1,14 +1,12 @@
 <md-card>
-  <img md-card-image [src]="book.image">
-  <md-card-title [innerText]="book.bookName"></md-card-title>
-  <md-card-subtitle>
-    <a *ngFor="let author of book.authors" [innerText]="author.name"></a>
-  </md-card-subtitle>
+
+    <app-book-info [book]="book"></app-book-info>
 
   <md-card-actions>
     <button md-button (click)="createPreview()">Preview</button>
-    <button md-button [disabled]="book.reserved"
-            (click)="reserve()">Reserve
-    </button>
+    <a md-button
+       [disabled]="book.reserved"
+       [routerLink]="['', { outlets: { account: ['login'] } }]"
+       (click)="reserve()">Reserve</a>
   </md-card-actions>
 </md-card>

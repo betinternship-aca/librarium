@@ -17,9 +17,10 @@
       <input mdInput type="email" placeholder="Email" [(ngModel)]="data.email" name="email" required />
     </md-input-container>
 
-    <md-input-container>
-      <input mdInput placeholder="Gender" [(ngModel)]="data.gender" name="gender" required />
-    </md-input-container>
+
+    <md-select placeholder="Gender" [(ngModel)]="data.gender" name="gender" ngDefaultControl>
+      <md-option *ngFor="let gender of genders" [value]="gender.value" [innerText]="gender.viewValue"></md-option>
+    </md-select>
 
 
     <md-input-container>

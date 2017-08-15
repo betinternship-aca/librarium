@@ -1,4 +1,4 @@
-<span md-dialog-title>New Book</span>
+<span md-dialog-title [innerText]="title"></span>
 
   <md-dialog-content class="image">
     <app-image-upload [(ngModel)]="book.image"></app-image-upload>

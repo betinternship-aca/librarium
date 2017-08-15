@@ -4,6 +4,9 @@ import {HomePageComponent} from './components/home-page/home-page.component';
 import {UserLoginPageComponent} from './components/user-login-page/user-login-page.component';
 import {UserLoginComponent} from './components/user-login/user-login.component';
 import {UserCreateAccountComponent} from './components/user-create-account/user-create-account.component';
+import {HistoryComponent} from './components/history/history.component';
+import {BooksComponent} from './components/books/books.component';
+import {ReservedBooksComponent} from './components/reserved-books/reserved-books.component';
 
 const routes: Routes = [
   {
@@ -23,7 +26,26 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent
+    component: HomePageComponent,
+    children: [
+      {
+        path: 'history',
+        component: HistoryComponent
+      },
+      {
+        path: 'reserved',
+        component: ReservedBooksComponent
+      },
+      {
+        path: 'books',
+        component: BooksComponent
+      },
+      {
+        path: '',
+        redirectTo: 'books',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 

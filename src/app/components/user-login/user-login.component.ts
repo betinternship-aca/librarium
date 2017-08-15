@@ -11,6 +11,7 @@ import {MdDialogRef} from '@angular/material';
 })
 export class UserLoginComponent {
   loginData = {} as ILoginData;
+  errorMsg: string | null = null;
 
   constructor(private userService: UserService,
               private dialogRef: MdDialogRef<ILoginData>) {
@@ -18,6 +19,7 @@ export class UserLoginComponent {
 
   login() {
     this.userService.login(this.loginData)
-      .subscribe(() => this.dialogRef.close());
+      .subscribe(() => this.dialogRef.close(),
+      () => this.errorMsg = 'Incorrect login or password');
   }
 }

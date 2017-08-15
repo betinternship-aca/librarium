@@ -27,7 +27,6 @@ export class Book implements IBook {
   language?: string;
   description: string;
   reserved = false;
-  price: number;
 
   constructor(data) {
     Object.assign(this, data);
@@ -39,8 +38,8 @@ export class Book implements IBook {
     return JSON.parse(readFileSync(filePath).toString()).map(data => new Book(data));
   }
 
-  static getBook(id: string): Book {
-    return this.getAllBooks().find(b => b.bookId === id);
+  static getBook(bookId: string): Book {
+    return this.getAllBooks().find(b => b.bookId === bookId);
   }
 
   static createBook(data) {
@@ -60,9 +59,9 @@ export class Book implements IBook {
     return new Book(data);
   }
 
-  static deleteBook(id) {
+  static deleteBook(bookId) {
     const books = this.getAllBooks();
-    const bookIndex = books.findIndex(b => b.bookId === id);
+    const bookIndex = books.findIndex(b => b.bookId === bookId);
     books.splice(bookIndex, 1);
     this.saveAllBooks(books);
   }
@@ -79,6 +78,7 @@ export class Book implements IBook {
 
   static reserveBook(bookId: string) {
     const current = this.getBook(bookId);
+
     current.reserved = true;
     Book.updateBook(current);
     Order.createOrder({
@@ -135,10 +135,7 @@ BookRouter.post('/:bookId', (req, res) => {
 
 // delete book
 BookRouter.delete('/:bookId', (req, res) => {
-  const id = req.params.bookId;
-  res.json(Book.deleteBook(id));
+  const bookId = req.params.bookId;
+  res.json(Book.deleteBook(bookId));
 });
 
-BookRouter.get('/:bookId/orders', (req, res) => {
-  res.json(Order.getBookOrders(req.params.bookId));
-});
