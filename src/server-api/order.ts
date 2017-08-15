@@ -39,25 +39,26 @@ export class Order implements IOrder {
     return Order.getAllOrders().find(o => o.orderId === orderId);
   }
 
-  static getBookOrders(bookId): Order[] {
-    return Order.getAllOrders().filter(o => o.bookId === bookId);
-  }
-
-  static getUserOrders(userId): Order[] {
-    return Order.getAllOrders()
-      .filter(order => order.userId === User.loggedInUser.userId && order.returnDate !== null)
+  static getOrgOrders(): Order[] {
+    return Order.getAllOrders().filter(order => order.orgId === Organization.loggedInOrg.orgId)
       .map(data => new Order(data));
   }
 
-  static getOrgOrders(orgId): Order[] {
-    return Order.getAllOrders().filter(order => order.orgId === orgId).map(data => new Order(data));
+  static getOrgReservations(): Order[] {
+    return Order.getOrgOrders().filter(order => order.returnDate === null);
   }
 
-  static getOrgReservations(): Order[] {
-    return Order.getOrgOrders(Organization.loggedInOrg.orgId).filter(order => order.returnDate === null);
+  static getUserOrders(): Order[] {
+    return Order.getAllOrders().filter(order => order.userId === User.loggedInUser.userId)
+      .map(data => new Order(data));
   }
+
   static getUserReservations(): Order[] {
-    return Order.getUserOrders(User.loggedInUser.userId).filter(order => order.returnDate === null);
+    return Order.getUserOrders().filter(order => order.returnDate === null);
+  }
+
+  static getUserOrderHistory(): Order[] {
+    return Order.getUserOrders().filter(order => order.returnDate !== null);
   }
 
   static saveAllOrders(ordersList) {

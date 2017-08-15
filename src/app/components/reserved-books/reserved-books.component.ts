@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BookPreviewComponent} from '../book-preview/book-preview.component';
 import {IBook} from '../../defines/IBook';
 import {MdDialog} from '@angular/material';
-import {IOrder} from "../../defines/IOrder";
+import {IOrder} from '../../defines/IOrder';
 
 
 @Component({

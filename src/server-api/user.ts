@@ -79,7 +79,7 @@ UserRouter.get('/user-list', (req, res) => {
 });
 
 UserRouter.get('/history', (req, res) => {
-  res.json(Order.getUserOrders());
+  res.json(Order.getUserOrderHistory());
 });
 
 UserRouter.get('/:userId', (req, res) => {
