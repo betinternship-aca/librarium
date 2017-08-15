@@ -78,6 +78,9 @@ UserRouter.get('/user-list', (req, res) => {
   res.json(User.getAllUsers());
 });
 
+UserRouter.get('/history', (req, res) => {
+  res.json(Order.getUserOrders());
+});
 
 UserRouter.get('/:userId', (req, res) => {
   res.json(User.getUser(req.params.id));

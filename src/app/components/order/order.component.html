@@ -1,0 +1,15 @@
+<md-card>
+
+  <app-book-info [book]="order.book"></app-book-info>
+  <md-card-content>
+    <span>Reserve Date : {{order.orderDate | date:'short'}}</span>
+    <span>Return Date : {{order.returnDate | date:'short'}}</span>
+  </md-card-content>
+
+
+  <md-card-actions>
+    <button md-button (click)="createPreview()">Preview</button>
+  </md-card-actions>
+</md-card>
+
+

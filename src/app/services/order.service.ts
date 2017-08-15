@@ -6,7 +6,12 @@ import {IOrder} from '../defines/IOrder';
 @Injectable()
 export class OrderService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
 
+  }
+  getUserOrders() {
+    console.log('getUserOrders from service');
+    return this.http.get(`/api/user/history`) as Observable<IOrder[]>;
+  }
 
 }

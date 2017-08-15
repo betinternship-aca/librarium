@@ -15,6 +15,10 @@ import {BookService} from './services/book.service';
 import {FormsModule} from '@angular/forms';
 import {UserService} from './services/user.service';
 import {BookPreviewComponent} from './components/book-preview/book-preview.component';
+import { HistoryComponent } from './components/history/history.component';
+import {OrderService} from './services/order.service';
+import { BookInfoComponent } from './components/book-info/book-info.component';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import {BookPreviewComponent} from './components/book-preview/book-preview.compo
     UserCreateAccountComponent,
     UserLoginComponent,
     UserLoginPageComponent,
-    BookPreviewComponent
+    BookPreviewComponent,
+    HistoryComponent,
+    BookInfoComponent,
+    OrderComponent
   ],
   imports: [
     AppCommonModule,
@@ -38,7 +45,8 @@ import {BookPreviewComponent} from './components/book-preview/book-preview.compo
   entryComponents: [BookPreviewComponent, UserLoginPageComponent],
   providers: [
     BookService,
-    UserService
+    UserService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

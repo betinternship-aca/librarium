@@ -43,6 +43,12 @@ export class Order implements IOrder {
     return Order.getAllOrders().filter(o => o.bookId === bookId);
   }
 
+  static getUserOrders(): Order[] {
+    return Order.getAllOrders()
+      .filter(order => order.userId === User.loggedInUser.userId && order.returnDate !== null)
+      .map(data => new Order(data));
+  }
+
   static getOrgOrders(orgId): Order[] {
     return Order.getAllOrders().filter(order => order.orgId === orgId).map(data => new Order(data));
   }
