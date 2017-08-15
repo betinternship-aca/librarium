@@ -6,7 +6,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {AccountGuard} from './guards/account.guard';
 import { BooksResolverService } from './services/books-resolver.service';
-import {PageNavComponent} from './page-nav/page-nav.component';
+import {PageNavComponent} from './home/home.component';
+import {ReservesComponent} from './reserves/reserves.component';
 
 
 const orgRoutes: Routes = [
@@ -42,6 +43,10 @@ const orgRoutes: Routes = [
             resolve: {
               books: BooksResolverService
             }
+          },
+          {
+            path: 'reserved',
+            component: ReservesComponent,
           },
           {
             path: '',

@@ -18,8 +18,15 @@ export class BookService {
   return this.http.get(`/api/book/reserve/${bookId}`);
 }
 
+  return(bookId) {
+    return this.http.get(`/api/book/return/${bookId}`);
+  }
+
   search(content: string) {
     return this.http.post(`/api/book/book-search`, {content})  as Observable<IBook[]>;
+  }
+  getBookOrders(bookId) {
+
   }
 
 }

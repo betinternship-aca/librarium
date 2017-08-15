@@ -1,9 +1,0 @@
-<md-card (click)="createPreview()">
-  <img md-card-image [src]="book.image">
-  <md-card-title [innerText]="book.bookName"></md-card-title>
-  <md-card-content>
-    <a *ngFor="let author of book.authors" [innerText]="author.name"></a>
-    <a *ngFor="let category of book.categories" [innerText]="category.name"></a>
-    <span [innerText]="book.editionYear"></span>
-  </md-card-content>
-</md-card>

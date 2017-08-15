@@ -5,6 +5,7 @@ import {UserLoginPageComponent} from './components/user-login-page/user-login-pa
 import {UserLoginComponent} from './components/user-login/user-login.component';
 import {UserCreateAccountComponent} from './components/user-create-account/user-create-account.component';
 import {ReservedBooksComponent} from './components/reserved-books/reserved-books.component';
+import {BooksComponent} from "./components/books/books.component";
 
 const routes: Routes = [
   {
@@ -27,8 +28,17 @@ const routes: Routes = [
     component: HomePageComponent,
     children: [
       {
-        path: 'user/reserved',
+        path: 'books',
+        component: BooksComponent
+      },
+      {
+        path: 'reserved',
         component: ReservedBooksComponent
+      },
+      {
+        path: '',
+        redirectTo: 'books',
+        pathMatch: 'full'
       }
     ]
   }

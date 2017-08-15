@@ -78,11 +78,6 @@ UserRouter.get('/user-list', (req, res) => {
   res.json(User.getAllUsers());
 });
 
-UserRouter.post('/reserve/:bookId', (req, res) => {
-
-});
-
-
 
 UserRouter.get('/:userId', (req, res) => {
   res.json(User.getUser(req.params.id));
@@ -109,6 +104,10 @@ UserRouter.get('/logout', (req, res) => {
   res.end();
 });
 
+UserRouter.get('/is-logged-in', (req, res) => {
+  res.json(!!this.loggedInUser);
+});
+
 // update user
 UserRouter.post('/:userId', (req, res) => {
   const data = req.body;
@@ -122,6 +121,3 @@ UserRouter.delete('/:userId', (req, res) => {
   res.json(User.deleteUser(id));
 });
 
-UserRouter.get('/:userId/orders', (req, res) => {
-  res.json(Order.getBookOrders(req.params.id));
-});

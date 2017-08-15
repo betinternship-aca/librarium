@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReservedBookComponent } from './reserved-book.component';
+import { PageNavComponent } from './home.component';
 
-describe('ReservedBookComponent', () => {
-  let component: ReservedBookComponent;
-  let fixture: ComponentFixture<ReservedBookComponent>;
+describe('PageNavComponent', () => {
+  let component: PageNavComponent;
+  let fixture: ComponentFixture<PageNavComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReservedBookComponent ]
+      declarations: [ PageNavComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReservedBookComponent);
+    fixture = TestBed.createComponent(PageNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

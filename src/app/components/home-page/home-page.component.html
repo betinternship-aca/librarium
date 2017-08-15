@@ -6,5 +6,5 @@
     <a md-button [routerLink]="['', { outlets: { account: ['create'] } }]" (click)="openAccountDialog()">Sign Up</a>
   </span>
 </md-toolbar>
-<app-books></app-books> <!--should be router-outlet-->
+<router-outlet></router-outlet>
 

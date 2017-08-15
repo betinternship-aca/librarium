@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppMaterialModule} from './app-material.module';
 import {AppComponent} from './app.component';
@@ -18,7 +17,7 @@ import {UserService} from './services/user.service';
 import {OrderService} from './services/order.service';
 import { BookPreviewComponent } from './components/book-preview/book-preview.component';
 import { ReservedBooksComponent } from './components/reserved-books/reserved-books.component';
-import {ReservedBookComponent} from './components/reserved-book/reserved-book.component';
+
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import {ReservedBookComponent} from './components/reserved-book/reserved-book.co
     UserLoginComponent,
     UserLoginPageComponent,
     BookPreviewComponent,
-    ReservedBooksComponent,
-    ReservedBookComponent
+    ReservedBooksComponent
   ],
   imports: [
     AppCommonModule,

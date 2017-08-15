@@ -1,0 +1,36 @@
+<md-table #table [dataSource]="dataSource">
+
+  <!-- Book name column -->
+  <ng-container cdkColumnDef="bookName">
+    <md-header-cell *cdkHeaderCellDef>Book name</md-header-cell>
+    <md-cell *cdkCellDef="let order"> {{order.book.bookName}} </md-cell>
+  </ng-container>
+
+
+  <!-- User name Column -->
+  <ng-container cdkColumnDef="userName">
+    <md-header-cell *cdkHeaderCellDef>User name</md-header-cell>
+    <md-cell *cdkCellDef="let order"> {{order.user.name}} </md-cell>
+  </ng-container>
+
+  <!-- Reserve date Column -->
+  <ng-container cdkColumnDef="reserveDate">
+    <md-header-cell *cdkHeaderCellDef>Reserve date</md-header-cell>
+    <md-cell *cdkCellDef="let order"> {{order.orderDate}} </md-cell>
+  </ng-container>
+
+  <!-- return Column -->
+  <ng-container cdkColumnDef="action">
+    <md-header-cell *cdkHeaderCellDef>Action</md-header-cell>
+    <md-cell *cdkCellDef="let order">
+      <button md-raised-button
+              [disabled]="!order.book.reserved"
+              (click)="returnBook(order)"
+              [innerText]="order.book.reserved ? 'Return' : 'Returned'">
+      </button>
+    </md-cell>
+  </ng-container>
+
+  <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+  <md-row *cdkRowDef="let order; columns: displayedColumns;"></md-row>
+</md-table>
