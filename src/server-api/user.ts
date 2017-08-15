@@ -124,6 +124,3 @@ UserRouter.delete('/:userId', (req, res) => {
   res.json(User.deleteUser(id));
 });
 
-UserRouter.get('/:userId/orders', (req, res) => {
-  res.json(Order.getBookOrders(req.params.id));
-});

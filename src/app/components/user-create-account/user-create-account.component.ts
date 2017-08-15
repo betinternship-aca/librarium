@@ -13,6 +13,10 @@ import {ILoginData} from '../../defines/ILoginData';
 })
 export class UserCreateAccountComponent implements OnInit {
   data = {} as IUser;
+  genders = [
+    {value: 'female', viewValue: 'Female'},
+    {value: 'male', viewValue: 'Male'}
+  ];
 
   constructor(private router: Router,
               private userService: UserService,
@@ -25,6 +29,7 @@ export class UserCreateAccountComponent implements OnInit {
     this.userService.createUser(this.data)
       .subscribe(() => this.dialogRef.close());
   }
+
 
   ngOnInit() {
   }

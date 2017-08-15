@@ -19,6 +19,8 @@ import { HistoryComponent } from './components/history/history.component';
 import {OrderService} from './services/order.service';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { OrderComponent } from './components/order/order.component';
+import { ReservedBooksComponent } from './components/reserved-books/reserved-books.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { OrderComponent } from './components/order/order.component';
     BookPreviewComponent,
     HistoryComponent,
     BookInfoComponent,
-    OrderComponent
+    OrderComponent,
+    ReservedBooksComponent
   ],
   imports: [
     AppCommonModule,

@@ -139,6 +139,3 @@ BookRouter.delete('/:bookId', (req, res) => {
   res.json(Book.deleteBook(bookId));
 });
 
-BookRouter.get('/:bookId/orders', (req, res) => {
-  res.json(Order.getBookOrders(req.params.bookId));
-});

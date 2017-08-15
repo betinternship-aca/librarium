@@ -6,6 +6,7 @@ import {UserLoginComponent} from './components/user-login/user-login.component';
 import {UserCreateAccountComponent} from './components/user-create-account/user-create-account.component';
 import {HistoryComponent} from './components/history/history.component';
 import {BooksComponent} from './components/books/books.component';
+import {ReservedBooksComponent} from './components/reserved-books/reserved-books.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'history',
         component: HistoryComponent
+      },
+      {
+        path: 'reserved',
+        component: ReservedBooksComponent
       },
       {
         path: 'books',

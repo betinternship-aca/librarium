@@ -12,6 +12,7 @@ import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from '@angular/material';
 })
 export class UserLoginComponent implements OnInit {
   loginData = {} as ILoginData;
+  errorMsg: string | null = null;
 
   constructor(private userService: UserService,
               private router: Router,
@@ -21,7 +22,8 @@ export class UserLoginComponent implements OnInit {
 
   login() {
     this.userService.login(this.loginData)
-      .subscribe(() => this.dialogRef.close());
+      .subscribe(() => this.dialogRef.close(),
+      () => this.errorMsg = 'Incorrect login or password');
   }
 
   ngOnInit() {

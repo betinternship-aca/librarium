@@ -15,8 +15,8 @@ export class BookService {
   }
 
   reserve(bookId) {
-    return this.http.get(`/api/book/reserve/${bookId}`);
-  }
+  return this.http.get(`/api/book/reserve/${bookId}`);
+}
 
   return(bookId) {
     return this.http.get(`/api/book/return/${bookId}`);
@@ -24,6 +24,9 @@ export class BookService {
 
   search(content: string) {
     return this.http.post(`/api/book/book-search`, {content})  as Observable<IBook[]>;
+  }
+  getBookOrders(bookId) {
+
   }
 
 }

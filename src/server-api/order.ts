@@ -43,7 +43,7 @@ export class Order implements IOrder {
     return Order.getAllOrders().filter(o => o.bookId === bookId);
   }
 
-  static getUserOrders(): Order[] {
+  static getUserOrders(userId): Order[] {
     return Order.getAllOrders()
       .filter(order => order.userId === User.loggedInUser.userId && order.returnDate !== null)
       .map(data => new Order(data));
@@ -55,6 +55,9 @@ export class Order implements IOrder {
 
   static getOrgReservations(): Order[] {
     return Order.getOrgOrders(Organization.loggedInOrg.orgId).filter(order => order.returnDate === null);
+  }
+  static getUserReservations(): Order[] {
+    return Order.getUserOrders(User.loggedInUser.userId).filter(order => order.returnDate === null);
   }
 
   static saveAllOrders(ordersList) {
@@ -104,18 +107,20 @@ export class Order implements IOrder {
 
 export const OrderRouter = express.Router();
 
-OrderRouter.get('/order-list', (req, res) => {
-  res.json(Order.getAllOrders());
-});
-
-OrderRouter.get('/:orderId', (req, res) => {
-  res.json(Order.getOrder(req.params.orderId));
+OrderRouter.get('/reserved', (req, res) => {
+  res.json(Order.getUserReservations());
 });
 
 // create order
 OrderRouter.post('/userId/', (req, res) => {
   res.json(Order.createOrder(req.body));
 });
+
+
+OrderRouter.get('/:orderId', (req, res) => {
+  res.json(Order.getOrder(req.params.orderId));
+});
+
 
 // update order
 OrderRouter.post('/:orderId', (req, res) => {
