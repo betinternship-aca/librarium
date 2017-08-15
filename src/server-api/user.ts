@@ -33,6 +33,10 @@ export class User implements IUser {
     return JSON.parse(readFileSync(filePath).toString());
   }
 
+  static getUser(id: string): User {
+    return this.getAllUsers().find(u => u.userId === id);
+  }
+
   static createUser(data) {
     const user = new User(data);
     const users = this.getAllUsers();

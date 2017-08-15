@@ -17,5 +17,4 @@ export class OrderService {
   getUserReservations() {
     return this.http.get(`/api/order/reserved`) as Observable<IOrder[]>;
   }
-
 }
