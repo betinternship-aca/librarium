@@ -7,8 +7,8 @@
 
   <md-card-actions>
     <button md-button (click)="createPreview()">Preview</button>
-    <a md-button [disabled]="book.reserved"
-       [routerLink]="['', { outlets: { account: ['login'] } }]"
-       (click)="reserve()">Reserve</a>
+    <button md-button [disabled]="book.reserved"
+            (click)="reserve()">Reserve
+    </button>
   </md-card-actions>
 </md-card>

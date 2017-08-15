@@ -1,8 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ILoginData} from '../../defines/ILoginData';
-import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
-import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from '@angular/material';
+import {MdDialogRef} from '@angular/material';
 
 
 @Component({
@@ -10,12 +9,10 @@ import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from '@angular/material';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.scss']
 })
-export class UserLoginComponent implements OnInit {
+export class UserLoginComponent {
   loginData = {} as ILoginData;
 
   constructor(private userService: UserService,
-              private router: Router,
-              private dialog: MdDialog,
               private dialogRef: MdDialogRef<ILoginData>) {
   }
 
@@ -23,8 +20,4 @@ export class UserLoginComponent implements OnInit {
     this.userService.login(this.loginData)
       .subscribe(() => this.dialogRef.close());
   }
-
-  ngOnInit() {
-  }
-
 }

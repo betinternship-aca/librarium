@@ -1,9 +1,17 @@
 <md-toolbar>
   <label>Librarium</label>
   <span class="spacer"></span>
-  <span>
+  <span *ngIf="!isLoggedIn; else ngElse">
     <a md-button [routerLink]="['', { outlets: { account: ['login'] } }]" (click)="openAccountDialog()">Sign In</a>
     <a md-button [routerLink]="['', { outlets: { account: ['create'] } }]" (click)="openAccountDialog()">Sign Up</a>
   </span>
+  <ng-template #ngElse>
+    <button md-mini-fab [mdMenuTriggerFor]="menu">Usr</button>
+    <md-menu #menu="mdMenu">
+      <a md-menu-item>Reserved</a>
+      <a md-menu-item>History</a>
+      <button md-menu-item (click)="this.signOut()">Sign Out</button>
+    </md-menu>
+  </ng-template>
 </md-toolbar>
 <app-books></app-books> <!--should be router-outlet-->

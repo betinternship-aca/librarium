@@ -2,13 +2,10 @@ import * as express from 'express';
 import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID} from './common/';
-import {Order} from './order';
 import {ILoginData} from '../app/defines/ILoginData';
 import {IUser} from '../app/defines/IUser';
 
-
 const filePath = join(__dirname, './data/users.db.json');
-
 
 export class User implements IUser {
   static loggedInUser: User;
@@ -27,12 +24,13 @@ export class User implements IUser {
     Object.assign(this, data);
   }
 
-  static getAllUsers(): User[] {
-    return JSON.parse(readFileSync(filePath).toString());
+  static clearPrivateInfo(user: User) {
+    delete user.password;
+    return user;
   }
 
-  static getUser(id: string): User {
-    return this.getAllUsers().find(u => u.userId === id);
+  static getAllUsers(): User[] {
+    return JSON.parse(readFileSync(filePath).toString());
   }
 
   static createUser(data) {
@@ -63,65 +61,35 @@ export class User implements IUser {
   }
 
   static login(loginData: ILoginData) {
-    return this.getAllUsers()
+    const user = this.getAllUsers()
       .find(user => user.login === loginData.login && user.password === loginData.password);
+    return User.clearPrivateInfo(user);
   }
 }
 
+
 export const UserRouter = express.Router();
 
-UserRouter.get('/is-logged-in', (req, res) => {
-  res.json(!!User.loggedInUser);
-});
-
-UserRouter.get('/user-list', (req, res) => {
-  res.json(User.getAllUsers());
-});
-
-UserRouter.post('/reserve/:bookId', (req, res) => {
-
-});
-
-
-
-UserRouter.get('/:userId', (req, res) => {
-  res.json(User.getUser(req.params.id));
-});
-
-// create user
-UserRouter.post('/', (req, res) => {
-  res.json(User.createUser(req.body));
+UserRouter.get('/logged-in-user', (req, res) => {
+  res.json(User.loggedInUser);
 });
 
 UserRouter.post('/login', (req, res) => {
-  const usr = User.login(req.body);
-  if (!usr) {
+  const user = User.login(req.body);
+  if (!user) {
     User.loggedInUser = null;
-    return res.status(404).end();
+    return res.status(404).json(null);
   }
 
-  User.loggedInUser = usr;
-  res.end();
+  User.loggedInUser = user;
+  res.json(user);
 });
-
 UserRouter.get('/logout', (req, res) => {
   User.loggedInUser = null;
   res.end();
 });
 
-// update user
-UserRouter.post('/:userId', (req, res) => {
-  const data = req.body;
-  data.id = req.params.id;
-  res.json(User.updateUser(data));
-});
-
-// delete user
-UserRouter.delete('/:userId', (req, res) => {
-  const id = req.params.id;
-  res.json(User.deleteUser(id));
-});
-
-UserRouter.get('/:userId/orders', (req, res) => {
-  res.json(Order.getBookOrders(req.params.id));
+// create user
+UserRouter.post('/', (req, res) => {
+  res.json(User.createUser(req.body));
 });
