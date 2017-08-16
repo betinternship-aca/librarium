@@ -20,4 +20,8 @@ export class OrderService {
   updateOrder(data) {
     return this.http.post(`/api/order/${data.orderId}`, data);
   }
+  getOrgOrderHistory() {
+    return this.http.get(`/api/org/history`) as Observable<IOrder[]>;
+  }
+
 }

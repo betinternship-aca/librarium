@@ -23,6 +23,7 @@ import { AuthorCreateComponent } from './author-create/author-create.component';
 import {AuthorService} from './services/author.service';
 import {OrderService} from './services/order.service';
 import {ReservesComponent} from './reserves/reserves.component';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {ReservesComponent} from './reserves/reserves.component';
     ImageUploadComponent,
     PageNavComponent,
     AuthorCreateComponent,
-    ReservesComponent
+    ReservesComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserAnimationsModule,
