@@ -20,6 +20,7 @@ import {OrderService} from './services/order.service';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { OrderComponent } from './components/order/order.component';
 import { ReservedBooksComponent } from './components/reserved-books/reserved-books.component';
+import { FocusDirective } from './directives/focus.directive';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ReservedBooksComponent } from './components/reserved-books/reserved-boo
     HistoryComponent,
     BookInfoComponent,
     OrderComponent,
-    ReservedBooksComponent
+    ReservedBooksComponent,
+    FocusDirective
   ],
   imports: [
     AppCommonModule,
