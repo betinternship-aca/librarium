@@ -10,12 +10,17 @@ import {UserLoginPageComponent} from '../user-login-page/user-login-page.compone
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
+  isLoggedIn = false;
 
   constructor(private router: Router, private dialog: MdDialog, private userService: UserService) {
+    this.userService.isLoggedIn().subscribe((isLogged) => this.isLoggedIn = isLogged);
+  }
+
+  signOut() {
+    this.userService.logout();
   }
 
   openAccountDialog() {
     const dialog = this.dialog.open(UserLoginPageComponent);
-    dialog.afterClosed().subscribe((data) => console.log(data));
   }
 }

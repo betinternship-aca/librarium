@@ -27,7 +27,7 @@ export class Order implements IOrder {
   constructor(data) {
     Object.assign(this, data);
 
-    this.book = Book.getBook(this.bookId);
+    this.book = Book.getBook(this.bookId) as IBook;
     this.user = User.getUser(this.userId);
   }
 

@@ -2,13 +2,10 @@ import * as express from 'express';
 import {readFileSync, writeFileSync} from 'fs';
 import {join} from 'path';
 import {createGUID} from './common/';
-import {Order} from './order';
 import {ILoginData} from '../app/defines/ILoginData';
 import {IUser} from '../app/defines/IUser';
 
-
 const filePath = join(__dirname, './data/users.db.json');
-
 
 export class User implements IUser {
   static loggedInUser: User;
@@ -25,6 +22,11 @@ export class User implements IUser {
   constructor(data) {
     // copies every property of data to this
     Object.assign(this, data);
+  }
+
+  static clearPrivateInfo(user: User) {
+    delete user.password;
+    return user;
   }
 
   static getAllUsers(): User[] {
@@ -63,64 +65,35 @@ export class User implements IUser {
   }
 
   static login(loginData: ILoginData) {
-    return this.getAllUsers()
+    const user = this.getAllUsers()
       .find(user => user.login === loginData.login && user.password === loginData.password);
+    return User.clearPrivateInfo(user);
   }
 }
 
+
 export const UserRouter = express.Router();
 
-UserRouter.get('/is-logged-in', (req, res) => {
-  res.json(!!User.loggedInUser);
+UserRouter.get('/logged-in-user', (req, res) => {
+  res.json(User.loggedInUser);
 });
 
-UserRouter.get('/user-list', (req, res) => {
-  res.json(User.getAllUsers());
-});
+UserRouter.post('/login', (req, res) => {
+  const user = User.login(req.body);
+  if (!user) {
+    User.loggedInUser = null;
+    return res.status(404).json(null);
+  }
 
-UserRouter.get('/history', (req, res) => {
-  res.json(Order.getUserOrderHistory());
+  User.loggedInUser = user;
+  res.json(user);
 });
-
-UserRouter.get('/:userId', (req, res) => {
-  res.json(User.getUser(req.params.id));
+UserRouter.get('/logout', (req, res) => {
+  User.loggedInUser = null;
+  res.end();
 });
 
 // create user
 UserRouter.post('/', (req, res) => {
   res.json(User.createUser(req.body));
 });
-
-UserRouter.post('/login', (req, res) => {
-  const usr = User.login(req.body);
-  if (!usr) {
-    User.loggedInUser = null;
-    return res.status(404).end();
-  }
-
-  User.loggedInUser = usr;
-  res.end();
-});
-
-UserRouter.get('/logout', (req, res) => {
-  User.loggedInUser = null;
-  res.end();
-});
-
-UserRouter.get('/is-logged-in', (req, res) => {
-  res.json(!!this.loggedInUser);
-});
-
-// update user
-UserRouter.post('/:userId', (req, res) => {
-  const data = req.body;
-  data.id = req.params.id;
-  res.json(User.updateUser(data));
-});
-
-// delete user
-UserRouter.delete('/:userId', (req, res) => {
-  const id = req.params.id;
-  res.json(User.deleteUser(id));
-});
-

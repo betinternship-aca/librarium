@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {OrgService} from '../services/org.service';
 import {Router} from '@angular/router';
 
@@ -7,16 +7,13 @@ import {Router} from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class PageNavComponent implements OnInit {
+export class PageNavComponent {
 
-  constructor(private orgService: OrgService, private router: Router) { }
+  constructor(private orgService: OrgService, private router: Router) {
+  }
 
   logOut() {
     this.orgService.logout()
       .subscribe(() => this.router.navigate(['/org/account']));
   }
-
-  ngOnInit() {
-  }
-
 }

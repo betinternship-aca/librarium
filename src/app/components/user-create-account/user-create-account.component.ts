@@ -1,5 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-
+import {Component, Inject} from '@angular/core';
 import {IUser} from '../../defines/IUser';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
@@ -11,17 +10,14 @@ import {ILoginData} from '../../defines/ILoginData';
   templateUrl: './user-create-account.component.html',
   styleUrls: ['./user-create-account.component.scss']
 })
-export class UserCreateAccountComponent implements OnInit {
+export class UserCreateAccountComponent {
   data = {} as IUser;
   genders = [
     {value: 'female', viewValue: 'Female'},
     {value: 'male', viewValue: 'Male'}
   ];
 
-  constructor(private router: Router,
-              private userService: UserService,
-              @Inject(MD_DIALOG_DATA) data: IUser,
-              private dialog: MdDialog,
+  constructor(private userService: UserService,
               private dialogRef: MdDialogRef<ILoginData>) {
   }
 
@@ -29,9 +25,4 @@ export class UserCreateAccountComponent implements OnInit {
     this.userService.createUser(this.data)
       .subscribe(() => this.dialogRef.close());
   }
-
-
-  ngOnInit() {
-  }
-
 }

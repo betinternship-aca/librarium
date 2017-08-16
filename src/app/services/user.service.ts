@@ -1,23 +1,46 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ILoginData} from '../defines/ILoginData';
-import {Observable} from 'rxjs/Observable';
+import {IUser} from '../defines/IUser';
+import 'rxjs/add/observable/from';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class UserService {
+  userSubject: Subject<IUser>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.userSubject = new Subject();
+    this.http.get('/api/user/logged-in-user')
+      .subscribe((loggedInUser: IUser) => {
+        this.userSubject.next(loggedInUser);
+      });
+  }
+
+  // change createUser to auto login
   createUser(data) {
     return this.http.post('/api/user', data);
   }
+
   login(data: ILoginData) {
-    return this.http.post('/api/user/login', data);
-  }
-  logout() {
-    return this.http.get('/api/user/logout');
-  }
-  isLoggedIn() {
-    return this.http.get('/api/user/is-logged-in') as Observable<boolean>;
+    this.http.post('/api/user/login', data)
+      .subscribe((user: IUser) => {
+        this.userSubject.next(user);
+      });
+    return this.userSubject;
   }
 
+  logout() {
+    this.http.get('/api/user/logout')
+      .subscribe(() => this.userSubject.next(null));
+    return this.userSubject;
+  }
+
+  isLoggedIn() {
+    return this.userSubject.map((user: IUser) => !!user);
+  }
+
+  getLoggedInUser() {
+    return this.userSubject;
+  }
 }
