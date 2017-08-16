@@ -15,7 +15,7 @@ import {AuthorCreateComponent} from '../author-create/author-create.component';
   templateUrl: './book-editor.component.html',
   styleUrls: ['./book-editor.component.scss']
 })
-export class BookEditorComponent implements OnInit {
+export class BookEditorComponent {
   title: string;
 
   @Input()
@@ -31,14 +31,12 @@ export class BookEditorComponent implements OnInit {
   authors: IAuthor[];
 
 
-  constructor(
-    @Inject(MD_DIALOG_DATA) data: IBook,
-    private dialog: MdDialog,
-    private dialogRef: MdDialogRef<IBook>,
-    private bookService: BookService,
-    private categoryService: CategoryService,
-    private authorService: AuthorService
-  ) {
+  constructor(@Inject(MD_DIALOG_DATA) data: IBook,
+              private dialog: MdDialog,
+              private dialogRef: MdDialogRef<IBook>,
+              private bookService: BookService,
+              private categoryService: CategoryService,
+              private authorService: AuthorService) {
     this.book = data;
 
     this.title = data.bookId ? 'Edit book' : 'Add book';
@@ -63,10 +61,6 @@ export class BookEditorComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(author => author && this.authors.unshift(author));
   }
-
-  ngOnInit() {
-  }
-
 }
 
 

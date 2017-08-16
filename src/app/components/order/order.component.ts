@@ -11,6 +11,8 @@ import {BookPreviewComponent} from '../book-preview/book-preview.component';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
+  @Input()
+  isReservation = false;
 
   @Input()
   order: IOrder;
