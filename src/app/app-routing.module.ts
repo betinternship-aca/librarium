@@ -30,12 +30,10 @@ const routes: Routes = [
     children: [
       {
         path: 'history',
-        outlet: 'user',
         component: HistoryComponent
       },
       {
         path: 'reserved',
-        outlet: 'user',
         component: ReservedBooksComponent
       },
       {

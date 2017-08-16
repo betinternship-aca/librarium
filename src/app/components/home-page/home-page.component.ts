@@ -12,12 +12,15 @@ import {UserLoginPageComponent} from '../user-login-page/user-login-page.compone
 export class HomePageComponent {
   isLoggedIn = false;
 
-  constructor(private router: Router, private dialog: MdDialog, private userService: UserService) {
+  constructor(private router: Router,
+              private dialog: MdDialog,
+              private userService: UserService) {
     this.userService.isLoggedIn().subscribe((isLogged) => this.isLoggedIn = isLogged);
   }
 
   signOut() {
     this.userService.logout();
+    this.router.navigate(['home']);
   }
 
   openAccountDialog() {

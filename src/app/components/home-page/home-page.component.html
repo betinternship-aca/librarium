@@ -8,10 +8,10 @@
   <ng-template #ngElse>
     <button md-mini-fab [mdMenuTriggerFor]="menu">Usr</button>
     <md-menu #menu="mdMenu">
-      <a md-menu-item [routerLink]="['', { outlets: { user: ['reserved'] } }]">Reserved</a>
-      <a md-menu-item [routerLink]="['', { outlets: { user: ['history'] } }]">History</a>
+      <a md-menu-item routerLink="reserved">Reserved</a>
+      <a md-menu-item routerLink="history">History</a>
       <button md-menu-item (click)="this.signOut()">Sign Out</button>
     </md-menu>
   </ng-template>
 </md-toolbar>
-<app-books></app-books> <!--should be router-outlet-->
+<router-outlet></router-outlet>
