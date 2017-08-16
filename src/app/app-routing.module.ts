@@ -11,7 +11,7 @@ import {ReservedBooksComponent} from './components/reserved-books/reserved-books
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'org',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
