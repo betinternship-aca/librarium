@@ -44,6 +44,10 @@ export class Order implements IOrder {
       .map(data => new Order(data));
   }
 
+  static getOrgOrderHistory(): Order[] {
+    return Order.getOrgOrders().filter(order => order.returnDate !== null);
+  }
+
   static getOrgReservations(): Order[] {
     return Order.getOrgOrders().filter(order => order.returnDate === null);
   }
@@ -111,6 +115,7 @@ export const OrderRouter = express.Router();
 OrderRouter.get('/reserved', (req, res) => {
   res.json(Order.getUserReservations());
 });
+
 
 // create order
 OrderRouter.post('/userId/', (req, res) => {
