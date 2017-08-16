@@ -4,13 +4,14 @@ import {ILoginData} from '../defines/ILoginData';
 import {IUser} from '../defines/IUser';
 import 'rxjs/add/observable/from';
 import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class UserService {
   userSubject: Subject<IUser>;
 
   constructor(private http: HttpClient) {
-    this.userSubject = new Subject();
+    this.userSubject = new BehaviorSubject(null);
     this.http.get('/api/user/logged-in-user')
       .subscribe((loggedInUser: IUser) => {
         this.userSubject.next(loggedInUser);

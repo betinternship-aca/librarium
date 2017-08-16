@@ -116,6 +116,9 @@ OrganizationRouter.get('/books', (req, res) => {
 OrganizationRouter.get('/reserved', (req, res) => {
   res.json(Order.getOrgReservations());
 });
+OrganizationRouter.get('/history', (req, res) => {
+  res.json(Order.getOrgOrderHistory());
+});
 
 OrganizationRouter.get('/return/:orderId', (req, res) => {
   Order.finishOrder(req.params.orderId);

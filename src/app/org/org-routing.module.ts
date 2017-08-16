@@ -8,6 +8,7 @@ import {AccountGuard} from './guards/account.guard';
 import { BooksResolverService } from './services/books-resolver.service';
 import {PageNavComponent} from './home/home.component';
 import {ReservesComponent} from './reserves/reserves.component';
+import {HistoryComponent} from "./history/history.component";
 
 
 const orgRoutes: Routes = [
@@ -45,8 +46,12 @@ const orgRoutes: Routes = [
             }
           },
           {
+            path: 'history',
+            component: HistoryComponent
+          },
+          {
             path: 'reserved',
-            component: ReservesComponent,
+            component: ReservesComponent
           },
           {
             path: '',
