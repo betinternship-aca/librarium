@@ -67,7 +67,7 @@ export class User implements IUser {
   static login(loginData: ILoginData) {
     const user = this.getAllUsers()
       .find(user => user.login === loginData.login && user.password === loginData.password);
-    return User.clearPrivateInfo(user);
+    return user && User.clearPrivateInfo(user);
   }
 }
 

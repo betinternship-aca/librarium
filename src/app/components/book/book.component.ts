@@ -18,16 +18,26 @@ export class BookComponent implements OnInit {
   @Input()
   book: IBook;
 
-  constructor(private dialog: MdDialog, private bookService: BookService, private userService: UserService, private router: Router) {
+  constructor(private dialog: MdDialog,
+              private bookService: BookService,
+              private userService: UserService,
+              private router: Router) {
     this.userService.isLoggedIn().subscribe(loggedIn => this.loggedIn = loggedIn);
   }
 
+  private reserveBook() {
+    this.bookService.reserve(this.book.bookId).subscribe(() => this.book.reserved = true);
+  }
+
   reserve() {
+
     if (this.loggedIn) {
-      this.bookService.reserve(this.book.bookId).subscribe(() => this.book.reserved = true);
+      this.reserveBook();
     } else {
-      this.dialog.open(UserLoginPageComponent);
+      const dialogRef = this.dialog.open(UserLoginPageComponent);
       this.router.navigate(['', {outlets: {account: ['login']}}]);
+      dialogRef.afterClosed()
+        .subscribe(() => this.loggedIn && this.reserveBook());
     }
   }
 
