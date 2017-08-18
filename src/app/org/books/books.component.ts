@@ -13,7 +13,8 @@ export class BooksComponent implements OnInit {
   books: IBook[];
 
   constructor(private activatedRoute: ActivatedRoute, public dialog: MdDialog) {
-    this.getAllBooks();
+    this.activatedRoute.data
+      .subscribe((data: {books: IBook[]}) => this.books = data.books);
   }
 
   addBook() {
@@ -22,10 +23,7 @@ export class BooksComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(book => book && this.books.unshift(book));
   }
-  getAllBooks() {
-    this.activatedRoute.data
-      .subscribe((data: {books: IBook[]}) => this.books = data.books);
-  }
+
   deleteBook(book) {
     const index = this.books.indexOf(book);
     this.books.splice(index, 1);

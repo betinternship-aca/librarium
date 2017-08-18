@@ -16,6 +16,7 @@ export class HomePageComponent {
               private dialog: MdDialog,
               private userService: UserService) {
     this.userService.isLoggedIn().subscribe((isLogged) => this.isLoggedIn = isLogged);
+    this.router.navigate(['']);
   }
 
   signOut() {

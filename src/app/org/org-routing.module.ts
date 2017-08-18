@@ -5,10 +5,11 @@ import {BooksComponent} from './books/books.component';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {AccountGuard} from './guards/account.guard';
-import { BooksResolverService } from './services/books-resolver.service';
+import {BooksResolverService} from './services/books-resolver.service';
 import {PageNavComponent} from './home/home.component';
 import {ReservesComponent} from './reserves/reserves.component';
-import {HistoryComponent} from "./history/history.component";
+import {HistoryComponent} from './history/history.component';
+import {ReservationsResolverService} from './services/reservations-resolver.service';
 
 
 const orgRoutes: Routes = [
@@ -31,7 +32,8 @@ const orgRoutes: Routes = [
           {
             path: '',
             redirectTo: 'login',
-            pathMatch: 'full'}
+            pathMatch: 'full'
+          }
         ]
       },
       {
@@ -51,7 +53,10 @@ const orgRoutes: Routes = [
           },
           {
             path: 'reserved',
-            component: ReservesComponent
+            component: ReservesComponent,
+            resolve: {
+              reservations: ReservationsResolverService
+            }
           },
           {
             path: '',
@@ -74,7 +79,10 @@ const orgRoutes: Routes = [
     RouterModule.forChild(orgRoutes)
   ],
   exports: [RouterModule],
-  providers: [BooksResolverService]
+  providers: [
+    BooksResolverService,
+    ReservationsResolverService
+  ]
 })
 export class OrgRoutingModule {
 }

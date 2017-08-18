@@ -24,11 +24,11 @@ export class UserService {
   }
 
   login(data: ILoginData) {
-    this.http.post('/api/user/login', data)
-      .subscribe((user: IUser) => {
-        this.userSubject.next(user);
-      });
-    return this.userSubject;
+    const obs = this.http.post('/api/user/login', data);
+    obs.subscribe((user: IUser) => {
+      this.userSubject.next(user);
+    });
+    return obs;
   }
 
   logout() {

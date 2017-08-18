@@ -2,7 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {OrderService} from '../services/order.service';
 import {IOrder} from '../../defines/IOrder';
 import {DataSource} from '@angular/cdk';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog} from '@angular/material';
 
 
 @Component({
@@ -20,8 +21,11 @@ export class ReservesComponent implements OnInit {
   displayedColumns = ['bookName', 'userName', 'reserveDate', 'action'];
   dataSource: OrderDataSource;
 
-  constructor(private orderService: OrderService, private router: Router) {
-    this.dataSource = new OrderDataSource(this.orderService);
+  constructor(private activatedRoute: ActivatedRoute,
+              public dialog: MdDialog,
+              private router: Router,
+              private orderService: OrderService) {
+    this.dataSource = new OrderDataSource(this.activatedRoute);
   }
 
   ngOnInit() {
@@ -34,17 +38,19 @@ export class ReservesComponent implements OnInit {
       order.book.reserved = false;
     });
   }
-
 }
+
 export class OrderDataSource extends DataSource<IOrder> {
 
-  constructor(private orderService: OrderService) {
+  constructor(private activatedRoute: ActivatedRoute) {
     super();
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect() {
-    return this.orderService.getOrgReservations();
+    return this.activatedRoute.data.map((resolvedData: { reservations: IOrder[] }) => resolvedData.reservations);
   }
-  disconnect() {}
+
+  disconnect() {
+  }
 }
