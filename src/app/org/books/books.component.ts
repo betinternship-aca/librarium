@@ -28,6 +28,7 @@ export class BooksComponent implements OnInit {
     const index = this.books.indexOf(book);
     this.books.splice(index, 1);
   }
+
   saveBook(book) {
     this.books.splice(0, 0, book);
   }
