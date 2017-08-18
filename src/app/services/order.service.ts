@@ -10,7 +10,6 @@ export class OrderService {
 
   }
   getUserOrders() {
-    console.log('getUserOrders from service');
     return this.http.get(`/api/user/history`) as Observable<IOrder[]>;
   }
 
