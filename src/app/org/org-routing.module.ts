@@ -8,7 +8,8 @@ import {AccountGuard} from './guards/account.guard';
 import {BooksResolverService} from './services/books-resolver.service';
 import {PageNavComponent} from './home/home.component';
 import {ReservesComponent} from './reserves/reserves.component';
-import {HistoryComponent} from './history/history.component';
+import {HistoryComponent} from "./history/history.component";
+import {HistoryResolverService} from "./services/history-resolver.service";
 import {ReservationsResolverService} from './services/reservations-resolver.service';
 
 
@@ -49,7 +50,10 @@ const orgRoutes: Routes = [
           },
           {
             path: 'history',
-            component: HistoryComponent
+            component: HistoryComponent,
+            resolve: {
+              orders: HistoryResolverService
+            }
           },
           {
             path: 'reserved',
@@ -81,8 +85,9 @@ const orgRoutes: Routes = [
   exports: [RouterModule],
   providers: [
     BooksResolverService,
-    ReservationsResolverService
+    ReservationsResolverService,
+    HistoryResolverService
   ]
-})
+  })
 export class OrgRoutingModule {
 }

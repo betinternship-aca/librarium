@@ -24,6 +24,7 @@ import {AuthorService} from './services/author.service';
 import {OrderService} from './services/order.service';
 import {ReservesComponent} from './reserves/reserves.component';
 import { HistoryComponent } from './history/history.component';
+import { HistoryResolverService } from './services/history-resolver.service';
 
 
 @NgModule({
@@ -60,8 +61,9 @@ import { HistoryComponent } from './history/history.component';
     CountryService,
     AccountGuard,
     AuthorService,
-    OrderService
-  ]
+    OrderService,
+    HistoryResolverService
+      ]
 })
 export class OrgModule {
 }
