@@ -9,6 +9,7 @@ import { BooksResolverService } from './services/books-resolver.service';
 import {PageNavComponent} from './home/home.component';
 import {ReservesComponent} from './reserves/reserves.component';
 import {HistoryComponent} from "./history/history.component";
+import {HistoryResolverService} from "./services/history-resolver.service";
 
 
 const orgRoutes: Routes = [
@@ -47,7 +48,10 @@ const orgRoutes: Routes = [
           },
           {
             path: 'history',
-            component: HistoryComponent
+            component: HistoryComponent,
+            resolve: {
+              orders: HistoryResolverService
+            }
           },
           {
             path: 'reserved',
@@ -74,7 +78,7 @@ const orgRoutes: Routes = [
     RouterModule.forChild(orgRoutes)
   ],
   exports: [RouterModule],
-  providers: [BooksResolverService]
+  providers: [BooksResolverService, HistoryResolverService]
 })
 export class OrgRoutingModule {
 }

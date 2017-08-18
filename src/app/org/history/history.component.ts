@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IOrder} from "../../defines/IOrder";
 import {OrderService} from '../services/order.service';
 import {DataSource} from "@angular/cdk";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -15,10 +15,11 @@ export class HistoryComponent implements OnInit {
   displayedColumns = ['bookName', 'userName', 'reserveDate', 'returnDate'];
   dataSource: OrderDataSource;
 
-  constructor(private  orderService: OrderService,private router: Router) {
-    this.dataSource = new OrderDataSource(this.orderService);
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private orderService: OrderService) {
+    this.dataSource = new OrderDataSource(this.activatedRoute);
 
-    ;
   }
 
   ngOnInit() {
@@ -28,13 +29,13 @@ export class HistoryComponent implements OnInit {
 }
 export class OrderDataSource extends DataSource<IOrder> {
 
-  constructor(private orderService: OrderService) {
+  constructor(private activatedRoute: ActivatedRoute) {
     super();
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect() {
-    return this.orderService.getOrgOrderHistory();
+    return this.activatedRoute.data.map((resolvedData: { orders: IOrder[] }) => resolvedData.orders);
   }
   disconnect() {}
 }
