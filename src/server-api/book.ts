@@ -10,6 +10,8 @@ import {ICategory} from '../app/defines/ICategory';
 import {Category} from './category';
 import {Organization} from './organization';
 import {User} from './user';
+import {log} from 'util';
+
 
 
 const filePath = join(__dirname, './data/books.db.json');
@@ -76,14 +78,14 @@ export class Book implements IBook {
     return data;
   }
 
-  static reserveBook(bookId: string) {
+  static reserveBook(bookId: string, loggedInUser) {
     const current = this.getBook(bookId);
 
     current.reserved = true;
     Book.updateBook(current);
     Order.createOrder({
       bookId,
-      userId: User.loggedInUser.userId,
+      userId: loggedInUser.userId,
       orderDate: new Date(),
       orgId: current.orgId
     });
@@ -114,7 +116,7 @@ BookRouter.post('/book-search', (req, res) => {
 });
 
 BookRouter.get('/reserve/:bookId', (req, res) => {
-  res.json(Book.reserveBook(req.params.bookId));
+  res.json(Book.reserveBook(req.params.bookId, req.loggedInUser));
 });
 
 BookRouter.get('/:bookId', (req, res) => {

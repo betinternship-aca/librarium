@@ -1,12 +1,13 @@
-<md-card-content>
+<md-dialog-content>
   <form #loginForm="ngForm">
+
     <md-input-container>
-      <input mdInput
-             placeholder="Login"
+      <input mdInput placeholder="Login"
              [(ngModel)]="loginData.login"
              name="login"
              required />
     </md-input-container>
+
     <md-input-container>
       <input mdInput
              type="password"
@@ -14,14 +15,15 @@
              [(ngModel)]="loginData.password"
              name="password" required />
     </md-input-container>
-    <md-card-actions>
+
+    <md-dialog-actions>
       <button md-button
               [disabled]="!loginForm.form.valid"
               (click)="login()">
         Log In User
       </button>
-    </md-card-actions>
+    </md-dialog-actions>
   </form>
   <md-error *ngIf="errorMsg" [innerText]="errorMsg"></md-error>
-</md-card-content>
+</md-dialog-content>
 

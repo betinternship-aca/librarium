@@ -53,7 +53,8 @@ export class Order implements IOrder {
   }
 
   static getUserOrders(): Order[] {
-    return Order.getAllOrders().filter(order => order.userId === User.loggedInUser.userId)
+    return Order.getAllOrders()
+      .filter(order => order.userId === User.loggedInUser.userId)
       .map(data => new Order(data));
   }
 
