@@ -54,13 +54,12 @@ export class Order implements IOrder {
 
   static getUserOrders(): Order[] {
     return Order.getAllOrders()
-      .filter(order => order.userId === User.loggedInUser.userId && order.returnDate !== null)
+      .filter(order => order.userId === User.loggedInUser.userId)
       .map(data => new Order(data));
   }
 
   static getUserReservations(): Order[] {
-    return Order.getAllOrders()
-      .filter(order => order.userId === User.loggedInUser.userId && order.returnDate === null).map(data => new Order(data));
+    return Order.getUserOrders().filter(order => order.returnDate === null);
   }
 
   static getUserOrderHistory(): Order[] {

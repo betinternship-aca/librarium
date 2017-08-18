@@ -8,7 +8,8 @@ import {IUser} from '../app/defines/IUser';
 const filePath = join(__dirname, './data/users.db.json');
 
 export class User implements IUser {
-  static loggedInUser: User;
+  static loggedInUser: User = null;
+
   userId: string = createGUID();
   name: string;
   login: string;
@@ -18,6 +19,8 @@ export class User implements IUser {
   email: string;
   telephone?: string;
   reservedBooks: string;
+
+  sessionKeys: string[] = [];
 
   constructor(data) {
     // copies every property of data to this
@@ -53,43 +56,71 @@ export class User implements IUser {
     return data;
   }
 
-  static deleteUser(id) {
-    const users = this.getAllUsers();
-    const userIndex = users.findIndex(u => u.userId === id);
-    users.splice(userIndex, 1);
-    this.saveAllUsers(users);
-  }
-
   static saveAllUsers(userList) {
     writeFileSync(filePath, JSON.stringify(userList, null, 2));
   }
 
   static login(loginData: ILoginData) {
-    const user = this.getAllUsers()
+    const userData = this.getAllUsers()
       .find(user => user.login === loginData.login && user.password === loginData.password);
-    return user && User.clearPrivateInfo(user);
+    return User.dataToUser(userData);
+  }
+
+  static getUserBySessionKey(sessionKey?: string) {
+    if(!sessionKey) {
+      return null;
+    }
+    const userData = this.getAllUsers().find(user => user.sessionKeys.includes(sessionKey));
+    return User.dataToUser(userData);
+  }
+  static dataToUser(data) {
+    return data && new User(data);
+  }
+
+  addSessionKey(sessionKey) {
+    this.sessionKeys.push(sessionKey);
+    User.updateUser(this);
+  }
+  removeSessionKey(sessionKey) {
+    const {sessionKeys} = this;
+    const ind = sessionKeys.indexOf(sessionKey);
+    sessionKeys.splice(ind, 1);
+
+    User.updateUser(this);
   }
 }
 
 
 export const UserRouter = express.Router();
 
-UserRouter.get('/logged-in-user', (req, res) => {
-  res.json(User.loggedInUser);
-});
-
 UserRouter.post('/login', (req, res) => {
-  const user = User.login(req.body);
-  if (!user) {
-    User.loggedInUser = null;
-    return res.status(404).json(null);
+  const usr = User.login(req.body);
+
+  if(!usr) {
+    res.cookie('sessionKey', '');
+    return res.status(404).end();
   }
 
-  User.loggedInUser = user;
-  res.json(user);
+  const sessionKey = createGUID();
+  res.cookie('sessionKey', sessionKey, {maxAge: new Date(2024, 0, 1), httpOnly: true});
+  usr.addSessionKey(sessionKey);
+
+  res.end();
 });
+
+UserRouter.get('/is-logged-in', (req, res) => {
+  const loggedInUser = User.loggedInUser;
+  res.json(!!loggedInUser);
+});
+
 UserRouter.get('/logout', (req, res) => {
-  User.loggedInUser = null;
+  const {sessionKey} = req.cookies;
+  const loggedInUser = User.loggedInUser;
+
+  loggedInUser && loggedInUser.removeSessionKey(sessionKey);
+
+  res.cookie('sessionKey', '');
+
   res.end();
 });
 

@@ -3,15 +3,30 @@ import 'zone.js/dist/zone-node';
 import * as express from 'express';
 import {join} from 'path';
 import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
 
 import {ApiRouter} from './server-api/';
+import {User} from './server-api/user';
 
 const PORT = process.env.PORT || 4300;
 
 const app = express();
 
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use((req, res, next) => {
+  const sessionKey = req.cookies.sessionKey;
+  const loggedInUser = User.getUserBySessionKey(sessionKey);
+
+  req.loggedInUser = User.loggedInUser = loggedInUser;
+
+  if(!loggedInUser) {
+    res.cookie('sessionKey', '');
+  }
+  next();
+});
 
 const dist = join(__dirname, '..', 'dist');
 const indexPath = join(dist, 'index.html');
