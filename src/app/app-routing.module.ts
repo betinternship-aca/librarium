@@ -7,6 +7,7 @@ import {UserCreateAccountComponent} from './components/user-create-account/user-
 import {HistoryComponent} from './components/history/history.component';
 import {BooksComponent} from './components/books/books.component';
 import {ReservedBooksComponent} from './components/reserved-books/reserved-books.component';
+import {HistoryResolverService} from './services/history-resolver.service';
 
 const routes: Routes = [
   {
@@ -30,7 +31,10 @@ const routes: Routes = [
     children: [
       {
         path: 'history',
-        component: HistoryComponent
+        component: HistoryComponent,
+        resolve: {
+          history: HistoryResolverService
+        },
       },
       {
         path: 'reserved',
@@ -51,7 +55,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    HistoryResolverService
+  ]
 })
 export class AppRoutingModule {
 }
