@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prestart": "ng build && ngc",
+    "prestart": "gulp clean && ng build && ngc",
     "start": "ts-node src/server.ts",
     "start-server": "ts-node src/server.ts"
   },
@@ -42,6 +42,8 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^8.0.20",
     "codelyzer": "~3.1.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "jasmine-core": "~2.7.0",
     "jasmine-spec-reporter": "~4.2.0",
     "karma": "~1.7.0",

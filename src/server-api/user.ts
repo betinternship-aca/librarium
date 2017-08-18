@@ -29,6 +29,8 @@ export class User implements IUser {
 
   static clearPrivateInfo(user: User) {
     delete user.password;
+    delete user.sessionKeys;
+
     return user;
   }
 
@@ -93,19 +95,23 @@ export class User implements IUser {
 
 export const UserRouter = express.Router();
 
-UserRouter.post('/login', (req, res) => {
-  const usr = User.login(req.body);
+UserRouter.get('/logged-in-user', (req, res) => {
+  res.json(User.loggedInUser);
+});
 
-  if(!usr) {
+UserRouter.post('/login', (req, res) => {
+  const user = User.login(req.body);
+
+  if(!user) {
     res.cookie('sessionKey', '');
     return res.status(404).end();
   }
 
   const sessionKey = createGUID();
   res.cookie('sessionKey', sessionKey, {maxAge: new Date(2024, 0, 1), httpOnly: true});
-  usr.addSessionKey(sessionKey);
+  user.addSessionKey(sessionKey);
 
-  res.end();
+  res.json(User.clearPrivateInfo(user));
 });
 
 UserRouter.get('/logged-in-user', (req, res) => {
@@ -120,7 +126,7 @@ UserRouter.get('/logout', (req, res) => {
 
   res.cookie('sessionKey', '');
 
-  res.end();
+  res.json(null);
 });
 
 // create user
