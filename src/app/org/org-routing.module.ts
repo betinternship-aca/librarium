@@ -88,6 +88,6 @@ const orgRoutes: Routes = [
     ReservationsResolverService,
     HistoryResolverService
   ]
-  })
+})
 export class OrgRoutingModule {
 }

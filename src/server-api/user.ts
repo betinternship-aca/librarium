@@ -108,9 +108,8 @@ UserRouter.post('/login', (req, res) => {
   res.end();
 });
 
-UserRouter.get('/is-logged-in', (req, res) => {
-  const loggedInUser = User.loggedInUser;
-  res.json(!!loggedInUser);
+UserRouter.get('/logged-in-user', (req, res) => {
+  res.json(User.loggedInUser);
 });
 
 UserRouter.get('/logout', (req, res) => {

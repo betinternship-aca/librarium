@@ -18,3 +18,8 @@ ApiRouter.use('/order', OrderRouter);
 ApiRouter.use('/country', CountryRouter);
 ApiRouter.use('/category', CategoryRouter);
 ApiRouter.use('/author', AuthorRouter);
+
+ApiRouter.use((req, res, next) => {
+  res.status(404).end();
+});
+
