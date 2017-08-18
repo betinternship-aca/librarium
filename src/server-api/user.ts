@@ -4,6 +4,7 @@ import {join} from 'path';
 import {createGUID} from './common/';
 import {ILoginData} from '../app/defines/ILoginData';
 import {IUser} from '../app/defines/IUser';
+import {Order} from './order';
 
 const filePath = join(__dirname, './data/users.db.json');
 
@@ -123,6 +124,10 @@ UserRouter.get('/logout', (req, res) => {
   res.cookie('sessionKey', '');
 
   res.json(null);
+});
+
+UserRouter.get('/history', (req, res) => {
+  res.json(Order.getUserOrderHistory());
 });
 
 // create user
