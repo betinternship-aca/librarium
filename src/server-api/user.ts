@@ -115,6 +115,10 @@ UserRouter.post('/login', (req, res) => {
   res.json(User.clearPrivateInfo(user));
 });
 
+UserRouter.get('/logged-in-user', (req, res) => {
+  res.json(User.loggedInUser);
+});
+
 UserRouter.get('/logout', (req, res) => {
   const {sessionKey} = req.cookies;
   const loggedInUser = User.loggedInUser;
