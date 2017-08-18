@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {OrderService} from '../../services/order.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {IOrder} from '../../defines/IOrder';
 
 
@@ -12,8 +12,8 @@ import {IOrder} from '../../defines/IOrder';
 export class ReservedBooksComponent {
   orders: IOrder[];
 
-  constructor(private orderService: OrderService, private router: Router) {
-    this.orderService.getUserReservations()
-      .subscribe(orders => this.orders = orders);
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    this.activatedRoute.data
+      .subscribe((data: {orders: IOrder[]}) => this.orders = data.orders);
   }
 }
