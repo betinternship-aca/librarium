@@ -1,21 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Component} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {IOrder} from '../../defines/IOrder';
-import {DataSource} from '@angular/cdk';
-import {OrderService} from '../../services/order.service';
-import {IBook} from '../../defines/IBook';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent {
   orders: IOrder[];
 
-  constructor(private orderService: OrderService, private router: Router) {
-    this.orderService.getUserOrders().subscribe((orders) => this.orders = orders);
+  constructor(private activatedRouter: ActivatedRoute) {
+    this.activatedRouter.data.subscribe((resData: { history: IOrder[] }) => this.orders = resData.history);
   }
-
-  ngOnInit() {}
 }
