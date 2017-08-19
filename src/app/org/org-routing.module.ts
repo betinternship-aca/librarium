@@ -15,7 +15,7 @@ import {ReservationsResolverService} from './services/reservations-resolver.serv
 
 const orgRoutes: Routes = [
   {
-    path: 'org',
+    path: '',
     canActivateChild: [AccountGuard],
     children: [
       {

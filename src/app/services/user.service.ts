@@ -5,6 +5,7 @@ import {IUser} from '../defines/IUser';
 import 'rxjs/add/observable/from';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
