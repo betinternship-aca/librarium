@@ -2,7 +2,6 @@ $bgColor: rgba(0, 14, 255, 0.11);
 $textColor: #4285F3;
 
 :host {
-  background-color: $bgColor;
   display: block;
   height: 100%;
   width: 100%;
@@ -12,7 +11,6 @@ $textColor: #4285F3;
   overflow: scroll;
 
   span.body {
-    background-color: transparent;
     display: block;
     left: 0;
     position: relative;
@@ -32,7 +30,6 @@ $textColor: #4285F3;
 
         &.librarium {
           font-weight: bold;
-          color: $textColor;
           font-size: 20px;
         }
         &:not(.librarium) {

@@ -1,41 +1,41 @@
 <md-card-content>
   <form #loginForm="ngForm">
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput placeholder="Library Name" [(ngModel)]="data.name" name="name" required>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput placeholder="Login" [(ngModel)]="data.login" name="login" required />
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput type="password" placeholder="Password" [(ngModel)]="data.password" name="password" required />
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput type="email" placeholder="Email" [(ngModel)]="data.email" name="email" required />
     </md-input-container>
 
-    <md-select placeholder="Country" [(ngModel)]="data.countryId" name="country" ngDefaultControl>
+    <md-select placeholder="Country" [(ngModel)]="data.countryId" name="country" ngDefaultControl color="accent">
       <md-option *ngFor="let country of countries" [value]="country.countryId" [innerText]="country.name"></md-option>
     </md-select>
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput placeholder="Address" [(ngModel)]="data.address" name="address"  class="address" required />
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput placeholder="Description" [(ngModel)]="data.description" name="description"/>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput type="tel" placeholder="Telephone" [(ngModel)]="data.telephone" name="telephone" required />
     </md-input-container>
   </form>
 </md-card-content>
 <md-card-actions>
-  <button md-button [disabled]="!loginForm.form.valid" (click)="createOrg()">Create Library</button>
+  <button md-raised-button [disabled]="!loginForm.form.valid" (click)="createOrg()" color="accent">Create Library</button>
 </md-card-actions>
 
 

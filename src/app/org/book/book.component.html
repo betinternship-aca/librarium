@@ -8,12 +8,10 @@
       <a *ngFor="let category of book.categories" [innerText]="category.name"></a>
     </md-card-subtitle>
   </md-card-header>
-  <img md-card-image [src]="book.image">
-  <md-card-content class="description">
-    <p [innerText]="book.description"></p>
-  </md-card-content>
+  <span><img md-card-image [src]="book.image"></span>
+  <md-card-content class="description" [innerText]="book.description"></md-card-content>
   <md-card-actions>
-    <button md-button (click)="editBook()">Edit</button>
+    <button md-raised-button (click)="editBook()" color="primary">Edit</button>
     <button md-button (click)="deleteBook()">Delete</button>
   </md-card-actions>
 </md-card>
