@@ -32,16 +32,16 @@
     "telephone": "a"
   },
   {
-    "userId": "ca9796fc-1fd1-8054-aa3a-dc983d6a6891",
+    "userId": "4a4eca04-2fda-af86-ba63-083f524ed971",
     "sessionKeys": [
-      "7b874baf-f982-bace-61f3-2e38e936ec8c"
+      "d2dafd6a-ef53-7905-4d52-1d4137b67017"
     ],
-    "name": "user1",
-    "login": "user1",
-    "password": "user1",
-    "email": "user1",
-    "gender": "female",
-    "address": "address 1",
-    "telephone": "123"
+    "name": "a",
+    "login": "a",
+    "password": "a",
+    "email": "a",
+    "gender": "a",
+    "address": "a",
+    "telephone": "a"
   }
 ]

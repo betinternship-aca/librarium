@@ -1,6 +1,6 @@
 <md-grid-list>
   <!-- todo: change to use `async` -->
-  <app-order [isReservation]="true" *ngFor="let order of orders"
-             [order]="order">
-  </app-order>
+ <md-grid-tile *ngFor="let order of orders">
+   <app-order [isReservation]="true" [order]="order"></app-order>
+ </md-grid-tile>
 </md-grid-list>

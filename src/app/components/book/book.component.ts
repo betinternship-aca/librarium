@@ -30,7 +30,6 @@ export class BookComponent implements OnInit {
   }
 
   reserve() {
-
     if (this.loggedIn) {
       this.reserveBook();
     } else {
@@ -43,7 +42,9 @@ export class BookComponent implements OnInit {
 
   createPreview() {
     const dialogRef = this.dialog.open(BookPreviewComponent, {
-      data: this.book
+      data: this.book,
+      height: '500px',
+      width: '350px'
     });
   }
 

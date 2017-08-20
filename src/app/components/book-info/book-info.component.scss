@@ -1,9 +1,23 @@
 img {
+  margin: 0 0 16px 4px;
+  max-height: 220px;
   max-width: 200px;
-  max-height: 250px;
   padding: 0 25px;
-  margin: auto;
 }
 md-card-subtitle {
   margin: 8px 0;
+  padding: 0 25px;
+  overflow: hidden;
+  height: 16px;
+  width: 200px;
+}
+md-card-title {
+  font-size: 16px;
+  margin: 8px 0;;
+  padding: 0 25px;
+}
+a {
+  &:not(:last-child):after {
+    content: ', ';
+  }
 }

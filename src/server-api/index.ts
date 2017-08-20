@@ -22,4 +22,3 @@ ApiRouter.use('/author', AuthorRouter);
 ApiRouter.use((req, res, next) => {
   res.status(404).end();
 });
-
