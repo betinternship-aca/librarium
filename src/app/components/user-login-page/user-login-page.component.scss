@@ -1,7 +1,4 @@
-$bgColor: rgba(0, 14, 255, 0.11);
-$textColor: #4285f3;
-
-.body {
+:host {
   background-color: transparent;
   display: block;
   left: 0;
@@ -9,7 +6,6 @@ $textColor: #4285f3;
   top: 0;
 
   md-dialog-container {
-    background: #ffffff;
     box-sizing: border-box;
     display: block;
     margin: 70px auto 20px;
@@ -22,8 +18,6 @@ $textColor: #4285f3;
       text-align: left;
 
       &.librarium {
-        font-weight: bold;
-        color: $textColor;
         font-size: 20px;
       }
       &:not(.librarium) {

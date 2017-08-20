@@ -1,4 +1,5 @@
 :host {
+  padding-top: 10px;
   box-sizing: border-box;
   md-input-container {
     display: block;
@@ -7,15 +8,15 @@
     width: 100%;
   }
 }
-button {
-  background-color: rgb(16,108,200);
-}
+
 md-input-container {
   width: 100%;
 }
+
 md-card-content {
   margin: 16px 0;
 }
+
 md-card-actions {
   margin: 0;
 }

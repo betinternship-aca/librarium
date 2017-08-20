@@ -1,14 +1,16 @@
 md-card {
+  display: block;
   margin: 16px;
-  height: 320px;
+  height: 360px;
   width: 250px;
   padding: 32px 10px 0 10px;
 }
+
 img {
-  max-width: 200px;
-  max-height: 250px;
-  padding: 0 25px;
+  height: 250px;
+  padding: 10px auto;
 }
+
 md-card-actions {
   margin: 0 2px 0 32px;
 }

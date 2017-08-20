@@ -1,5 +1,8 @@
-<img md-card-image [src]="book.image">
+
+<span><img md-card-image [src]="book.image"></span>
+
 <md-card-title [innerText]="book.bookName"></md-card-title>
+
 <md-card-subtitle>
   <a *ngFor="let author of book.authors" [innerText]="author.name"></a>
 </md-card-subtitle>

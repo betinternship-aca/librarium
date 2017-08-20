@@ -11,7 +11,8 @@ export class BookInfoComponent implements OnInit {
   @Input()
   book: IBook;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

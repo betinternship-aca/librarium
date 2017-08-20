@@ -1,21 +1,41 @@
-img {
-  margin: 0 0 16px 4px;
-  max-height: 220px;
-  max-width: 200px;
-  padding: 0 25px;
+span {
+  padding: 0;
+  display: block;
+  height: 250px;
+  width: 80%;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 0 auto 10px;
+
+  img {
+    display: inline-block;
+    min-height: 100%;
+  }
 }
+
 md-card-subtitle {
   margin: 8px 0;
-  padding: 0 25px;
+  padding: 0;
   overflow: hidden;
   height: 16px;
-  width: 200px;
+  width: 90%;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 }
+
 md-card-title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
   font-size: 16px;
-  margin: 8px 0;;
-  padding: 0 25px;
+  margin: 8px 0;
+  text-align: center;
 }
+
 a {
   &:not(:last-child):after {
     content: ', ';

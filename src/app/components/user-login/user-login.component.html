@@ -1,14 +1,14 @@
 <md-dialog-content>
   <form #loginForm="ngForm">
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput placeholder="Login"
              [(ngModel)]="loginData.login"
              name="login"
              required />
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container color="accent">
       <input mdInput
              type="password"
              placeholder="password"
@@ -17,7 +17,8 @@
     </md-input-container>
 
     <md-dialog-actions>
-      <button md-button
+      <button md-raised-button
+              color="accent"
               [disabled]="!loginForm.form.valid"
               (click)="login()">
         Log In User

@@ -1,12 +1,15 @@
 md-input-container {
   display: block;
 }
+
 md-dialog-content {
   height: 200px;
 }
+
 md-dialog-actions {
   margin: 0;
 }
-button {
-  background-color: rgb(16,108,200);
+
+:host {
+  padding-top: 10px;
 }

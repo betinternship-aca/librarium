@@ -1,9 +1,15 @@
-<md-toolbar>
-  <label>Librarium</label>
+<md-toolbar color="primary">
+  <a class="logo" href="">
+    <i class="material-icons">account_balance</i>
+    <b>Librarium</b>
+  </a>
   <span class="spacer"></span>
   <span *ngIf="!isLoggedIn; else ngElse">
     <a md-button [routerLink]="['', { outlets: { account: ['login'] } }]" (click)="openAccountDialog()">Sign In</a>
-    <a md-button [routerLink]="['', { outlets: { account: ['create'] } }]" (click)="openAccountDialog()">Sign Up</a>
+    <a md-button
+       [routerLink]="['', { outlets: { account: ['create'] } }]"
+       (click)="openAccountDialog()">
+      <b>Sign Up</b></a>
   </span>
   <ng-template #ngElse>
     <button md-button [mdMenuTriggerFor]="menu"><i class="material-icons">person</i>{{this.loggedInUserName}}</button>
