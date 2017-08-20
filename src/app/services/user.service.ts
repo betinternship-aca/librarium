@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ILoginData} from '../defines/ILoginData';
 import {IUser} from '../defines/IUser';
-import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/do';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
@@ -24,11 +25,9 @@ export class UserService {
   }
 
   login(data: ILoginData) {
-    const obs = this.http.post('/api/user/login', data);
-    obs.subscribe((user: IUser) => {
+    return this.http.post('/api/user/login', data).do((user: IUser) => {
       this.userSubject.next(user);
     });
-    return obs;
   }
 
   logout() {

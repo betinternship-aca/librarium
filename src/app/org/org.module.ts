@@ -10,7 +10,6 @@ import {BookComponent} from './book/book.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BookEditorComponent} from './book-editor/book-editor.component';
 import {FormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ImageUploadComponent} from './image-upload/image-upload.component';
 import {BookService} from './services/book.service';
 import {AppCommonModule} from '../app-common/app-common.module';
@@ -19,11 +18,11 @@ import {CategoryService} from './services/category.service';
 import {AccountGuard} from './guards/account.guard';
 import {PageNavComponent} from './home/home.component';
 import {CountryService} from './services/country.service';
-import { AuthorCreateComponent } from './author-create/author-create.component';
+import {AuthorCreateComponent} from './author-create/author-create.component';
 import {AuthorService} from './services/author.service';
 import {OrderService} from './services/order.service';
 import {ReservesComponent} from './reserves/reserves.component';
-import { HistoryComponent } from './history/history.component';
+import {HistoryComponent} from './history/history.component';
 
 
 @NgModule({
@@ -41,13 +40,12 @@ import { HistoryComponent } from './history/history.component';
     HistoryComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     CommonModule,
     OrgRoutingModule,
     OrgMaterialModule,
-    AppCommonModule
+    AppCommonModule,
   ],
   entryComponents: [
     BookEditorComponent,
