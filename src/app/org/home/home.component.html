@@ -5,7 +5,15 @@
   </a>
 
   <span class="spacer"></span>
-  <button md-button (click)="logOut()">Log out</button>
-</md-toolbar>
+  <button md-button [mdMenuTriggerFor]="menu"><i class="material-icons">photo_library</i>{{loggedInOrgName}}</button>
+  <md-menu
+    #menu="mdMenu"
+    xPosition="before"
+    yPosition="below">
+    <a md-menu-item routerLink="reserved">Reserved</a>
+    <a md-menu-item routerLink="history">History</a>
+    <button md-menu-item (click)="this.logOut()">Sign Out</button>
+  </md-menu>
+ </md-toolbar>
 
 <router-outlet></router-outlet>

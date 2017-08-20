@@ -82,12 +82,7 @@ export class Organization implements IOrganization {
     }
   }
 
-
 export const OrganizationRouter = express.Router();
-
-OrganizationRouter.get('/org-list', (req, res) => {
-  res.json(Organization.getAllOrg());
-});
 
 OrganizationRouter.post('/login', (req, res) => {
   const org = Organization.login(req.body);
@@ -125,6 +120,7 @@ OrganizationRouter.get('/return/:orderId', (req, res) => {
   res.end();
 });
 
+// todo: check do we need this
 OrganizationRouter.get('/:orgId', (req, res) => {
   res.json(Organization.getOrg(req.params.orgId));
 });
@@ -133,17 +129,3 @@ OrganizationRouter.get('/:orgId', (req, res) => {
 OrganizationRouter.post('/', (req, res) => {
   res.json(Organization.createOrg(req.body));
 });
-
-// update organization
-OrganizationRouter.post('/:orgId', (req, res) => {
-  const data = req.body;
-  data.id = req.params.id;
-  res.json(Organization.updateOrg(data));
-});
-
-// delete organization
-OrganizationRouter.delete('/:orgId', (req, res) => {
-  const id = req.params.id;
-  res.json(Organization.deleteOrg(id));
-});
-

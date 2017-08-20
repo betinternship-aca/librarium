@@ -9,12 +9,9 @@ import {IOrganization} from '../../defines/IOrganization';
   styleUrls: ['./home.component.scss']
 })
 export class PageNavComponent {
-  isLoggedIn = false;
   loggedInOrgName = '';
 
   constructor(private orgService: OrgService, private router: Router) {
-    this.orgService.isLoggedIn()
-      .subscribe((isLogged) => this.isLoggedIn = isLogged);
     this.orgService.getLoggedInOrg()
       .subscribe((org: IOrganization) => org && (this.loggedInOrgName = org.name));
   }
