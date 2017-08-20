@@ -7,7 +7,26 @@ img {
   max-width: 200px;
   padding: 0 20px
 }
+md-card-header {
+  display: block;
+}
+md-card-title {
+  overflow: hidden;
+  width: 100%;
+}
+md-card-subtitle{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
 
+md-card-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
 .mat-card-image {
   margin: 0;
 }
