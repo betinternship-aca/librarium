@@ -1,7 +1,7 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {IOrder} from '../../defines/IOrder';
 import {IBook} from '../../defines/IBook';
-import {MdDialog, MD_DIALOG_DATA} from '@angular/material';
+import {MdDialog} from '@angular/material';
 import {BookPreviewComponent} from 'app/components/book-preview/book-preview.component';
 
 @Component({

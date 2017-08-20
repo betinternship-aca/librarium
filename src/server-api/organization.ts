@@ -16,7 +16,7 @@ const clearOrgData = (data: IOrganization) => {
 };
 
 export class Organization implements IOrganization {
-  static loggedInOrg: Organization;
+  static loggedInOrg: Organization = null;
 
   orgId: string = createGUID();
   name: string;
@@ -46,7 +46,7 @@ export class Organization implements IOrganization {
   }
 
   static getOrg(id: string): Organization {
-    return this.getAllOrg().find(l => l.orgId === id);
+    return this.getAllOrg().find(org => org.orgId === id);
   }
 
   static createOrg(data) {
@@ -97,16 +97,16 @@ OrganizationRouter.post('/login', (req, res) => {
   }
 
   Organization.loggedInOrg = org;
-  res.end();
+  res.json(org);
+});
+
+OrganizationRouter.get('/logged-in-org', (req, res) => {
+  res.json(Organization.loggedInOrg);
 });
 
 OrganizationRouter.get('/logout', (req, res) => {
   Organization.loggedInOrg = null;
   res.end();
-});
-
-OrganizationRouter.get('/is-logged-in', (req, res) => {
-  res.json(!!Organization.loggedInOrg);
 });
 
 OrganizationRouter.get('/books', (req, res) => {

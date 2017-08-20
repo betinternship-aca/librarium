@@ -18,7 +18,6 @@ export class UserLoginComponent {
   }
 
   login() {
-    console.log('login component');
     this.userService.login(this.loginData)
       .subscribe(() => this.dialogRef.close(),
         () => this.errorMsg = 'Incorrect login or password');
