@@ -9,6 +9,7 @@ import {BooksComponent} from './components/books/books.component';
 import {ReservedBooksComponent} from './components/reserved-books/reserved-books.component';
 import {BooksResolverService} from './services/books-resolver.service';
 import {HistoryResolverService} from './services/history-resolver.service';
+import {ReservationsResolverService} from "./services/reservations-resolver.service";
 
 const routes: Routes = [
   {
@@ -39,7 +40,10 @@ const routes: Routes = [
       },
       {
         path: 'reserved',
-        component: ReservedBooksComponent
+        component: ReservedBooksComponent,
+        resolve: {
+          orders: ReservationsResolverService
+        }
       },
       {
         path: 'books',
@@ -62,7 +66,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     HistoryResolverService,
-    BooksResolverService
+    BooksResolverService,
+    ReservationsResolverService
   ]
 })
 export class AppRoutingModule {

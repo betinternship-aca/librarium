@@ -16,13 +16,13 @@
   <!-- Reserve date Column -->
   <ng-container cdkColumnDef="reserveDate">
     <md-header-cell *cdkHeaderCellDef>Reserve date</md-header-cell>
-    <md-cell *cdkCellDef="let order"> {{order.orderDate}} </md-cell>
+    <md-cell *cdkCellDef="let order"> {{order.orderDate | date:'short'}} </md-cell>
   </ng-container>
 
     <!-- Return date Column -->
   <ng-container cdkColumnDef="returnDate">
     <md-header-cell *cdkHeaderCellDef>Return date</md-header-cell>
-    <md-cell *cdkCellDef="let order"> {{order.returnDate}} </md-cell>
+    <md-cell *cdkCellDef="let order"> {{order.returnDate | date:'short'}} </md-cell>
   </ng-container>
 
 
