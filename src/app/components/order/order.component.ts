@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { DatePipe } from '@angular/common';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {IOrder} from '../../defines/IOrder';
 import {IBook} from '../../defines/IBook';
-import {MdDialog} from '@angular/material';
-import {BookPreviewComponent} from '../book-preview/book-preview.component';
+import {MdDialog, MD_DIALOG_DATA} from '@angular/material';
+import {BookPreviewComponent} from 'app/components/book-preview/book-preview.component';
 
 @Component({
   selector: 'app-order',
@@ -19,13 +18,14 @@ export class OrderComponent implements OnInit {
 
   book: IBook;
 
-
   constructor(private dialog: MdDialog) {
   }
 
   createPreview() {
     const dialogRef = this.dialog.open(BookPreviewComponent, {
-      data: this.book
+      data: this.order.book,
+      height: '520px',
+      width: '400px'
     });
   }
   ngOnInit() {

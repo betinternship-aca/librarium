@@ -1,13 +1,21 @@
-<span class="body">
-  <md-card>
+<span class="container">
+  <span md-dialog-title [innerText]="book.bookName"></span>
+
+  <md-dialog-content>
+
     <img md-card-image [src]="book.image">
-    <md-card-title [innerText]="book.bookName"></md-card-title>
-    <md-card-content>
-      <a *ngFor="let author of book.authors">Author: {{author.name}}</a>
-      <a *ngFor="let category of book.categories">Category: {{category.name}}</a>
-      <span>Language: {{book.language}}</span>
-      <span >Edition year: {{book.editionYear}}</span>
-      <p [innerText]="book.description"></p>
-    </md-card-content>
-  </md-card>
+
+    <span class="block-items">Authors:
+      <a *ngFor="let author of book.authors">{{author.name}}</a>
+    </span>
+
+    <span class="block-items">Categories:
+      <a *ngFor="let category of book.categories">{{category.name}}</a>
+    </span>
+
+    <span >Edition year: {{book.editionYear}}</span>
+
+    <p [innerText]="book.description"></p>
+  </md-dialog-content>
 </span>
+

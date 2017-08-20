@@ -23,8 +23,6 @@ import { ReservedBooksComponent } from './components/reserved-books/reserved-boo
 import { FocusDirective } from './directives/focus.directive';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

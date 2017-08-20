@@ -1,3 +1,6 @@
+md-toolbar {
+  background-color: rgb(245, 245, 245);
+}
 .spacer {
   flex: 1 1 auto;
 }
@@ -6,13 +9,16 @@ app-books {
 }
 .back-a {
   display: block;
-  margin: 16px;
+  text-align: left;
+  padding: 16px 0;
 }
 i {
-  margin: 0 16px;
+  margin: 0 5px 0 16px;
+  opacity: 0.7;
 }
 .back {
   vertical-align: middle;
+  font-size: 16px;
 }
 .active-link {
   display: none;
