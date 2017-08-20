@@ -1,6 +1,11 @@
 [
   {
     "orgId": "cced0812-e14d-29f5-a8ee-af2716ef13b2",
+    "sessionKeys": [
+      "abe8c879-81be-d99b-d111-8484c73fae47",
+      "20cc78b1-f55f-de63-db12-46d5a04f95ec",
+      "56cde22e-1836-d9fc-9816-afe4161f2891"
+    ],
     "name": "lib1",
     "login": "lib1",
     "password": "lib1",
@@ -15,6 +20,7 @@
     "name": "lib2",
     "login": "lib2",
     "password": "lib2",
+    "sessionKeys": [],
     "email": "lib2@gmail.com",
     "countryId": "6f6d158c-a4b3-503e-85f8-7f47d8f1c1f5",
     "address": "address",

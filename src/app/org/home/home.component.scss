@@ -4,10 +4,27 @@ md-toolbar {
 .spacer {
   flex: 1 1 auto;
 }
-i {
-  display: block;
-  margin: -11px 0;
-  font-size: 10px;
-  display: inline-block;
+.logo {
+  i {
+    display: block;
+    margin: -11px 0;
+    font-size: 10px;
+  }
 }
-
+.material-icons {
+  display: inline-block;
+  margin: 0 5px 0 16px;
+  opacity: 0.7;
+}
+.back-a {
+  display: block;
+  text-align: left;
+  padding: 16px 0;
+}
+.back {
+  vertical-align: middle;
+  font-size: 16px;
+}
+.active-link {
+  display: none;
+}

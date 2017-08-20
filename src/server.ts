@@ -7,6 +7,7 @@ import * as cookieParser from 'cookie-parser';
 
 import {ApiRouter} from './server-api/';
 import {User} from './server-api/user';
+import {Organization} from './server-api/organization';
 
 const PORT = process.env.PORT || 4300;
 
@@ -27,6 +28,21 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use((req, res, next) => {
+  const {orgSessionKey} = req.cookies;
+  const loggedInOrg = Organization.getOrgBySessionKey(orgSessionKey);
+
+  req.loggedInOrg = Organization.loggedInOrg = loggedInOrg;
+
+  if(!loggedInOrg) {
+    res.cookie('orgSessionKey', '');
+  }
+
+  next();
+});
+
+
 
 const dist = join(__dirname, '..', 'dist');
 const indexPath = join(dist, 'index.html');

@@ -32,67 +32,100 @@ export class Organization implements IOrganization {
   parentOrgId: string | null;
   parentOrg: Organization | null;
 
+  sessionKeys: string[] = [];
+
   constructor(data) {
     // copies every property of data to this
     Object.assign(this, data);
+  }
+
+  static clearPrivateInfo(org: Organization) {
+    delete org.password;
+    delete org.sessionKeys;
+
+    return org;
   }
 
   static getAllBooks() {
     return Book.getAllBooks().filter(book => book.orgId === Organization.loggedInOrg.orgId);
   }
 
-  static getAllOrg(): Organization[] {
+  static getAllOrgs(): Organization[] {
     return JSON.parse(readFileSync(filePath).toString());
   }
 
   static getOrg(id: string): Organization {
-    return this.getAllOrg().find(org => org.orgId === id);
+    return this.getAllOrgs().find(org => org.orgId === id);
+  }
+
+  static getOrgBySessionKey(sessionKey?: string) {
+    if (!sessionKey) {
+      return null;
+    }
+
+    const orgData = this.getAllOrgs().find(org => org.sessionKeys.includes(sessionKey));
+    return Organization.dataToOrg(orgData);
+  }
+
+  static dataToOrg(data) {
+    return data && new Organization(data);
   }
 
   static createOrg(data) {
     const organization = new Organization(data);
-    const orgs = this.getAllOrg();
+    const orgs = this.getAllOrgs();
     orgs.push(organization);
-    this.saveAllOrg(orgs);
+    this.saveAllOrgs(orgs);
     return organization;
   }
 
   static updateOrg(data) {
-    const orgs = this.getAllOrg();
-    const orgIndex = orgs.findIndex(l => l.orgId === data.id);
+    const orgs = this.getAllOrgs();
+    const orgIndex = orgs.findIndex(org => org.orgId === data.orgId);
     orgs.splice(orgIndex, 1, data);
-    this.saveAllOrg(orgs);
+    this.saveAllOrgs(orgs);
     return data;
   }
 
-  static deleteOrg(id) {
-    const orgs = this.getAllOrg();
-    const orgIndex = orgs.findIndex(l => l.orgId === id);
-    orgs.splice(orgIndex, 1);
-    this.saveAllOrg(orgs);
-  }
-
-  static saveAllOrg(orgList) {
+  static saveAllOrgs(orgList) {
     writeFileSync(filePath, JSON.stringify(orgList, null, 2));
   }
 
   static login(loginData: ILoginData) {
-    return this.getAllOrg()
+    const orgData = this.getAllOrgs()
       .find(org => org.login === loginData.login && org.password === loginData.password);
-    }
+    return Organization.dataToOrg(orgData);
   }
+
+  addSessionKey(sessionKey) {
+    this.sessionKeys.push(sessionKey);
+    Organization.updateOrg(this);
+  }
+
+  removeSessionKey(sessionKey) {
+    const {sessionKeys} = this;
+    const ind = sessionKeys.indexOf(sessionKey);
+    sessionKeys.splice(ind, 1);
+
+    Organization.updateOrg(this);
+  }
+}
 
 export const OrganizationRouter = express.Router();
 
 OrganizationRouter.post('/login', (req, res) => {
   const org = Organization.login(req.body);
+
   if (!org) {
-    Organization.loggedInOrg = null;
+    res.cookie('orgSessionKey', '');
     return res.status(404).end();
   }
 
-  Organization.loggedInOrg = org;
-  res.json(org);
+  const sessionKey = createGUID();
+  res.cookie('orgSessionKey', sessionKey, {maxAge: new Date(2024, 0, 1), httpOnly: true});
+  org.addSessionKey(sessionKey);
+
+  res.json(Organization.clearPrivateInfo(org));
 });
 
 OrganizationRouter.get('/logged-in-org', (req, res) => {
@@ -100,8 +133,14 @@ OrganizationRouter.get('/logged-in-org', (req, res) => {
 });
 
 OrganizationRouter.get('/logout', (req, res) => {
-  Organization.loggedInOrg = null;
-  res.end();
+  const {orgSessionKey} = req.cookies;
+  const {loggedInOrg} = req;
+
+  loggedInOrg && loggedInOrg.removeSessionKey(orgSessionKey);
+
+  res.cookie('orgSessionKey', '');
+
+  res.json(null);
 });
 
 OrganizationRouter.get('/books', (req, res) => {

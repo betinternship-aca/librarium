@@ -9,9 +9,6 @@ import {IAuthor} from '../app/defines/IAuthor';
 import {ICategory} from '../app/defines/ICategory';
 import {Category} from './category';
 import {Organization} from './organization';
-import {User} from './user';
-import {log} from 'util';
-
 
 
 const filePath = join(__dirname, './data/books.db.json');

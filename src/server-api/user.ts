@@ -76,6 +76,7 @@ export class User implements IUser {
     const userData = this.getAllUsers().find(user => user.sessionKeys.includes(sessionKey));
     return User.dataToUser(userData);
   }
+
   static dataToUser(data) {
     return data && new User(data);
   }

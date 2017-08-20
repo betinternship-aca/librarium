@@ -1,11 +1,13 @@
 <md-toolbar>
-  <a routerLink="/org/home">
+  <a routerLink="/org/home" class="logo">
     <b>Librarium </b>
     <i>organizations</i>
   </a>
 
   <span class="spacer"></span>
-  <button md-button [mdMenuTriggerFor]="menu"><i class="material-icons">photo_library</i>{{loggedInOrgName}}</button>
+  <button md-button [mdMenuTriggerFor]="menu">
+    <i class="material-icons">account_balance</i> {{loggedInOrgName}}
+  </button>
   <md-menu
     #menu="mdMenu"
     xPosition="before"
@@ -15,5 +17,12 @@
     <button md-menu-item (click)="this.logOut()">Sign Out</button>
   </md-menu>
  </md-toolbar>
+
+<a md-button class="back-a"
+   routerLink="/org/home/books"
+   routerLinkActive="active-link">
+  <i class="material-icons">home</i>
+  <span class="back">Back to home</span>
+</a>
 
 <router-outlet></router-outlet>
