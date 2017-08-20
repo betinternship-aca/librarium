@@ -79,15 +79,10 @@ export class Organization implements IOrganization {
   static login(loginData: ILoginData) {
     return this.getAllOrg()
       .find(org => org.login === loginData.login && org.password === loginData.password);
-    }
   }
-
+}
 
 export const OrganizationRouter = express.Router();
-
-OrganizationRouter.get('/org-list', (req, res) => {
-  res.json(Organization.getAllOrg());
-});
 
 OrganizationRouter.post('/login', (req, res) => {
   const org = Organization.login(req.body);
@@ -100,6 +95,10 @@ OrganizationRouter.post('/login', (req, res) => {
   res.end();
 });
 
+OrganizationRouter.get('/logged-in-org', (req, res) => {
+  res.json(Organization.loggedInOrg);
+});
+
 OrganizationRouter.get('/logout', (req, res) => {
   Organization.loggedInOrg = null;
   res.end();
@@ -108,6 +107,7 @@ OrganizationRouter.get('/logout', (req, res) => {
 OrganizationRouter.get('/is-logged-in', (req, res) => {
   res.json(!!Organization.loggedInOrg);
 });
+
 
 OrganizationRouter.get('/books', (req, res) => {
   res.json(Organization.getAllBooks());
@@ -125,6 +125,7 @@ OrganizationRouter.get('/return/:orderId', (req, res) => {
   res.end();
 });
 
+// todo: check do we need this
 OrganizationRouter.get('/:orgId', (req, res) => {
   res.json(Organization.getOrg(req.params.orgId));
 });
@@ -133,17 +134,3 @@ OrganizationRouter.get('/:orgId', (req, res) => {
 OrganizationRouter.post('/', (req, res) => {
   res.json(Organization.createOrg(req.body));
 });
-
-// update organization
-OrganizationRouter.post('/:orgId', (req, res) => {
-  const data = req.body;
-  data.id = req.params.id;
-  res.json(Organization.updateOrg(data));
-});
-
-// delete organization
-OrganizationRouter.delete('/:orgId', (req, res) => {
-  const id = req.params.id;
-  res.json(Organization.deleteOrg(id));
-});
-

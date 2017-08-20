@@ -33,7 +33,9 @@
   },
   {
     "userId": "ca9796fc-1fd1-8054-aa3a-dc983d6a6891",
-    "sessionKeys": [],
+    "sessionKeys": [
+      "7b874baf-f982-bace-61f3-2e38e936ec8c"
+    ],
     "name": "user1",
     "login": "user1",
     "password": "user1",
