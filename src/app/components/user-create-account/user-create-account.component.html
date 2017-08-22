@@ -2,35 +2,58 @@
   <form #loginForm="ngForm">
 
     <md-input-container color="accent">
-      <input mdInput placeholder="User Name" [(ngModel)]="data.name" name="name" required>
+      <input mdInput placeholder="User Name"
+             [(ngModel)]="data.name"
+             name="name" required>
     </md-input-container>
 
     <md-input-container color="accent">
-      <input mdInput placeholder="Login" [(ngModel)]="data.login" name="login" required />
+      <input mdInput placeholder="Login"
+             [(ngModel)]="data.login"
+             name="login" required />
     </md-input-container>
 
     <md-input-container color="accent">
-      <input mdInput type="password" placeholder="Password" [(ngModel)]="data.password" name="password" required />
+      <input mdInput type="password"
+             placeholder="Password"
+             [(ngModel)]="data.password"
+             name="password" required />
     </md-input-container>
 
     <md-input-container color="accent">
-      <input mdInput type="email" placeholder="Email" [(ngModel)]="data.email" name="email" required />
+      <input mdInput type="email"
+             placeholder="Email"
+             [(ngModel)]="data.email"
+             name="email" required />
     </md-input-container>
 
-    <md-select color="accent" placeholder="Gender" [(ngModel)]="data.gender" name="gender" ngDefaultControl>
-      <md-option *ngFor="let gender of genders" [value]="gender.value" [innerText]="gender.viewValue"></md-option>
+    <md-select color="accent"
+               placeholder="Gender"
+               [(ngModel)]="data.gender"
+               name="gender" ngDefaultControl>
+      <md-option *ngFor="let gender of genders"
+                 [value]="gender"
+                 [innerText]="gender | titlecase"></md-option>
     </md-select>
 
     <md-input-container color="accent">
-      <input mdInput placeholder="Address" [(ngModel)]="data.address" name=" address" required />
+      <input mdInput placeholder="Address"
+             [(ngModel)]="data.address"
+             name=" address" required />
     </md-input-container>
 
     <md-input-container color="accent">
-      <input mdInput type="tel" placeholder="Telephone" [(ngModel)]="data.telephone" name="telephone" required />
+      <input mdInput type="tel"
+             placeholder="Telephone"
+             [(ngModel)]="data.telephone"
+             name="telephone" required />
     </md-input-container>
 
     <md-card-actions color="accent">
-      <button md-raised-button [disabled]="!loginForm.form.valid" (click)="createUser()">Create User</button>
+      <button md-raised-button
+              [disabled]="!loginForm.form.valid"
+              (click)="createUser()">Create User
+      </button>
     </md-card-actions>
   </form>
 </md-card-content>

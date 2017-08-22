@@ -5,12 +5,18 @@ import {IOrganization} from '../../defines/IOrganization';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
+const getCookieValue = (propName) => {
+  const keyValues = document.cookie.split(';').map((pair) => pair.split('='));
+  const keyValue = keyValues.find((pair) => pair[0] === propName);
+  return keyValue && keyValue[1];
+};
+
 @Injectable()
 export class OrgService {
   orgSubject: Subject<IOrganization>;
 
   constructor(private http: HttpClient) {
-    this.orgSubject = new BehaviorSubject(null);
+    this.orgSubject = new BehaviorSubject(getCookieValue('orgSessionKey') ? {} as IOrganization : null);
     this.http.get('/api/org/logged-in-org')
       .subscribe((loggedInOrg: IOrganization) => {
         this.orgSubject.next(loggedInOrg);

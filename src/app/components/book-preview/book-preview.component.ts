@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {IBook} from '../../defines/IBook';
 import {MD_DIALOG_DATA} from '@angular/material';
 import {ICategory} from '../../defines/ICategory';
@@ -9,7 +9,7 @@ import {IAuthor} from '../../defines/IAuthor';
   templateUrl: './book-preview.component.html',
   styleUrls: ['./book-preview.component.scss']
 })
-export class BookPreviewComponent implements OnInit {
+export class BookPreviewComponent {
   @Input()
   book;
   category: ICategory[];
@@ -17,9 +17,4 @@ export class BookPreviewComponent implements OnInit {
   constructor(@Inject(MD_DIALOG_DATA) data: IBook) {
     this.book = data;
   }
-
-
-  ngOnInit() {
-  }
-
 }

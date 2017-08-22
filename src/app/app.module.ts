@@ -9,7 +9,6 @@ import {BooksComponent} from './components/books/books.component';
 import {BookService} from './services/book.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
-import {FocusDirective} from './directives/focus.directive';
 import {FormsModule} from '@angular/forms';
 import {OrderService} from './services/order.service';
 import {OrderComponent} from './components/order/order.component';
@@ -31,7 +30,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BookInfoComponent,
     BooksComponent,
     BookPreviewComponent,
-    FocusDirective,
     OrderComponent,
     HistoryComponent,
     HomePageComponent,
@@ -43,7 +41,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BookInfoComponent,
     OrderComponent,
     ReservedBooksComponent,
-    FocusDirective
   ],
   imports: [
     AppCommonModule,

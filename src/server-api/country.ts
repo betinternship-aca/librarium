@@ -1,7 +1,6 @@
 /**
  * Created by anmin on 30.07.2017.
  */
-///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import * as express from 'express';
 import {readFileSync} from 'fs';
 import {join} from 'path';

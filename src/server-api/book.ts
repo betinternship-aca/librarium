@@ -23,7 +23,6 @@ export class Book implements IBook {
   categories: ICategory[];
   orgId: string;
   editionYear: Date;
-  language?: string;
   description: string;
   reserved = false;
 

@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {IBook} from '../../defines/IBook';
 import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from '@angular/material';
 import {BookService} from '../services/book.service';

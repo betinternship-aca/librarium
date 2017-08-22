@@ -1,8 +1,7 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {IUser} from '../../defines/IUser';
-import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
-import {MD_DIALOG_DATA, MdDialog, MdDialogRef} from '@angular/material';
+import {MdDialogRef} from '@angular/material';
 import {ILoginData} from '../../defines/ILoginData';
 
 @Component({
@@ -12,10 +11,7 @@ import {ILoginData} from '../../defines/ILoginData';
 })
 export class UserCreateAccountComponent {
   data = {} as IUser;
-  genders = [
-    {value: 'female', viewValue: 'Female'},
-    {value: 'male', viewValue: 'Male'}
-  ];
+  genders = ['female', 'male'];
 
   constructor(private userService: UserService,
               private dialogRef: MdDialogRef<ILoginData>) {

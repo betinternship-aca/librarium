@@ -2,7 +2,6 @@ md-card {
   margin: 16px;
   width: 230px;
 }
-
 img {
   max-width: 200px;
   padding: 0 20px
@@ -19,6 +18,10 @@ md-card-subtitle{
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+
+  a:not(:first-of-type) {
+    margin-left: 10px;
+  }
 }
 
 md-card-content {
@@ -35,10 +38,5 @@ md-card-content {
   overflow: hidden;
   height: 16px;
   word-break: break-all;
-}
-md-card-subtitle {
-  a:not(:first-of-type) {
-    margin-left: 10px;
-  }
 }
 

@@ -18,8 +18,9 @@
               name="author"
               required>
      <button md-button class="new-author" (click)="newAuthor()">Add new author</button>
-     <md-option *ngFor="let author of authors" [value]="author.authorId">
-       {{author.name}}
+     <md-option *ngFor="let author of authors"
+                [value]="author.authorId"
+                [innerText]="author.name">
      </md-option>
    </md-select>
 
@@ -27,8 +28,9 @@
                [(ngModel)]="book.categoryIds"
                name="category"
                required>
-      <md-option *ngFor="let category of categories" [value]="category.categoryId">
-        {{category.name}}
+      <md-option *ngFor="let category of categories"
+                 [value]="category.categoryId"
+                 [innerText]="category.name">
       </md-option>
     </md-select>
 

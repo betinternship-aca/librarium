@@ -1,7 +1,10 @@
 <md-card>
   <app-book-info [book]="book"></app-book-info>
   <md-card-actions>
-    <button md-raised-button color="primary" (click)="createPreview()">Preview</button>
+    <button md-raised-button
+            color="primary"
+            (click)="createPreview()">Preview
+    </button>
     <a md-raised-button
        color="primary"
        [disabled]="book.reserved"

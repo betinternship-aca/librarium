@@ -6,4 +6,7 @@ md-card-content {
 }
 md-card-actions {
   margin: 0;
+  :last-child {
+    margin-bottom: -11px;
+  }
 }

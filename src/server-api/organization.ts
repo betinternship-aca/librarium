@@ -12,7 +12,6 @@ const filePath = join(__dirname, './data/organizations.db.json');
 
 const clearOrgData = (data: IOrganization) => {
   delete data.country;
-  delete data.parentOrg;
 };
 
 export class Organization implements IOrganization {
@@ -29,8 +28,6 @@ export class Organization implements IOrganization {
   country: Country | null;
   city: string;
   description: string;
-  parentOrgId: string | null;
-  parentOrg: Organization | null;
 
   sessionKeys: string[] = [];
 
@@ -54,8 +51,8 @@ export class Organization implements IOrganization {
     return JSON.parse(readFileSync(filePath).toString());
   }
 
-  static getOrg(id: string): Organization {
-    return this.getAllOrgs().find(org => org.orgId === id);
+  static getOrg(orgId: string): Organization {
+    return this.getAllOrgs().find(org => org.orgId === orgId);
   }
 
   static getOrgBySessionKey(sessionKey?: string) {
@@ -122,7 +119,7 @@ OrganizationRouter.post('/login', (req, res) => {
   }
 
   const sessionKey = createGUID();
-  res.cookie('orgSessionKey', sessionKey, {maxAge: new Date(2024, 0, 1), httpOnly: true});
+  res.cookie('orgSessionKey', sessionKey, {maxAge: new Date(2024, 0, 1)});
   org.addSessionKey(sessionKey);
 
   res.json(Organization.clearPrivateInfo(org));
@@ -150,6 +147,7 @@ OrganizationRouter.get('/books', (req, res) => {
 OrganizationRouter.get('/reserved', (req, res) => {
   res.json(Order.getOrgReservations());
 });
+
 OrganizationRouter.get('/history', (req, res) => {
   res.json(Order.getOrgOrderHistory());
 });

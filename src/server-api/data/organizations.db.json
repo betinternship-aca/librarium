@@ -4,7 +4,8 @@
     "sessionKeys": [
       "abe8c879-81be-d99b-d111-8484c73fae47",
       "20cc78b1-f55f-de63-db12-46d5a04f95ec",
-      "56cde22e-1836-d9fc-9816-afe4161f2891"
+      "56cde22e-1836-d9fc-9816-afe4161f2891",
+      "c5a21af7-aba3-cb51-e62c-127e8d116a73"
     ],
     "name": "lib1",
     "login": "lib1",
@@ -17,10 +18,10 @@
   },
   {
     "orgId": "ea8545fb-306b-f4bf-0a9f-5f53bb6c1029",
+    "sessionKeys": [],
     "name": "lib2",
     "login": "lib2",
     "password": "lib2",
-    "sessionKeys": [],
     "email": "lib2@gmail.com",
     "countryId": "6f6d158c-a4b3-503e-85f8-7f47d8f1c1f5",
     "address": "address",

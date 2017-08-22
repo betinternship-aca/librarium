@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import {IOrder} from '../../defines/IOrder';
-import {BookService} from './book.service';
 
 @Injectable()
 export class OrderService {
 
-  constructor(private http: HttpClient, private bookService: BookService) { }
+  constructor(private http: HttpClient) { }
 
   getOrgReservations() {
     return this.http.get(`/api/org/reserved`) as Observable<IOrder[]>;

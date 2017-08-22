@@ -84,13 +84,6 @@ export class Order implements IOrder {
     return order;
   }
 
-  static deleteOrder(orderId) {
-    const orders = this.getAllOrders();
-    const index = orders.findIndex((order) => order.orderId === orderId);
-    orders.splice(index, 1);
-    this.saveAllOrders(orders);
-  }
-
   static updateOrder(data) {
     const order = new Order(data);
     const orders = this.getAllOrders();
@@ -117,17 +110,14 @@ OrderRouter.get('/reserved', (req, res) => {
   res.json(Order.getUserReservations());
 });
 
-
 // create order
 OrderRouter.post('/userId/', (req, res) => {
   res.json(Order.createOrder(req.body));
 });
 
-
 OrderRouter.get('/:orderId', (req, res) => {
   res.json(Order.getOrder(req.params.orderId));
 });
-
 
 // update order
 OrderRouter.post('/:orderId', (req, res) => {
@@ -136,7 +126,3 @@ OrderRouter.post('/:orderId', (req, res) => {
   res.json(Order.updateOrder(data));
 });
 
-// delete order
-OrderRouter.delete('/:orderId', (req, res) => {
-  res.json(Order.deleteOrder(res.params.orderId));
-});

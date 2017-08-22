@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ILoginData} from '../../defines/ILoginData';
 import {UserService} from '../../services/user.service';
 import {MdDialogRef} from '@angular/material';
