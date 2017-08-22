@@ -6,6 +6,7 @@ const CONTROL_VALUE_ACCESSOR = {
   useExisting: forwardRef(() => ImageUploadComponent),
   multi: true // TODO
 };
+
 @Component({
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
@@ -19,6 +20,7 @@ export class ImageUploadComponent implements ControlValueAccessor {
   get value() {
     return this._value;
   }
+
   set value(value) {
     this._value = value;
 
@@ -33,7 +35,8 @@ export class ImageUploadComponent implements ControlValueAccessor {
   private _touched = false;
   touch = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   onChange(ev) {
     const myFile = ev.currentTarget;

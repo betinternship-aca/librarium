@@ -54,10 +54,6 @@ export class Organization implements IOrganization {
     return JSON.parse(readFileSync(filePath).toString());
   }
 
-  static getOrg(id: string): Organization {
-    return this.getAllOrgs().find(org => org.orgId === id);
-  }
-
   static getOrgBySessionKey(sessionKey?: string) {
     if (!sessionKey) {
       return null;
@@ -157,11 +153,6 @@ OrganizationRouter.get('/history', (req, res) => {
 OrganizationRouter.get('/return/:orderId', (req, res) => {
   Order.finishOrder(req.params.orderId);
   res.end();
-});
-
-// todo: check do we need this
-OrganizationRouter.get('/:orgId', (req, res) => {
-  res.json(Organization.getOrg(req.params.orgId));
 });
 
 // create organization

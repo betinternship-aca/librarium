@@ -19,7 +19,7 @@ export class HomePageComponent {
               private userService: UserService) {
     this.userService.isLoggedIn().subscribe((isLogged) => this.isLoggedIn = isLogged);
     this.userService.getLoggedInUser().subscribe((user: IUser) => user && (this.loggedInUserName = user.name));
-    this.router.navigate(['']);
+    this.router.navigate([{outlets: {account: null}}]);
   }
 
   signOut() {
