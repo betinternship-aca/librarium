@@ -17,18 +17,14 @@ import {AuthorCreateComponent} from '../author-create/author-create.component';
 })
 export class BookEditorComponent {
   title: string;
-
-  @Input()
-  inProgress = false;
-
-  @Input()
-  book;
-
-  @Input()
-  multiple;
-
   categories: ICategory[];
   authors: IAuthor[];
+  @Input()
+  inProgress = false;
+  @Input()
+  book;
+  @Input()
+  multiple;
 
 
   constructor(@Inject(MD_DIALOG_DATA) data: IBook,
@@ -38,12 +34,10 @@ export class BookEditorComponent {
               private categoryService: CategoryService,
               private authorService: AuthorService) {
     this.book = data;
-
     this.title = data.bookId ? 'Edit book' : 'Add book';
 
     this.authorService.getAllAuthors()
       .subscribe(authors => this.authors = authors as IAuthor[]);
-
     this.categoryService.getAllCategories()
       .subscribe(categories => this.categories = categories as ICategory[]);
   }

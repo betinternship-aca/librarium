@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {OrgService} from '../services/org.service';
 import {IOrganization} from '../../defines/IOrganization';
 import {Router} from '@angular/router';
@@ -10,7 +10,7 @@ import {ICountry} from '../../defines/ICountry';
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.scss'],
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponent {
   data = {} as IOrganization;
   countries: ICountry[];
 
@@ -22,9 +22,6 @@ export class CreateAccountComponent implements OnInit {
   createOrg() {
     this.orgService.createOrg(this.data)
       .subscribe(() => this.router.navigate(['/org/home/books']));
-  }
-
-  ngOnInit() {
   }
 }
 

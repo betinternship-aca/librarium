@@ -12,7 +12,6 @@ const filePath = join(__dirname, './data/organizations.db.json');
 
 const clearOrgData = (data: IOrganization) => {
   delete data.country;
-  delete data.parentOrg;
 };
 
 export class Organization implements IOrganization {

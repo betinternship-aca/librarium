@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {IBook} from '../../defines/IBook';
 import {MdDialog} from '@angular/material';
 import {BookEditorComponent} from '../book-editor/book-editor.component';
@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
-export class BooksComponent implements OnInit {
+export class BooksComponent {
   books: IBook[];
 
   constructor(private activatedRoute: ActivatedRoute, public dialog: MdDialog) {
@@ -28,8 +28,4 @@ export class BooksComponent implements OnInit {
     const index = this.books.indexOf(book);
     this.books.splice(index, 1);
   }
-
-  ngOnInit() {
-  }
-
 }

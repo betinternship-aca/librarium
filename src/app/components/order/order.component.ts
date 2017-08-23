@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {IOrder} from '../../defines/IOrder';
 import {IBook} from '../../defines/IBook';
 import {MdDialog} from '@angular/material';
@@ -9,7 +9,7 @@ import {BookPreviewComponent} from 'app/components/book-preview/book-preview.com
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent {
   @Input()
   isReservation = false;
 
@@ -28,7 +28,4 @@ export class OrderComponent implements OnInit {
       width: '400px'
     });
   }
-  ngOnInit() {
-  }
-
 }

@@ -49,5 +49,11 @@
   {
     "authorId": "9c1967c9-7404-cb88-a4f3-7f156b784f17",
     "name": "victoria aveyard"
+  },
+  {
+    "authorId": "b85697cc-6fb7-b7de-4f97-c3157bdde12e",
+    "name": "Raffi",
+    "bornDate": "1835-01-01",
+    "deathDate": "1888-04-25"
   }
 ]

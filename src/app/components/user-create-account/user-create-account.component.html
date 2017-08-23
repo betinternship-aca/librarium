@@ -33,7 +33,8 @@
                name="gender" ngDefaultControl>
       <md-option *ngFor="let gender of genders"
                  [value]="gender"
-                 [innerText]="gender | titlecase"></md-option>
+                 [innerText]="gender | titlecase">
+      </md-option>
     </md-select>
 
     <md-input-container color="accent">
@@ -52,7 +53,8 @@
     <md-card-actions color="accent">
       <button md-raised-button
               [disabled]="!loginForm.form.valid"
-              (click)="createUser()">Create User
+              (click)="createUser()">
+        Create User
       </button>
     </md-card-actions>
   </form>

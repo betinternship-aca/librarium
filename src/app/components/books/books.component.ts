@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {IBook} from '../../defines/IBook';
-import {ActivatedRoute} from '@angular/router';
 import {BookService} from '../../services/book.service';
 
 @Component({

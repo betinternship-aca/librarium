@@ -13,8 +13,7 @@ export class AuthorCreateComponent {
   @Input()
   author;
 
-  constructor(
-    @Inject(MD_DIALOG_DATA) data: IAuthor,
+  constructor(@Inject(MD_DIALOG_DATA) data: IAuthor,
     private dialogRef: MdDialogRef<IAuthor>,
     private authorService: AuthorService,
 
