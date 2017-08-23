@@ -1,8 +1,8 @@
 <span md-dialog-title [innerText]="title"></span>
 
-<md-dialog-content class="image">
-  <app-image-upload [(ngModel)]="book.image"></app-image-upload>
-</md-dialog-content>
+  <md-dialog-content class="image">
+    <app-image-upload [(ngModel)]="book.image"></app-image-upload>
+  </md-dialog-content>
 <form #editForm="ngForm">
 
   <md-dialog-content>
@@ -13,22 +13,29 @@
              required>
     </md-input-container>
 
-    <md-select multiple placeholder="Author"
-               [(ngModel)]="book.authorIds"
-               name="author"
-               required>
-      <button md-button class="new-author" (click)="newAuthor()">Add new author</button>
-      <md-option *ngFor="let author of authors" [value]="author.authorId">
-        {{author.name}}
-      </md-option>
-    </md-select>
+   <md-select multiple placeholder="Author"
+              [(ngModel)]="book.authorIds"
+              name="author"
+              required>
+     <button
+       md-button
+       class="new-author"
+       (click)="newAuthor()">
+       Add new author
+     </button>
+     <md-option *ngFor="let author of authors"
+                [value]="author.authorId"
+                [innerText]="author.name">
+     </md-option>
+   </md-select>
 
     <md-select multiple placeholder="Category"
                [(ngModel)]="book.categoryIds"
                name="category"
                required>
-      <md-option *ngFor="let category of categories" [value]="category.categoryId">
-        {{category.name}}
+      <md-option *ngFor="let category of categories"
+                 [value]="category.categoryId"
+                 [innerText]="category.name">
       </md-option>
     </md-select>
 
@@ -50,10 +57,10 @@
   </md-dialog-content>
 </form>
 
-<md-dialog-actions>
-  <button md-raised-button [disabled]="!editForm.form.valid" (click)="saveBook(book)">Save</button>
-  <button md-button [md-dialog-close]="null">Cancel</button>
-</md-dialog-actions>
+  <md-dialog-actions>
+    <button md-raised-button [disabled]="!editForm.form.valid" (click)="saveBook(book)">Save</button>
+    <button md-button [md-dialog-close]="null">Cancel</button>
+  </md-dialog-actions>
 
 
 <md-progress-bar mode="indeterminate" [class.progress-started]="inProgress"></md-progress-bar>

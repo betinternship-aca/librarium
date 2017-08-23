@@ -29,8 +29,6 @@ export class Organization implements IOrganization {
   country: Country | null;
   city: string;
   description: string;
-  parentOrgId: string | null;
-  parentOrg: Organization | null;
 
   sessionKeys: string[] = [];
 
@@ -52,6 +50,10 @@ export class Organization implements IOrganization {
 
   static getAllOrgs(): Organization[] {
     return JSON.parse(readFileSync(filePath).toString());
+  }
+
+  static getOrg(orgId: string): Organization {
+    return this.getAllOrgs().find(org => org.orgId === orgId);
   }
 
   static getOrgBySessionKey(sessionKey?: string) {
@@ -118,7 +120,7 @@ OrganizationRouter.post('/login', (req, res) => {
   }
 
   const sessionKey = createGUID();
-  res.cookie('orgSessionKey', sessionKey, {maxAge: new Date(2024, 0, 1), httpOnly: true});
+  res.cookie('orgSessionKey', sessionKey, {maxAge: new Date(2024, 0, 1)});
   org.addSessionKey(sessionKey);
 
   res.json(Organization.clearPrivateInfo(org));
@@ -146,6 +148,7 @@ OrganizationRouter.get('/books', (req, res) => {
 OrganizationRouter.get('/reserved', (req, res) => {
   res.json(Order.getOrgReservations());
 });
+
 OrganizationRouter.get('/history', (req, res) => {
   res.json(Order.getOrgOrderHistory());
 });
@@ -153,6 +156,11 @@ OrganizationRouter.get('/history', (req, res) => {
 OrganizationRouter.get('/return/:orderId', (req, res) => {
   Order.finishOrder(req.params.orderId);
   res.end();
+});
+
+// todo: check do we need this
+OrganizationRouter.get('/:orgId', (req, res) => {
+  res.json(Organization.getOrg(req.params.orgId));
 });
 
 // create organization

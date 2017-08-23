@@ -6,15 +6,11 @@ import {IBook} from '../../defines/IBook';
   templateUrl: './book-info.component.html',
   styleUrls: ['./book-info.component.scss']
 })
-export class BookInfoComponent implements OnInit {
+export class BookInfoComponent {
 
   @Input()
   book: IBook;
 
   constructor() {
   }
-
-  ngOnInit() {
-  }
-
 }

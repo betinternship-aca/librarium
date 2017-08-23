@@ -11,6 +11,7 @@ export class HistoryComponent {
   orders: IOrder[];
 
   constructor(private activatedRouter: ActivatedRoute) {
-    this.activatedRouter.data.subscribe((resData: { history: IOrder[] }) => this.orders = resData.history);
+    this.activatedRouter.data
+      .subscribe((resData: { history: IOrder[] }) => this.orders = resData.history);
   }
 }

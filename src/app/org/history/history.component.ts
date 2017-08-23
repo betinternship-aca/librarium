@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {IOrder} from '../../defines/IOrder';
-import {OrderService} from '../services/order.service';
 import {DataSource} from '@angular/cdk';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -16,8 +15,7 @@ export class HistoryComponent implements OnInit {
   dataSource: OrderDataSource;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private orderService: OrderService) {
+              private router: Router) {
     this.dataSource = new OrderDataSource(this.activatedRoute);
   }
 

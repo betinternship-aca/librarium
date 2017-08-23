@@ -29,10 +29,6 @@ export class BooksComponent implements OnInit {
     this.books.splice(index, 1);
   }
 
-  saveBook(book) {
-    this.books.splice(0, 0, book);
-  }
-
   ngOnInit() {
   }
 

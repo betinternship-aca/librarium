@@ -8,7 +8,7 @@ import {AuthorService} from '../services/author.service';
   templateUrl: './author-create.component.html',
   styleUrls: ['./author-create.component.scss']
 })
-export class AuthorCreateComponent implements OnInit {
+export class AuthorCreateComponent {
 
   @Input()
   author;
@@ -26,8 +26,4 @@ export class AuthorCreateComponent implements OnInit {
     const obs = data.authorId ? this.authorService.updateAuthor(data) : this.authorService.createAuthor(data);
     obs.subscribe(author => this.dialogRef.close(author));
   }
-
-  ngOnInit() {
-  }
-
 }

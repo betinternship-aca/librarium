@@ -5,18 +5,16 @@ import {DataSource} from '@angular/cdk';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MdDialog} from '@angular/material';
 
-
 @Component({
   selector: 'app-reserved-books',
   templateUrl: './reserves.component.html',
   styleUrls: ['./reserves.component.scss']
 })
 export class ReservesComponent implements OnInit {
-  orders: IOrder[];
   @Input()
   disabled = false;
   @Input()
-  innerText = ' Return ';
+  innerText = 'Return';
 
   displayedColumns = ['bookName', 'userName', 'reserveDate', 'action'];
   dataSource: OrderDataSource;

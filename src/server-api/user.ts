@@ -53,7 +53,7 @@ export class User implements IUser {
 
   static updateUser(data) {
     const users = this.getAllUsers();
-    const userIndex = users.findIndex(u => u.userId === data.id);
+    const userIndex = users.findIndex(u => u.userId === data.userId);
     users.splice(userIndex, 1, data);
     this.saveAllUsers(users);
     return data;

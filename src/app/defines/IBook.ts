@@ -12,6 +12,5 @@ export interface IBook {
   description: string;
   editionYear: Date;
   image: string;
-  language?: string;
   reserved: boolean;
 }

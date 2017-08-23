@@ -1,7 +1,6 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {IBook} from '../../defines/IBook';
 import {ActivatedRoute} from '@angular/router';
-import {MdDialog} from '@angular/material';
 import {BookService} from '../../services/book.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class BooksComponent {
   @Input()
   searchContent: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private bookService: BookService) {
+  constructor(private bookService: BookService) {
     this.getAllBooks();
   }
 

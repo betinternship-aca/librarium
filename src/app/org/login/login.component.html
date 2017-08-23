@@ -1,16 +1,29 @@
 <md-card-content>
+
   <form #loginForm="ngForm">
+
     <md-input-container color="accent">
       <input mdInput placeholder="nickname"
              [(ngModel)]="loginData.login"
              name="login" required />
     </md-input-container>
+
     <md-input-container color="accent">
-      <input mdInput type="password" placeholder="password" [(ngModel)]="loginData.password" name="password" required />
+      <input mdInput type="password"
+             placeholder="password"
+             [(ngModel)]="loginData.password"
+             name="password" required />
     </md-input-container>
+
     <md-card-actions>
-      <button md-raised-button [disabled]="!loginForm.form.valid" (click)="login()" color="accent">Log In Library</button>
+      <button md-raised-button
+              [disabled]="!loginForm.form.valid"
+              (click)="login()"
+              color="accent">Log In Library
+      </button>
     </md-card-actions>
   </form>
+
   <md-error *ngIf="errorMsg" [innerText]="errorMsg"></md-error>
+
 </md-card-content>
