@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {
   MdAutocompleteModule, MdButtonModule,
   MdCardModule, MdDialogModule,
-  MdInputModule, MdMenuModule, MdProgressBarModule,
+  MdInputModule, MdMenuModule, MdPaginatorModule, MdProgressBarModule,
   MdSelectModule, MdTableModule, MdTabsModule, MdToolbarModule
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk';
@@ -19,7 +19,8 @@ const materialModules = [
   MdTableModule,
   MdToolbarModule,
   CdkTableModule,
-  MdMenuModule
+  MdMenuModule,
+  MdPaginatorModule
 ];
 
 @NgModule({

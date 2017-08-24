@@ -149,7 +149,7 @@ OrganizationRouter.get('/reserved', (req, res) => {
 });
 
 OrganizationRouter.get('/history', (req, res) => {
-  res.json(Order.getOrgOrderHistory());
+  res.json(Order.getOrgOrderHistory(req.query));
 });
 
 OrganizationRouter.get('/return/:orderId', (req, res) => {

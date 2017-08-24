@@ -1,31 +1,44 @@
-<md-table #table [dataSource]="dataSource">
+<!-- for paginator -->
+<md-toolbar>
+  <md-input-container>
+    <input mdInput type="search" #search />
+  </md-input-container>
+</md-toolbar>
 
+<md-table #table [dataSource]="dataSource">
   <!-- Book name column -->
   <ng-container cdkColumnDef="bookName">
     <md-header-cell *cdkHeaderCellDef>Book name</md-header-cell>
-    <md-cell *cdkCellDef="let order"> {{order.book.bookName}} </md-cell>
+    <md-cell *cdkCellDef="let order"> {{order.book.bookName}}</md-cell>
   </ng-container>
 
 
   <!-- User name Column -->
   <ng-container cdkColumnDef="userName">
     <md-header-cell *cdkHeaderCellDef>User name</md-header-cell>
-    <md-cell *cdkCellDef="let order"> {{order.user.name}} </md-cell>
+    <md-cell *cdkCellDef="let order"> {{order.user.name}}</md-cell>
   </ng-container>
 
   <!-- Reserve date Column -->
   <ng-container cdkColumnDef="reserveDate">
     <md-header-cell *cdkHeaderCellDef>Reserve date</md-header-cell>
-    <md-cell *cdkCellDef="let order"> {{order.orderDate | date:'short'}} </md-cell>
+    <md-cell *cdkCellDef="let order"> {{order.orderDate | date:'short'}}</md-cell>
   </ng-container>
 
-    <!-- Return date Column -->
+  <!-- Return date Column -->
   <ng-container cdkColumnDef="returnDate">
     <md-header-cell *cdkHeaderCellDef>Return date</md-header-cell>
-    <md-cell *cdkCellDef="let order"> {{order.returnDate | date:'short'}} </md-cell>
+    <md-cell *cdkCellDef="let order"> {{order.returnDate | date:'short'}}</md-cell>
   </ng-container>
 
 
   <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
   <md-row *cdkRowDef="let order; columns: displayedColumns;"></md-row>
 </md-table>
+
+<md-paginator #paginatro
+              [length]="dataSource.totalCount"
+              [pageIndex]="pagingConfig.pageIndex"
+              [pageSize]="pagingConfig.pageSize"
+              [pageSizeOptions]="pagingConfig.pageSizeOptions">
+</md-paginator>

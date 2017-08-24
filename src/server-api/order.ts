@@ -11,6 +11,13 @@ import {IUser} from '../app/defines/IUser';
 import {IBook} from '../app/defines/IBook';
 import {Book} from './book';
 import {User} from './user';
+import {IPagingData} from '../app/defines/IPagingData';
+
+interface IOrderSearchCriteria {
+  search: string;
+  size: number;
+  index: number;
+}
 
 const ordersFilePath = join(__dirname, 'data/orders.db.json');
 
@@ -44,8 +51,21 @@ export class Order implements IOrder {
       .map(data => new Order(data));
   }
 
-  static getOrgOrderHistory(): Order[] {
-    return Order.getOrgOrders().filter(order => order.returnDate !== null);
+  static getOrgOrderHistory(criteria: IOrderSearchCriteria) {
+    const filteredOrders = Order.getOrgOrders().filter(order => order.returnDate !== null
+      && order.book.bookName.toLowerCase().includes(criteria.search.toLowerCase())
+    );
+
+    const result = {
+      totalCount: filteredOrders.length
+    } as IPagingData<Order>;
+
+    criteria.size = +criteria.size;
+
+    const offset = criteria.index * criteria.size || 0;
+    result.data = filteredOrders.slice(offset, offset + criteria.size);
+
+    return result;
   }
 
   static getOrgReservations(): Order[] {
