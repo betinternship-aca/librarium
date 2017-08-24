@@ -16,7 +16,8 @@
     <md-menu
       #menu="mdMenu"
       xPosition="before"
-      yPosition="below">
+      yPosition="below"
+      [overlapTrigger]="false">
       <a md-menu-item routerLink="reserved">Reserved</a>
       <a md-menu-item routerLink="history">History</a>
       <button md-menu-item (click)="this.signOut()">Sign Out</button>

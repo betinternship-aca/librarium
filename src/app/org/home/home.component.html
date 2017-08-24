@@ -11,12 +11,13 @@
   <md-menu
     #menu="mdMenu"
     xPosition="before"
-    yPosition="below">
+    yPosition="below"
+    [overlapTrigger]="false">
     <a md-menu-item routerLink="reserved">Reserved</a>
     <a md-menu-item routerLink="history">History</a>
     <button md-menu-item (click)="this.logOut()">Sign Out</button>
   </md-menu>
- </md-toolbar>
+</md-toolbar>
 
 <a md-button class="back-a"
    routerLink="/org/home/books"

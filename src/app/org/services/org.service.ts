@@ -7,7 +7,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 const getCookieValue = (propName) => {
   const keyValues = document.cookie.split(';').map((pair) => pair.split('='));
-  const keyValue = keyValues.find((pair) => pair[0] === propName);
+  const keyValue = keyValues.find((pair) => pair[0].trim() === propName.trim());
   return keyValue && keyValue[1];
 };
 
