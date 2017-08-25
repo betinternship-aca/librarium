@@ -6,14 +6,14 @@
     <img md-card-image [src]="book.image">
 
     <span class="block-items">Authors:
-      <a *ngFor="let author of book.authors">{{author.name}}</a>
+      <a *ngFor="let author of book.authors" [innerText]="author.name"></a>
     </span>
 
     <span class="block-items">Categories:
-      <a *ngFor="let category of book.categories">{{category.name}}</a>
+      <a *ngFor="let category of book.categories" [innerText]="category.name"></a>
     </span>
 
-    <span >Edition year: {{book.editionYear}}</span>
+    <span>Edition year: {{book.editionYear}}</span>
 
     <p [innerText]="book.description"></p>
   </md-dialog-content>
