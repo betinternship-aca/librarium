@@ -145,7 +145,7 @@ OrganizationRouter.get('/books', (req, res) => {
 });
 
 OrganizationRouter.get('/reserved', (req, res) => {
-  res.json(Order.getOrgReservations());
+  res.json(Order.getOrgReservations(req.query));
 });
 
 OrganizationRouter.get('/history', (req, res) => {

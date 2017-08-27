@@ -1,3 +1,14 @@
+<!-- for search -->
+<md-toolbar>
+  <md-input-container>
+    <input
+      placeholder="Search by Book Name"
+      mdInput
+      type="search"
+      #search />
+  </md-input-container>
+</md-toolbar>
+
 <md-table #table [dataSource]="dataSource">
 
   <!-- Book name column -->
@@ -33,3 +44,10 @@
   <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
   <md-row *cdkRowDef="let order; columns: displayedColumns;"></md-row>
 </md-table>
+
+<!-- for pagination-->
+<md-paginator [length]="dataSource.totalCount"
+              [pageIndex]="pagingConfig.pageIndex"
+              [pageSize]="pagingConfig.pageSize"
+              [pageSizeOptions]="pagingConfig.pageSizeOptions">
+</md-paginator>

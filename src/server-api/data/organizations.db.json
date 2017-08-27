@@ -26,7 +26,10 @@
   },
   {
     "orgId": "ea8545fb-306b-f4bf-0a9f-5f53bb6c1029",
-    "sessionKeys": [],
+    "sessionKeys": [
+      "fe1fc78f-f4f7-0477-2831-03b252e230bb",
+      "204d111b-2e4d-440f-c64f-c10970271f69"
+    ],
     "name": "lib2",
     "login": "lib2",
     "password": "lib2",

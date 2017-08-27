@@ -1,4 +1,4 @@
-<!-- for paginator -->
+<!-- for search -->
 <md-toolbar>
   <md-input-container>
     <input
@@ -40,6 +40,7 @@
   <md-row *cdkRowDef="let order; columns: displayedColumns;"></md-row>
 </md-table>
 
+<!-- for pagination-->
 <md-paginator [length]="dataSource.totalCount"
               [pageIndex]="pagingConfig.pageIndex"
               [pageSize]="pagingConfig.pageSize"

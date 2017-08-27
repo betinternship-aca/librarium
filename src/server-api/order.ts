@@ -68,8 +68,21 @@ export class Order implements IOrder {
     return result;
   }
 
-  static getOrgReservations(): Order[] {
-    return Order.getOrgOrders().filter(order => order.returnDate === null);
+  static getOrgReservations(criteria: IOrderSearchCriteria) {
+    const filteredOrders = Order.getOrgOrders().filter(order => order.returnDate === null
+      && order.book.bookName.toLowerCase().includes(criteria.search.toLowerCase())
+    );
+
+    const result = {
+      totalCount: filteredOrders.length
+    } as IPagingData<Order>;
+
+    const size = +criteria.size;
+
+    const offset = criteria.index * size || 0;
+    result.data = filteredOrders.slice(offset, offset + size);
+
+    return result;
   }
 
   static getUserOrders(): Order[] {

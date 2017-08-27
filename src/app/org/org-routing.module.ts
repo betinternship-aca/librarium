@@ -59,8 +59,8 @@ const orgRoutes: Routes = [
             path: 'reserved',
             component: ReservesComponent,
             resolve: {
-            reservations: ReservationsResolverService
-          }
+              reservations: ReservationsResolverService
+            }
           },
           {
             path: '',

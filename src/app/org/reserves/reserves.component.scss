@@ -2,3 +2,8 @@ md-grid-tile {
   display: inline-block;
   vertical-align: middle;
 }
+md-toolbar {
+  md-input-container {
+    width: 100%;
+  }
+}

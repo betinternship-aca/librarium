@@ -22,11 +22,12 @@ export class OrderService {
     pageSizeOptions: [5, 10, 20]
   } as IPagingConfig;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
-  getOrgReservations() {
-    return this.http.get(`/api/org/reserved`) as Observable<IOrder[]>;
+  getOrgReservations(search: string = '') {
+    return this.http.get(`/api/org/reserved`, {
+      params: setPagingConfigToParams(this.pagingConfig, new HttpParams().set('search', search))
+    }) as Observable<IPagingData<IOrder>>;
   }
 
   finishOrder(orderId) {
